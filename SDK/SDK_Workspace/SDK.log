@@ -1,0 +1,139 @@
+08:44:53.613 INFO  - Project 'basic_system_hw_platform' created. You can now create BSPs and application projects targeting this hardware platform. 
+08:45:29.358 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+09:12:40.940 INFO  - Saving repository preferences. 
+09:12:40.942 INFO  - Reading in cores from global repositories: 
+		 D:\work\lprs2\2013_2014\Resene_vezbe\lab56 
+09:12:40.947 INFO  - Updating libgen.options on all BSP projects. 
+09:12:40.948 INFO  - Cleaning BSP projects in the workspace. 
+09:14:22.175 INFO  - Saving repository preferences. 
+09:14:22.178 INFO  - Reading in cores from local repositories: 
+		 D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\pcores 
+09:14:22.187 INFO  - Updating libgen.options on all BSP projects. 
+09:14:22.189 INFO  - Cleaning BSP projects in the workspace. 
+10:20:50.218 INFO  - Project basic_system_hw_platform's source hardware specification located at D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.xml is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated. 
+10:20:58.641 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.xml into \basic_system_hw_platform\system.xml. 
+10:20:58.647 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+10:20:58.649 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+10:20:58.937 INFO  - Synchronizing projects in the workspace with the hardware platform specification changes. 
+10:21:00.535 INFO  - Updating hardware inferred compiler options for hello_world. 
+10:21:00.565 INFO  - Clearing existing target manager status. 
+10:21:00.566 INFO  - Closing and re-opening the MSS file of ther project hello_world_bsp 
+10:21:01.745 INFO  - Workspace synchronized with the new hardware specification file. Cleaning dependent projects... 
+10:21:22.252 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+11:12:41.053 INFO  - Project basic_system_hw_platform's source hardware specification located at D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.xml is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated. 
+11:13:00.178 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.xml into \basic_system_hw_platform\system.xml. 
+11:13:00.185 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+11:13:00.188 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+11:13:00.696 INFO  - Synchronizing projects in the workspace with the hardware platform specification changes. 
+11:13:01.462 INFO  - Updating MSS for Board Support Package Project: hello_world_bsp.
+		 The following driver assignments were removed:
+			Peripheral Instance: vga_periph_0, driver: generic_v1_00_a.
+		 The following new driver assignments were made:
+			Peripheral Instance: vga_periph_mem_0, driver: generic_v1_00_a.
+ 
+11:13:02.245 INFO  - Updating hardware inferred compiler options for hello_world. 
+11:13:02.246 INFO  - Clearing existing target manager status. 
+11:13:02.247 INFO  - Closing and re-opening the MSS file of ther project hello_world_bsp 
+11:13:03.421 INFO  - Workspace synchronized with the new hardware specification file. Cleaning dependent projects... 
+11:29:41.953 INFO  - Project basic_system_hw_platform's source hardware specification located at D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.xml is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated. 
+11:29:48.055 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.xml into \basic_system_hw_platform\system.xml. 
+11:29:48.062 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+11:29:48.065 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+11:29:48.345 INFO  - Synchronizing projects in the workspace with the hardware platform specification changes. 
+11:29:49.956 INFO  - Updating hardware inferred compiler options for hello_world. 
+11:29:50.005 INFO  - Clearing existing target manager status. 
+11:29:50.005 INFO  - Closing and re-opening the MSS file of ther project hello_world_bsp 
+11:29:51.181 INFO  - Workspace synchronized with the new hardware specification file. Cleaning dependent projects... 
+11:30:12.494 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+11:49:15.795 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+11:49:17.124 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+11:49:17.127 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+11:49:35.456 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+13:48:02.945 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+13:48:06.532 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+13:48:06.536 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+13:48:23.182 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+13:50:49.565 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+13:51:46.892 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+13:52:19.025 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+13:53:55.309 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+14:13:56.924 INFO  - Project basic_system_hw_platform's source hardware specification located at D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.xml is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated. 
+14:14:20.614 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.xml into \basic_system_hw_platform\system.xml. 
+14:14:20.618 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+14:14:20.620 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+14:14:20.912 INFO  - Synchronizing projects in the workspace with the hardware platform specification changes. 
+14:14:22.453 INFO  - Updating hardware inferred compiler options for hello_world. 
+14:14:22.455 INFO  - Clearing existing target manager status. 
+14:14:22.455 INFO  - Closing and re-opening the MSS file of ther project hello_world_bsp 
+14:14:23.627 INFO  - Workspace synchronized with the new hardware specification file. Cleaning dependent projects... 
+14:15:05.263 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+14:20:22.405 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+14:20:24.494 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+14:20:24.497 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+14:20:39.871 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+14:28:08.588 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+14:33:12.049 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+14:41:31.698 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+14:41:33.069 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+14:41:33.072 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+14:42:14.443 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+14:52:24.180 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+14:52:28.565 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+14:52:28.575 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+14:52:41.579 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+14:58:50.736 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+14:58:52.773 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+14:58:52.777 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+14:59:07.267 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+15:04:56.224 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+15:04:57.689 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+15:04:57.691 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+15:05:08.672 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+15:25:24.620 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+15:25:30.347 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+15:25:30.351 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+15:25:43.495 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+15:43:36.753 INFO  - Updating .bit and .bmm files from XPS's export folder. 
+15:43:38.947 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system.bit into \basic_system_hw_platform\system.bit. 
+15:43:38.950 INFO  - Copied contents of D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Export\hw\system_bd.bmm into \basic_system_hw_platform\system_bd.bmm. 
+15:43:56.424 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+09:01:25.990 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+09:14:34.380 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+09:14:54.209 INFO  - Restoring local repository preferences: 
+		 D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\pcores 
+09:15:23.771 INFO  - Saving repository preferences. 
+09:15:26.363 INFO  - Saving repository preferences. 
+09:15:26.919 INFO  - Saving repository preferences. 
+09:26:48.223 ERROR - Unable to read in MSS file D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Workspace\hello_world_bsp\system.mss. 
+09:27:40.760 INFO  - Saving repository preferences. 
+09:27:40.762 INFO  - Updating libgen.options on all BSP projects. 
+09:27:40.764 INFO  - Cleaning BSP projects in the workspace. 
+09:27:41.087 ERROR - Unable to read in MSS file D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system\SDK\SDK_Workspace\hello_world_bsp\system.mss. 
+09:28:59.623 INFO  - Saving repository preferences. 
+09:28:59.626 INFO  - Reading in cores from local repositories: 
+		 D:\work\lprs2\2013_2014\Resene_vezbe\lab56 
+09:28:59.636 INFO  - Updating libgen.options on all BSP projects. 
+09:28:59.639 INFO  - Cleaning BSP projects in the workspace. 
+09:29:28.380 INFO  - Settings changed on project hello_world_bsp. Triggering a rebuild... 
+09:29:28.620 INFO  - Refreshed build settings on project hello_world 
+09:29:47.883 INFO  - Settings changed on project hello_world_bsp. Triggering a rebuild... 
+09:29:48.122 INFO  - Refreshed build settings on project hello_world 
+09:34:45.378 INFO  - FPGA configured successfully with bitstream "D:/work/lprs2/2013_2014/Resene_vezbe/lab56/basic_system/SDK/SDK_Workspace/basic_system_hw_platform/download.bit" 
+09:36:36.385 INFO  - Settings changed on project hello_world_bsp. Triggering a rebuild... 
+09:36:36.629 INFO  - Refreshed build settings on project hello_world 
+09:37:05.460 INFO  - Saving repository preferences. 
+09:37:05.462 INFO  - Updating libgen.options on all BSP projects. 
+09:37:05.464 INFO  - Cleaning BSP projects in the workspace. 
+09:38:39.243 INFO  - Saving repository preferences. 
+09:38:39.246 INFO  - Reading in cores from local repositories: 
+		 D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system 
+09:38:39.298 INFO  - Updating libgen.options on all BSP projects. 
+09:38:39.299 INFO  - Cleaning BSP projects in the workspace. 
+09:39:04.731 INFO  - Settings changed on project hello_world_bsp. Triggering a rebuild... 
+09:39:04.953 INFO  - Refreshed build settings on project hello_world 
+10:33:44.745 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+10:36:10.473 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  

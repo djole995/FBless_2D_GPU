@@ -1,0 +1,3 @@
+PROCESSOR=microblaze_0
+REPOSITORIES=-lp D:/work/lprs2/2013_2014/Resene_vezbe/lab45/basic_system
+HWSPEC=../basic_system_hw_platform/system.xml
