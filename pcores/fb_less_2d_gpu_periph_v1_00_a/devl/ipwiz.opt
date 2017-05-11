@@ -1,0 +1,8 @@
+-batch 
+-create fb_less_2d_gpu_periph 
+-ver 1.00.a 
+-dir "D:\djole\FBless_2D_GPU" 
+-lang vhdl 
+-bus axi4lite s 
+-xps 
+-ise 

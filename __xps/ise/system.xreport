@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2014-04-07T11:18:45</DateModified>
+  <DateModified>2017-05-11T08:17:21</DateModified>
   <ModuleName>system</ModuleName>
-  <SummaryTimeStamp>2014-04-07T11:18:45</SummaryTimeStamp>
-  <SavedFilePath>D:/work/lprs2/2013_2014/Resene_vezbe/lab45_2_cleand/basic_system/__xps/ise/system.xreport</SavedFilePath>
+  <SummaryTimeStamp>2017-05-11T08:17:20</SummaryTimeStamp>
+  <SavedFilePath>D:/djole/FBless_2D_GPU/__xps/ise/system.xreport</SavedFilePath>
   <FilterFile>filter.filter</FilterFile>
-  <SavedFilterFilePath>D:/work/lprs2/2013_2014/Resene_vezbe/lab45_2_cleand/basic_system/__xps/ise</SavedFilterFilePath>
+  <SavedFilterFilePath>D:/djole/FBless_2D_GPU/__xps/ise</SavedFilterFilePath>
   <DateInitialized>2014-03-04T12:48:11</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>

@@ -1,0 +1,10 @@
+##############################################################################
+## Filename:          D:/djole/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/data/fb_less_2d_gpu_periph_v2_1_0.pao
+## Description:       Peripheral Analysis Order
+## Date:              Thu May 11 08:17:14 2017 (by Create and Import Peripheral Wizard)
+##############################################################################
+
+lib proc_common_v3_00_a  all 
+lib axi_lite_ipif_v1_01_a  all 
+lib fb_less_2d_gpu_periph_v1_00_a user_logic vhdl
+lib fb_less_2d_gpu_periph_v1_00_a fb_less_2d_gpu_periph vhdl
