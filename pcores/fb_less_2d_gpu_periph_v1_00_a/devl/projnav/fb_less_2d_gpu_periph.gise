@@ -22,16 +22,52 @@
   <sourceproject xmlns="http://www.xilinx.com/XMLSchema" xil_pn:fileType="FILE_XISE" xil_pn:name="fb_less_2d_gpu_periph.xise"/>
 
   <files xmlns="http://www.xilinx.com/XMLSchema">
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name=".prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name=".stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name=".xst"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="_ngo"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/map.xmsgs"/>
+    <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     <file xil_pn:fileType="FILE_XMSGS" xil_pn:name="_xmsgs/xst.xmsgs"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="clk_gen_100MHz.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="clk_gen_100MHz.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="clk_gen_100MHz.xst"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="fb_less_2d_gpu.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="fb_less_2d_gpu.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="fb_less_2d_gpu.xst"/>
     <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="fb_less_2d_gpu_periph.cmd_log"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="fb_less_2d_gpu_periph.lso"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="fb_less_2d_gpu_periph.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="fb_less_2d_gpu_periph.stx"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="fb_less_2d_gpu_periph.syr"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="fb_less_2d_gpu_periph.xst"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="fb_less_2d_gpu_periph_envsettings.html"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="fb_less_2d_gpu_periph_summary.html"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="fb_less_2d_gpu_periph_xst.xrpt"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGDBUILD_LOG" xil_pn:name="fb_less_2d_gpu_standalone.bld"/>
+    <file xil_pn:fileType="FILE_CMD_LOG" xil_pn:name="fb_less_2d_gpu_standalone.cmd_log"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_LSO" xil_pn:name="fb_less_2d_gpu_standalone.lso"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGC" xil_pn:name="fb_less_2d_gpu_standalone.ngc"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGD" xil_pn:name="fb_less_2d_gpu_standalone.ngd"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_NGR" xil_pn:name="fb_less_2d_gpu_standalone.ngr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="fb_less_2d_gpu_standalone.prj"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_STX" xil_pn:name="fb_less_2d_gpu_standalone.stx"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST_REPORT" xil_pn:name="fb_less_2d_gpu_standalone.syr"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_XST" xil_pn:name="fb_less_2d_gpu_standalone.xst"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="fb_less_2d_gpu_standalone_envsettings.html"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="fb_less_2d_gpu_standalone_map.map" xil_pn:subbranch="Map"/>
+    <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_MAP_REPORT" xil_pn:name="fb_less_2d_gpu_standalone_map.mrp" xil_pn:subbranch="Map"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="fb_less_2d_gpu_standalone_ngdbuild.xrpt"/>
+    <file xil_pn:fileType="FILE_HTML" xil_pn:name="fb_less_2d_gpu_standalone_summary.html"/>
+    <file xil_pn:fileType="FILE_XRPT" xil_pn:name="fb_less_2d_gpu_standalone_xst.xrpt"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="netgen"/>
+    <file xil_pn:branch="PostSynthSim" xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.nlf"/>
+    <file xil_pn:branch="PostSynthSim" xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.v"/>
+    <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="vga_ctrl.prj"/>
+    <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="vga_ctrl.stx"/>
+    <file xil_pn:fileType="FILE_XST" xil_pn:name="vga_ctrl.xst"/>
     <file xil_pn:fileType="FILE_FITTER_REPORT" xil_pn:name="webtalk_pn.xml"/>
+    <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xlnx_auto_0_xdb"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="xst"/>
   </files>
 
@@ -40,41 +76,81 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494953005" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="1796870169171622297" xil_pn:start_ts="1494953005">
+    <transform xil_pn:end_ts="1494976941" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-8798189510163441030" xil_pn:start_ts="1494976941">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494953005" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="7732788827835593866" xil_pn:start_ts="1494953005">
+    <transform xil_pn:end_ts="1494976941" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="9074640315221555659" xil_pn:start_ts="1494976941">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494953005" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1494953005">
+    <transform xil_pn:end_ts="1494976941" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1494976941">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494953005" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-5352616373406791333" xil_pn:start_ts="1494953005">
+    <transform xil_pn:end_ts="1494976941" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-2709419302696027332" xil_pn:start_ts="1494976941">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494953005" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="8977612015859452503" xil_pn:start_ts="1494953005">
+    <transform xil_pn:end_ts="1494976941" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="8977612015859452503" xil_pn:start_ts="1494976941">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494953005" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="4010107378016458324" xil_pn:start_ts="1494953005">
+    <transform xil_pn:end_ts="1494976941" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="6885918042040053909" xil_pn:start_ts="1494976941">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1494953729" xil_pn:in_ck="-2240520407716218593" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-1245474096181358823" xil_pn:start_ts="1494953724">
-      <status xil_pn:value="FailedRun"/>
+    <transform xil_pn:end_ts="1494976985" xil_pn:in_ck="-5333191372754136865" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1494976941">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
-      <outfile xil_pn:name="fb_less_2d_gpu_periph.lso"/>
-      <outfile xil_pn:name="fb_less_2d_gpu_periph.prj"/>
-      <outfile xil_pn:name="fb_less_2d_gpu_periph.syr"/>
-      <outfile xil_pn:name="fb_less_2d_gpu_periph.xst"/>
-      <outfile xil_pn:name="fb_less_2d_gpu_periph_xst.xrpt"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone.lso"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone.ngc"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone.ngr"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone.prj"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone.stx"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone.syr"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone.xst"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone_xst.xrpt"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
+    </transform>
+    <transform xil_pn:end_ts="1494977101" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="-2849624100829419033" xil_pn:start_ts="1494977101">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1494977132" xil_pn:in_ck="4572335426713284940" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="2005170809893112716" xil_pn:start_ts="1494977118">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="_ngo"/>
+      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone.bld"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone.ngd"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone_ngdbuild.xrpt"/>
+    </transform>
+    <transform xil_pn:end_ts="1494977140" xil_pn:in_ck="4572335426713284941" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="-2489532510156203999" xil_pn:start_ts="1494977132">
+      <status xil_pn:value="FailedRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone_map.map"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone_map.mrp"/>
+    </transform>
+    <transform xil_pn:end_ts="1494977108" xil_pn:in_ck="4572335426713284940" xil_pn:name="TRAN_postSynthesisSimModel" xil_pn:prop_ck="4242633845529675738" xil_pn:start_ts="1494977101">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <outfile xil_pn:name="netgen"/>
+      <outfile xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.nlf"/>
+      <outfile xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.v"/>
     </transform>
   </transforms>
 

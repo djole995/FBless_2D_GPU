@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.55 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total CPU time to Xst completion: 0.55 secs
  
 --> Reading design: fb_less_2d_gpu_periph.prj
 
@@ -153,7 +153,7 @@ ERROR:HDLCompiler:69 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hd
 Sorry, too many errors..
 --> 
 
-Total memory usage is 212244 kilobytes
+Total memory usage is 213300 kilobytes
 
 Number of errors   :   19 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

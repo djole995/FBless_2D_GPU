@@ -1,0 +1,2 @@
+vhdl work "../../hdl/vhdl/clk_gen_100MHz_e.vhd"
+vhdl work "../../hdl/vhdl/clk_gen_100MHz_a.vhd"

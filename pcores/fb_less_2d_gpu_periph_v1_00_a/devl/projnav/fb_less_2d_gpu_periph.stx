@@ -1,0 +1,97 @@
+Release 14.6 - xst P.68d (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Parameter xsthdpdir set to D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.27 secs
+ 
+--> Reading design: fb_less_2d_gpu_periph.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd" into library proc_common_v3_00_a
+Parsing package <proc_common_pkg>.
+Parsing package body <proc_common_pkg>.
+Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/family_support.vhd" into library proc_common_v3_00_a
+Parsing package <family_support>.
+Parsing package body <family_support>.
+Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pselect_f.vhd" into library proc_common_v3_00_a
+Parsing entity <pselect_f>.
+Parsing architecture <imp> of entity <pselect_f>.
+Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/ipif_pkg.vhd" into library proc_common_v3_00_a
+Parsing package <ipif_pkg>.
+Parsing package body <ipif_pkg>.
+Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/counter_f.vhd" into library proc_common_v3_00_a
+Parsing entity <counter_f>.
+Parsing architecture <imp> of entity <counter_f>.
+Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/address_decoder.vhd" into library axi_lite_ipif_v1_01_a
+Parsing entity <address_decoder>.
+Parsing architecture <IMP> of entity <address_decoder>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl_e.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing entity <vga_ctrl>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\ram.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing entity <ram>.
+Parsing architecture <arch> of entity <ram>.
+Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd" into library axi_lite_ipif_v1_01_a
+Parsing entity <slave_attachment>.
+Parsing architecture <imp> of entity <slave_attachment>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl_a.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing architecture <arch_v1> of entity <vga_ctrl>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\user_logic.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing entity <user_logic>.
+Parsing architecture <IMP> of entity <user_logic>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing entity <fb_less_2d_gpu>.
+Parsing architecture <Behavioral> of entity <fb_less_2d_gpu>.
+Parsing VHDL file "C:/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/axi_lite_ipif.vhd" into library axi_lite_ipif_v1_01_a
+Parsing entity <axi_lite_ipif>.
+Parsing architecture <imp> of entity <axi_lite_ipif>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing entity <fb_less_2d_gpu_periph>.
+Parsing architecture <IMP> of entity <fb_less_2d_gpu_periph>.
+ERROR:HDLCompiler:1728 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 285: Type error near phase_s ; current type unsigned; expected type unsigned
+ERROR:HDLCompiler:1728 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 286: Type error near pixel_x_s ; current type unsigned; expected type unsigned
+ERROR:HDLCompiler:1728 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 287: Type error near pixel_y_s ; current type unsigned; expected type unsigned
+ERROR:HDLCompiler:1728 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 309: Type error near pixel_y_s ; current type unsigned; expected type unsigned
+ERROR:HDLCompiler:1728 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 310: Type error near pixel_x_s ; current type unsigned; expected type unsigned
+ERROR:HDLCompiler:1728 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 314: Type error near phase_s ; current type unsigned; expected type unsigned
+ERROR:HDLCompiler:854 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 193: Unit <imp> ignored due to previous errors.
+VHDL file D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd ignored due to errors
+--> 
+
+Total memory usage is 190852 kilobytes
+
+Number of errors   :    7 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

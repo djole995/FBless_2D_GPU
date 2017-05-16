@@ -61,6 +61,9 @@
 library ieee;
 	use ieee.std_logic_1164.all;
 	use ieee.numeric_std.all;
+	
+library fb_less_2d_gpu_periph_v1_00_a;
+	use fb_less_2d_gpu_periph_v1_00_a.all;
 
 ------------------------------------------------------------------------------
 -- Entity section

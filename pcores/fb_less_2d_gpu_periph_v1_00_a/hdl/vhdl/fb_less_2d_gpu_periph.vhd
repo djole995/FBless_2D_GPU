@@ -70,7 +70,7 @@ library axi_lite_ipif_v1_01_a;
 use axi_lite_ipif_v1_01_a.axi_lite_ipif;
 
 library fb_less_2d_gpu_periph_v1_00_a;
-use fb_less_2d_gpu_periph_v1_00_a.user_logic;
+use fb_less_2d_gpu_periph_v1_00_a.all;
 
 ------------------------------------------------------------------------------
 -- Entity section
@@ -245,6 +245,34 @@ architecture IMP of fb_less_2d_gpu_periph is
   signal user_IP2Bus_RdAck              : std_logic;
   signal user_IP2Bus_WrAck              : std_logic;
   signal user_IP2Bus_Error              : std_logic;
+  
+  	
+
+   constant BASE_ADDR : signed(C_S_AXI_ADDR_WIDTH-1 downto 0) := signed(C_BASEADDR);
+	subtype t_addr is signed(C_S_AXI_ADDR_WIDTH-1 downto 2);
+	subtype t_word is std_logic_vector(C_S_AXI_DATA_WIDTH-1 downto 0);
+	
+	
+	signal accept_write     : std_logic;
+	signal r_write_response : std_logic;
+	
+	signal local_write_addr : t_addr;
+	signal write_regs_en    : boolean;
+	signal we_en : std_logic;
+  
+	constant ADDR_WIDTH : natural := 13;
+
+	signal clk_100MHz			: std_logic;
+	signal n_reset				: std_logic;
+	
+	signal rgb_s					: std_logic_vector(23 downto 0);
+ 	signal pixel_x_s				: unsigned(9 downto 0);
+	signal pixel_y_s				: unsigned(8 downto 0);
+	signal phase_s					: unsigned(1 downto 0);
+	
+	signal bus_addr		      : std_logic_vector(ADDR_WIDTH-1 downto 0);
+	signal bus_data            : std_logic_vector(31 downto 0);
+	signal bus_we              : std_logic;
 
 begin
 

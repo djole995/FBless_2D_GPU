@@ -5,61 +5,25 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="error" file="HDLCompiler" num="374" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 14: Entity &lt;<arg fmt="%s" index="1">vga_ctrl</arg>&gt; is not yet compiled.
+<msg type="error" file="HDLCompiler" num="1728" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 285: Type error near <arg fmt="%s" index="1">phase_s</arg> ; current type <arg fmt="%s" index="2">unsigned</arg>; expected type <arg fmt="%s" index="3">unsigned</arg>
 </msg>
 
-<msg type="error" file="HDLCompiler" num="24" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 46: <arg fmt="%s" index="1">&quot;**&quot;</arg> expects <arg fmt="%d" index="2">2</arg> arguments
+<msg type="error" file="HDLCompiler" num="1728" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 286: Type error near <arg fmt="%s" index="1">pixel_x_s</arg> ; current type <arg fmt="%s" index="2">unsigned</arg>; expected type <arg fmt="%s" index="3">unsigned</arg>
 </msg>
 
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 40: &lt;<arg fmt="%s" index="1">in_reset</arg>&gt; is not declared.
+<msg type="error" file="HDLCompiler" num="1728" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 287: Type error near <arg fmt="%s" index="1">pixel_y_s</arg> ; current type <arg fmt="%s" index="2">unsigned</arg>; expected type <arg fmt="%s" index="3">unsigned</arg>
 </msg>
 
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 39: &lt;<arg fmt="%s" index="1">i_clk_100mhz</arg>&gt; is not declared.
+<msg type="error" file="HDLCompiler" num="1728" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 309: Type error near <arg fmt="%s" index="1">pixel_y_s</arg> ; current type <arg fmt="%s" index="2">unsigned</arg>; expected type <arg fmt="%s" index="3">unsigned</arg>
 </msg>
 
-<msg type="error" file="HDLCompiler" num="187" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 39: Actual <arg fmt="%s" index="1"></arg> of formal <arg fmt="%s" index="2">s</arg> must be a <arg fmt="%s" index="3">signal</arg>
+<msg type="error" file="HDLCompiler" num="1728" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 310: Type error near <arg fmt="%s" index="1">pixel_x_s</arg> ; current type <arg fmt="%s" index="2">unsigned</arg>; expected type <arg fmt="%s" index="3">unsigned</arg>
 </msg>
 
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 37: &lt;<arg fmt="%s" index="1">i_clk_100mhz</arg>&gt; is not declared.
+<msg type="error" file="HDLCompiler" num="1728" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 314: Type error near <arg fmt="%s" index="1">phase_s</arg> ; current type <arg fmt="%s" index="2">unsigned</arg>; expected type <arg fmt="%s" index="3">unsigned</arg>
 </msg>
 
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 52: &lt;<arg fmt="%s" index="1">o_phase</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1731" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 64: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;+&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;+&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 60: &lt;<arg fmt="%s" index="1">in_reset</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 59: &lt;<arg fmt="%s" index="1">i_clk_100mhz</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="187" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 59: Actual <arg fmt="%s" index="1"></arg> of formal <arg fmt="%s" index="2">s</arg> must be a <arg fmt="%s" index="3">signal</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 57: &lt;<arg fmt="%s" index="1">i_clk_100mhz</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 73: &lt;<arg fmt="%s" index="1">o_pixel_x</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1731" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 82: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;+&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;+&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1731" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 81: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;+&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;+&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 78: &lt;<arg fmt="%s" index="1">in_reset</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 77: &lt;<arg fmt="%s" index="1">i_clk_100mhz</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="187" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 77: Actual <arg fmt="%s" index="1"></arg> of formal <arg fmt="%s" index="2">s</arg> must be a <arg fmt="%s" index="3">signal</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl.vhd" Line 75: &lt;<arg fmt="%s" index="1">i_clk_100mhz</arg>&gt; is not declared.
+<msg type="error" file="HDLCompiler" num="854" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_periph.vhd" Line 193: Unit &lt;<arg fmt="%s" index="1">imp</arg>&gt; ignored due to previous errors.
 </msg>
 
 </messages>

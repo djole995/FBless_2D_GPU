@@ -1,0 +1,24 @@
+Release 14.6 - netgen P.68d (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line: netgen -intstyle ise -insert_glbl true -w -dir netgen/synthesis
+-ofmt verilog -sim fb_less_2d_gpu_standalone.ngc
+fb_less_2d_gpu_standalone_synthesis.v  
+
+Reading design 'fb_less_2d_gpu_standalone.ngc' ...
+Flattening design ...
+Processing design ... 
+  Preping design's networks ...
+  Preping design's macros ...
+Writing Verilog netlist file
+'D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\devl\projnav\netgen\synth
+esis\fb_less_2d_gpu_standalone_synthesis.v' ...
+WARNING:NetListWriters - Padding or triming the value for hex property
+   FACTORY_JF:
+Triming from 1100000010000000 to 0000.
+INFO:NetListWriters:633 - The generated Verilog netlist contains Xilinx UNISIM
+   simulation primitives and has to be used with UNISIM simulation library for
+   correct compilation and simulation. 
+Number of warnings: 1
+Number of info messages: 1
+Total memory usage is 140540 kilobytes
