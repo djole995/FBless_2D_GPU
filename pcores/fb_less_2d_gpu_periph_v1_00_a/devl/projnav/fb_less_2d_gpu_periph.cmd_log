@@ -1,0 +1,3 @@
+xst -intstyle ise -ifn "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/fb_less_2d_gpu_periph.xst" -ofn "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/fb_less_2d_gpu_periph.syr" 
+xst -intstyle ise -ifn "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/fb_less_2d_gpu_periph.xst" -ofn "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/fb_less_2d_gpu_periph.syr" 
+xst -intstyle ise -ifn "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/fb_less_2d_gpu_periph.xst" -ofn "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/fb_less_2d_gpu_periph.syr" 

@@ -138,6 +138,20 @@ entity fb_less_2d_gpu_periph is
   (
     -- ADD USER PORTS BELOW THIS LINE ------------------
     --USER ports added here
+		clk_24MHz_i		: in  std_logic; -- TODO Remote this later. Also remove from MPD file.
+		rst_in			: in  std_logic; -- TODO Remote this later. Also remove from MPD file.
+
+		vga_clk_o		: out std_logic;
+		red_o				: out std_logic_vector(7 downto 0);
+		green_o			: out std_logic_vector(7 downto 0);
+		blue_o			: out std_logic_vector(7 downto 0);
+		blank_on			: out std_logic;
+		h_sync_on		: out std_logic;
+		v_sync_on		: out std_logic;
+		sync_on			: out std_logic;
+		pow_save_on		: out std_logic;
+		
+		interrupt_o		: out std_logic;
     -- ADD USER PORTS ABOVE THIS LINE ------------------
 
     -- DO NOT EDIT BELOW THIS LINE ---------------------
@@ -234,6 +248,44 @@ architecture IMP of fb_less_2d_gpu_periph is
 
 begin
 
+		vga_ctrl_i : entity vga_ctrl
+		port map
+		(
+			i_clk_100MHz   => clk_100MHz,
+			in_reset       => n_reset,
+			
+			o_phase			=> phase_s,
+			o_pixel_x		=> pixel_x_s,
+			o_pixel_y		=> pixel_y_s, 
+			i_red				=> rgb_s(7 downto 0),
+			i_green			=> rgb_s(15 downto 8),
+			i_blue			=> rgb_s(23 downto 16),
+
+			o_vga_clk		=> vga_clk_o,
+			o_red				=> red_o,
+			o_green			=> green_o,
+			o_blue			=> blue_o,
+			on_blank			=> blank_on,
+			on_h_sync		=> h_sync_on,
+			on_v_sync		=> v_sync_on,
+			on_sync			=> sync_on,
+			on_pow_save		=> pow_save_on
+		);
+		
+		
+		fb_less_2d_gpu_i : entity fb_less_2d_gpu
+		port map
+		(
+			clk_i				=> clk_100MHz,
+			rst_n_i			=> n_reset,
+			pixel_row_i		=> pixel_y_s,
+			pixel_col_i		=> pixel_x_s,
+			bus_addr_i		=> bus_addr,
+			bus_data_i		=> bus_data,
+			bus_we_i			=> bus_we,
+			phase_i			=> phase_s,
+			rgb_o				=> rgb_s
+		);
   ------------------------------------------
   -- instantiate axi_lite_ipif
   ------------------------------------------
@@ -315,7 +367,51 @@ begin
       IP2Bus_WrAck                   => user_IP2Bus_WrAck,
       IP2Bus_Error                   => user_IP2Bus_Error
     );
+	 
+	 clk_100MHz <= S_AXI_ACLK;
+	 n_reset <= S_AXI_ARESETN;
+	 
+	 	-- Read transaction.
 
+    S_AXI_ARREADY <= '0';
+    S_AXI_RDATA <= (others => '0');
+    S_AXI_RRESP <= (others => '0');
+    S_AXI_RVALID <= '0';
+	 
+	 	accept_write <= S_AXI_AWVALID and S_AXI_WVALID and not r_write_response;
+	S_AXI_AWREADY <= accept_write;
+	S_AXI_WREADY <= accept_write;
+	
+	local_write_addr <= signed(S_AXI_AWADDR(t_addr'range)) - BASE_ADDR(t_addr'range);
+	write_regs_en <= accept_write = '1' and local_write_addr(t_addr'left downto ADDR_WIDTH+2) = 0;
+	we_en <= '1' when write_regs_en else '0';
+
+	write_regs: process(S_AXI_ACLK)
+	begin
+		if rising_edge(S_AXI_ACLK) then
+			if S_AXI_ARESETN = '0' then
+				--r_regs <= (others => (others => '0'));
+				r_write_response <= '0';
+			else
+				if accept_write = '1' then
+					r_write_response <= '1';
+				else
+					if S_AXI_BREADY = '1' then
+						r_write_response <= '0';
+					end if;
+				end if;
+			end if;
+		end if;
+	end process write_regs;
+	
+	S_AXI_BRESP  <= "00"; -- Always OK response.
+	S_AXI_BVALID <= r_write_response;
+	
+	bus_addr <= std_logic_vector(local_write_addr(ADDR_WIDTH+1 downto 2));
+	bus_data <= S_AXI_WDATA;
+	bus_we <= we_en;
+
+	-----STARO----
   ------------------------------------------
   -- connect internal signals
   ------------------------------------------
