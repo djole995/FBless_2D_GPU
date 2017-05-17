@@ -1,0 +1,39 @@
+NET clk_24MHz_i             LOC = M21 | IOSTANDARD = LVTTL;
+NET rst_in         LOC = AE24 | IOSTANDARD = LVCMOS33; # AKA UI_JOY2
+
+NET clk_24MHz_i TNM_NET = clk_24MHz_i;
+TIMESPEC TS_CLK = PERIOD clk_24MHz_i 37.037 ns HIGH 50 %;
+
+NET blank_on       LOC = B16  | IOSTANDARD = LVTTL;
+NET v_sync_on      LOC = A22  | IOSTANDARD = LVTTL;
+NET h_sync_on      LOC = B22  | IOSTANDARD = LVTTL;
+NET vga_clk_o      LOC = C14  | IOSTANDARD = LVTTL;
+NET pow_save_on    LOC = A2   | IOSTANDARD = LVTTL;
+NET sync_on        LOC = A17  | IOSTANDARD = LVTTL;
+
+NET red_o(0)          LOC = B4   | IOSTANDARD = LVTTL;
+NET red_o(1)          LOC = A4   | IOSTANDARD = LVTTL;
+NET red_o(2)          LOC = A5   | IOSTANDARD = LVTTL;
+NET red_o(3)          LOC = B6   | IOSTANDARD = LVTTL;
+NET red_o(4)          LOC = A6   | IOSTANDARD = LVTTL;
+NET red_o(5)          LOC = A7   | IOSTANDARD = LVTTL;
+NET red_o(6)          LOC = B8   | IOSTANDARD = LVTTL;
+NET red_o(7)          LOC = A8   | IOSTANDARD = LVTTL;
+
+NET green_o(0)        LOC = A9   | IOSTANDARD = LVTTL;
+NET green_o(1)        LOC = A11  | IOSTANDARD = LVTTL;
+NET green_o(2)        LOC = B12  | IOSTANDARD = LVTTL;
+NET green_o(3)        LOC = A12  | IOSTANDARD = LVTTL;
+NET green_o(4)        LOC = N17  | IOSTANDARD = LVTTL;
+NET green_o(5)        LOC = A13  | IOSTANDARD = LVTTL;
+NET green_o(6)        LOC = N18  | IOSTANDARD = LVTTL;
+NET green_o(7)        LOC = A16  | IOSTANDARD = LVTTL;
+
+NET blue_o(0)         LOC = A18  | IOSTANDARD = LVTTL;
+NET blue_o(1)         LOC = B18  | IOSTANDARD = LVTTL;
+NET blue_o(2)         LOC = L17  | IOSTANDARD = LVTTL;
+NET blue_o(3)         LOC = M18  | IOSTANDARD = LVTTL;
+NET blue_o(4)         LOC = C18  | IOSTANDARD = LVTTL;
+NET blue_o(5)         LOC = K18  | IOSTANDARD = LVTTL;
+NET blue_o(6)         LOC = C19  | IOSTANDARD = LVTTL;
+NET blue_o(7)         LOC = C20  | IOSTANDARD = LVTTL;

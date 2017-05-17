@@ -322,6 +322,18 @@ architecture Behavioral of fb_less_2d_gpu is
 	--- memory ---
 	signal mem_addr_r           :  unsigned(ADDR_WIDTH-1 downto 0);
 	signal mem_addr_s           :  unsigned(ADDR_WIDTH-1 downto 0);
+	
+	-----------NEW--------------------------
+	signal rect_s: std_logic_vector(87 downto 0);
+	signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
+	signal draw_s : std_logic := '0';
+	signal rgb_s : std_logic_vector(23 downto 0);
+	signal pixel_row_s : std_logic_vector(15 downto 0);
+	signal pixel_col_s : std_logic_vector(15 downto 0);
+	signal rect_width_s : std_logic_vector(15 downto 0);
+	signal rect_height_s : std_logic_vector(15 downto 0);
+	
+	signal phase_s : std_logic_vector(1 downto 0);
 
 	
 	begin
@@ -349,8 +361,43 @@ architecture Behavioral of fb_less_2d_gpu is
 
 	--uvek 16x16
 	stat_img_size_is_16 <= '1';
-
-	rgb_o <= mem_data_s(23 downto 0);
+	--80-72 64-56 49-40 32-24
+	
+	rect_list_s(23 downto 0) <=  mem_data_s(23 downto 0);--x"0000000000000000" & mem_data_s(23 downto 0) when phase_s = "00"
+		--else x"00000000" & mem_data_s & x"000000" when phase_s = "01"
+		--else mem_data_s & x"00000000000000" when phase_s = "10"
+		--else (others => '0');
+	
+	phase_s <= (others => '0') when mem_addr_s = 0
+		else "01" when mem_addr_s = 1
+		else "10" when mem_addr_s = 2
+		else "11";
+		
+			
+	
+	rgb_s <= rect_list_s(23 downto 0) when phase_s = "00" 
+		else (others => '0');
+		
+	pixel_row_s <= rect_list_s(87 downto 72) when phase_s = "01"
+		else (others => '0');
+	pixel_col_s <= rect_list_s(71 downto 56) when phase_s = "01"
+		else (others => '0');
+	
+	rect_width_s <= rect_list_s(55 downto 40) when phase_s = "10"
+		else (others => '0');
+	rect_height_s <= rect_list_s(39 downto 24) when phase_s = "10"
+		else (others => '0');
+	
+	
+	
+	draw_s <= '0' when pixel_col_i >= unsigned(pixel_col_s)+unsigned(rect_width_s) or pixel_row_i >= unsigned(pixel_row_s)+unsigned(rect_height_s) 
+	or pixel_col_i <= unsigned(pixel_col_s) or pixel_row_i <= unsigned(pixel_row_s)
+				else '1';
+					
+	rgb_o <= rgb_s when draw_s = '1'
+				else (others => '0');
+	
+	--mem_data_s(23 downto 0);
 	
 	------------------------------------
 	--- STAGE 0, citanje indeksa mape ---
@@ -721,12 +768,12 @@ architecture Behavioral of fb_less_2d_gpu is
 	-----------------------------------------------------------------------------------
 						
    
-	with phase_i select
-		mem_addr_s <=         
-			map_addr_r1       when "01",
-			img_pix_addr_r7   when "11",
-			palette_addr_r16  when "00",
-			sprt_addr_r10     when others;
+	--with phase_i select
+		mem_addr_s <= (others => '0');      
+		--	map_addr_r1       when "01",
+		--	img_pix_addr_r7   when "11",
+		--	palette_addr_r16  when "00",
+		--	sprt_addr_r10     when others;
 			
 	process(clk_i) begin
 		if rising_edge(clk_i) then
