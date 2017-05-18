@@ -5,73 +5,40 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 463: Assignment to <arg fmt="%s" index="1">map_addr_r1</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="871" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 324: Using initial value <arg fmt="%s" index="1">(&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;,&apos;0&apos;)</arg> for <arg fmt="%s" index="2">mem_addr_s</arg> since it is never assigned
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 580: Assignment to <arg fmt="%s" index="1">img_pix_addr_r7</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 390: Assignment to <arg fmt="%s" index="1">rect_list_s</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 657: Assignment to <arg fmt="%s" index="1">sprt_addr_r10</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 502: Assignment to <arg fmt="%s" index="1">map_addr_r1</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 708: Assignment to <arg fmt="%s" index="1">reg_intsect_r13</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 619: Assignment to <arg fmt="%s" index="1">img_pix_addr_r7</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 759: Assignment to <arg fmt="%s" index="1">palette_addr_r16</arg> ignored, since the identifier is never used
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 696: Assignment to <arg fmt="%s" index="1">sprt_addr_r10</arg> ignored, since the identifier is never used
 </msg>
 
-<msg type="warning" file="HDLCompiler" num="634" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 328: Net &lt;<arg fmt="%s" index="1">rect_list_s[87]</arg>&gt; does not have a driver.
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 747: Assignment to <arg fmt="%s" index="1">reg_intsect_r13</arg> ignored, since the identifier is never used
+</msg>
+
+<msg type="warning" file="HDLCompiler" num="1127" delta="old" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 798: Assignment to <arg fmt="%s" index="1">palette_addr_r16</arg> ignored, since the identifier is never used
 </msg>
 
 <msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">phase_i</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 </msg>
 
-<msg type="warning" file="Xst" num="647" delta="old" >Input &lt;<arg fmt="%s" index="1">rst_n_i</arg>&gt; is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+<msg type="warning" file="Xst" num="2404" delta="old" > FFs/Latches &lt;<arg fmt="%s" index="1">r_q</arg>&lt;<arg fmt="%d" index="2">15</arg>:<arg fmt="%d" index="3">0</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">reg_1</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="2935" delta="old" >Signal &apos;<arg fmt="%s" index="1">rect_list_s&lt;87:24&gt;</arg>&apos;, unconnected in block &apos;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&apos;, is tied to its initial value (<arg fmt="%s" index="3">0000000000011111000000001111111100000000000111110000000011111111</arg>).
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">mem_addr_r_1</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fb_less_2d_gpu_i</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">11 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;mem_addr_r_2&gt; &lt;mem_addr_r_3&gt; &lt;mem_addr_r_4&gt; &lt;mem_addr_r_5&gt; &lt;mem_addr_r_6&gt; &lt;mem_addr_r_7&gt; &lt;mem_addr_r_8&gt; &lt;mem_addr_r_9&gt; &lt;mem_addr_r_10&gt; &lt;mem_addr_r_11&gt; &lt;mem_addr_r_12&gt; </arg>
 </msg>
 
-<msg type="warning" file="Xst" num="2404" delta="new" > FFs/Latches &lt;<arg fmt="%s" index="1">mem_addr_r</arg>&lt;<arg fmt="%d" index="2">12</arg>:<arg fmt="%d" index="3">0</arg>&gt;&gt; (without init value) have a constant value of <arg fmt="%c" index="4">0</arg> in block &lt;<arg fmt="%s" index="5">fb_less_2d_gpu</arg>&gt;.
+<msg type="warning" file="Xst" num="1293" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">mem_addr_r_1</arg>&gt; has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_i</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">o_data_24</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ram_i</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">o_data_25</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ram_i</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">o_data_26</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ram_i</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">o_data_27</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ram_i</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">o_data_28</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ram_i</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">o_data_29</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ram_i</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">o_data_30</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ram_i</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">o_data_31</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">ram_i</arg>&gt;.
-</msg>
-
-<msg type="info" file="Xst" num="3226" delta="old" >The RAM &lt;<arg fmt="%s" index="1">Mram_mem</arg>&gt; will be implemented as a BLOCK RAM, absorbing the following register(s):</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">ram_i/Mram_mem14</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">ram_i/Mram_mem13</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">ram_i/Mram_mem15</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">ram_i/Mram_mem16</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
+<msg type="info" file="Xst" num="3226" delta="old" >The RAM &lt;<arg fmt="%s" index="1">ram_i/Mram_mem</arg>&gt; will be implemented as a BLOCK RAM, absorbing the following register(s):</msg>
 
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">pixel_x_d1_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">vga_ctrl</arg>&gt;.
 </msg>
@@ -88,112 +55,55 @@
 <msg type="warning" file="Xst" num="2677" delta="old" >Node &lt;<arg fmt="%s" index="1">pixel_y_d1_0</arg>&gt; of sequential type is unconnected in block &lt;<arg fmt="%s" index="2">vga_ctrl</arg>&gt;.
 </msg>
 
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem5</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem4</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem3</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem2</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem12</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem11</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem10</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem9</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem8</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem7</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem6</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1898" delta="old" >Due to constant pushing, FF/Latch &lt;<arg fmt="%s" index="1">ram_i/Mram_mem1</arg>&gt; is unconnected in block &lt;<arg fmt="%s" index="2">fb_less_2d_gpu</arg>&gt;.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/blue_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/blue_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/blue_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/blue_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/blue_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/blue_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/blue_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/blue_7</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_7</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
-</msg>
-
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_7</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
 <msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
 </msg>
 
-<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_7</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/green_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_7</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_6</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_5</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_4</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_3</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_2</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_1</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="warning" file="Xst" num="1710" delta="old" >FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/red_0</arg>&gt; (without init value) has a constant value of <arg fmt="%d" index="2">0</arg> in block &lt;<arg fmt="%s" index="3">fb_less_2d_gpu_standalone</arg>&gt;. This FF/Latch will be trimmed during the optimization process.
+</msg>
+
+<msg type="info" file="Xst" num="2261" delta="old" >The FF/Latch &lt;<arg fmt="%s" index="1">vga_ctrl_i/blue_7</arg>&gt; in Unit &lt;<arg fmt="%s" index="2">fb_less_2d_gpu_standalone</arg>&gt; is equivalent to the following <arg fmt="%s" index="3">7 FFs/Latches</arg>, which will be removed : <arg fmt="%s" index="4">&lt;vga_ctrl_i/blue_6&gt; &lt;vga_ctrl_i/blue_5&gt; &lt;vga_ctrl_i/blue_4&gt; &lt;vga_ctrl_i/blue_3&gt; &lt;vga_ctrl_i/blue_2&gt; &lt;vga_ctrl_i/blue_1&gt; &lt;vga_ctrl_i/blue_0&gt; </arg>
 </msg>
 
 </messages>

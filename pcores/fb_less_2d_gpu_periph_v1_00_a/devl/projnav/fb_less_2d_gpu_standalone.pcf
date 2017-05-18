@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.68d on Wed May 17 18:55:51 2017
+// Written by: Map P.68d on Thu May 18 12:23:17 2017
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -35,11 +35,76 @@ COMP "green_o<7>" LOCATE = SITE "A16" LEVEL 1;
 COMP "red_o<0>" LOCATE = SITE "B4" LEVEL 1;
 COMP "red_o<1>" LOCATE = SITE "A4" LEVEL 1;
 COMP "red_o<2>" LOCATE = SITE "A5" LEVEL 1;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem16_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem16" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem16_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem16" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem15_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem15" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem15_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem15" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem14_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem14" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem14_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem14" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem13_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem13" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem13_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem13" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem12_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem12" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem12_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem12" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem11_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem11" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem11_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem11" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem10" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem10" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem9_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem9" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem9_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem9" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem8_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem8" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem8_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem8" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem7_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem7" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem7_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem7" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem6_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem6" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem6_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem6" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem5_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem5" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem5_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem5" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem4_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem4" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem4_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem4" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem3_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem3" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem3_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem3" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem1" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem1" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem2_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem2" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem2_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem2" PINNAME CLKB;
 TIMEGRP clk_gen_clk_fx = BEL "clk_gen/buf_clk_fx" BEL "vga_ctrl_i/pixel_y_8"
         BEL "vga_ctrl_i/pixel_y_7" BEL "vga_ctrl_i/pixel_y_6" BEL
         "vga_ctrl_i/pixel_y_5" BEL "vga_ctrl_i/pixel_y_4" BEL
         "vga_ctrl_i/pixel_y_3" BEL "vga_ctrl_i/pixel_y_2" BEL
         "vga_ctrl_i/pixel_y_1" BEL "vga_ctrl_i/pixel_y_0" BEL
+        "vga_ctrl_i/phase_0" BEL "vga_ctrl_i/phase_1" BEL
         "vga_ctrl_i/pixel_y_d1_8" BEL "vga_ctrl_i/pixel_y_d1_7" BEL
         "vga_ctrl_i/pixel_y_d1_6" BEL "vga_ctrl_i/pixel_y_d1_5" BEL
         "vga_ctrl_i/pixel_y_d1_4" BEL "vga_ctrl_i/pixel_y_d1_3" BEL
@@ -49,12 +114,109 @@ TIMEGRP clk_gen_clk_fx = BEL "clk_gen/buf_clk_fx" BEL "vga_ctrl_i/pixel_y_8"
         "vga_ctrl_i/pixel_x_d1_5" BEL "vga_ctrl_i/pixel_x_d1_4" BEL
         "vga_ctrl_i/vga_clk" BEL "vga_ctrl_i/n_sync" BEL "vga_ctrl_i/n_v_sync"
         BEL "vga_ctrl_i/n_blank" BEL "vga_ctrl_i/n_h_sync" BEL
-        "vga_ctrl_i/pixel_x_0" BEL "vga_ctrl_i/phase_0" BEL
-        "vga_ctrl_i/phase_1" BEL "vga_ctrl_i/pixel_x_9" BEL
+        "vga_ctrl_i/blue_7" BEL "fb_less_2d_gpu_i/phase_reg/r_q_0" BEL
+        "fb_less_2d_gpu_i/phase_reg/r_q_1" BEL "fb_less_2d_gpu_i/rgb_reg/r_q"
+        BEL "fb_less_2d_gpu_i/rect_row_reg/r_q_15" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_14" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_13" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_12" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_11" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_10" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_9" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_8" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_7" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_6" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_5" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_4" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_3" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_2" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_1" BEL
+        "fb_less_2d_gpu_i/rect_row_reg/r_q_0" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_15" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_14" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_13" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_12" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_11" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_10" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_9" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_8" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_7" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_6" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_5" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_4" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_3" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_2" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_1" BEL
+        "fb_less_2d_gpu_i/rect_col_reg/r_q_0" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_15" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_14" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_13" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_12" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_11" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_10" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_9" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_8" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_7" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_6" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_5" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_4" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_3" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_2" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_1" BEL
+        "fb_less_2d_gpu_i/rect_height_reg/r_q_0" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_15" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_14" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_13" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_12" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_11" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_10" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_9" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_8" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_7" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_6" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_5" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_4" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_3" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_2" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_1" BEL
+        "fb_less_2d_gpu_i/rect_width_reg/r_q_0" BEL "vga_ctrl_i/pixel_x_9" BEL
         "vga_ctrl_i/pixel_x_8" BEL "vga_ctrl_i/pixel_x_6" BEL
         "vga_ctrl_i/pixel_x_5" BEL "vga_ctrl_i/pixel_x_7" BEL
         "vga_ctrl_i/pixel_x_3" BEL "vga_ctrl_i/pixel_x_2" BEL
-        "vga_ctrl_i/pixel_x_4" BEL "vga_ctrl_i/pixel_x_1";
+        "vga_ctrl_i/pixel_x_4" BEL "vga_ctrl_i/pixel_x_0" BEL
+        "vga_ctrl_i/pixel_x_1" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem16_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem16_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem15_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem15_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem14_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem14_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem13_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem13_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem12_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem12_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem11_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem11_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem9_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem9_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem8_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem8_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem7_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem7_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem6_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem6_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem5_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem5_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem4_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem4_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem3_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem3_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem2_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem2_pins<27>";
 PIN SP6_BUFIO_INSERT_ML_BUFIO2_0_pins<0> = BEL "SP6_BUFIO_INSERT_ML_BUFIO2_0"
         PINNAME DIVCLK;
 PIN clk_gen/dcm_24MHz_to_100MHz_pins<3> = BEL "clk_gen/dcm_24MHz_to_100MHz"
