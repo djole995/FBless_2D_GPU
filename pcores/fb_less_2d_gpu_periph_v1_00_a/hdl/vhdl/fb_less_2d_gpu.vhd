@@ -350,8 +350,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal phase_s : std_logic_vector(1 downto 0);
 	signal phase_r : std_logic_vector(1 downto 0);
 	
-	signal index_s : std_logic_vector(7 downto 0);
-	signal index_r : std_logic_vector(7 downto 0);
+	signal index_s : std_logic_vector(19 downto 0);
+	signal index_r : std_logic_vector(19 downto 0);
 	
 	
 	component reg is
@@ -421,12 +421,13 @@ architecture Behavioral of fb_less_2d_gpu is
 		else rect_height_r;
 	
 	
-	index_s <= std_logic_vector(unsigned(index_r)+1) when unsigned(index_r) < 255
+	index_s <= std_logic_vector(unsigned(index_r)+1) when unsigned(index_r) < 640*480
 		else (others => '0');
 		
-	pixels_arr(to_integer(unsigned(index_r))) <= (others => '1');
+	pixels_arr(to_integer(unsigned(index_r))) <= (others => '1') when unsigned(index_r) < 200
+		else (others => '0');
 	
-	
+	draw_s <= '1';
 	--draw_s <= '0' when pixel_col_i >= unsigned(rect_col_r)+unsigned(rect_width_r) or pixel_row_i >= unsigned(rect_row_r)+unsigned(rect_height_r) 
 	--or pixel_col_i <= unsigned(rect_col_r) or pixel_row_i <= unsigned(rect_row_r)
 	--		else '1';
@@ -906,7 +907,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	index_reg : reg 
 	GENERIC MAP (
-	   WIDTH => 8,
+	   WIDTH => 20,
 		RST_INIT => 0
 	)		
 	PORT MAP (

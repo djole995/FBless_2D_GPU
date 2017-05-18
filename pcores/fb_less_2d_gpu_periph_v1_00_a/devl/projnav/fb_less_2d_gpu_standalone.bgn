@@ -6,7 +6,7 @@ C:\Xilinx\14.6\ISE_DS\ISE\.
 fgg676, speed -2
 Opened constraints file fb_less_2d_gpu_standalone.pcf.
 
-Thu May 18 17:41:21 2017
+Thu May 18 17:57:31 2017
 
 C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64\unwrapped\bitgen.exe -intstyle ise -w -g DebugBitstream:No -g Binary:no -g CRC:Enable -g Reset_on_err:No -g ConfigRate:2 -g ProgPin:PullUp -g TckPin:PullUp -g TdiPin:PullUp -g TdoPin:PullUp -g TmsPin:PullUp -g UnusedPin:PullDown -g UserID:0xFFFFFFFF -g ExtMasterCclk_en:No -g SPI_buswidth:1 -g TIMER_CFG:0xFFFF -g multipin_wakeup:No -g StartUpClk:CClk -g DONE_cycle:4 -g GTS_cycle:5 -g GWE_cycle:6 -g LCK_cycle:NoWait -g Security:None -g DonePipe:Yes -g DriveDone:No -g en_sw_gsr:No -g drive_awake:No -g sw_clk:Startupclk -g sw_gwe_cycle:5 -g sw_gts_cycle:4 fb_less_2d_gpu_standalone.ncd 
 
@@ -129,10 +129,523 @@ There were 0 CONFIG constraint(s) processed from fb_less_2d_gpu_standalone.pcf.
 
 
 Running DRC.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<20> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<13> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<14> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<22> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<15> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<23> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<16> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<24> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<25> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<33> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<41> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<18> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<26> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<34> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<42> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<19> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<27> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<43> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<51> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<28> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<36> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<44> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<52> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<60> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<37> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<45> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<53> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<61> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<46> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<63> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<71> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<48> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<64> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<49> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<57> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<65> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<73> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<81> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<58> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<67> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<83> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<91> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<1> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<68> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<2> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<76> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<3> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<5> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<77> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<85> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<7> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<93> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<8> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<78> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<86> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<94> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<79> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<87> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<95> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<88> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<110> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<102> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<103> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<121> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<113> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<122> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<114> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<106> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<123> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<107> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<124> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<116> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<108> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<109> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<126> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<97> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<99> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<75> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<54> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<66> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<62> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<56> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<74> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<70> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<55> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<69> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<72> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<50> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<101> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<104> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<90> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<32> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<105> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<100> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<84> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<80> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<96> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<89> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<82> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<29> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<40> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<127> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<111> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<92> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<30> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<31> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<35> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<125> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<115> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<59> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<10> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<38> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<98> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<9> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<39> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<120> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<119> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<0> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<11> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<47> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<21> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<117> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<112> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<12> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<6> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<17> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<118> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
+WARNING:PhysDesignRules:372 - Gated clock. Clock net
+   fb_less_2d_gpu_i/index_r[7]_Decoder_66_OUT<4> is sourced by a combinatorial
+   pin. This is not good design practice. Use the CE pin to control the loading
+   of data into the flip-flop.
 INFO:PhysDesignRules:1861 - To achieve optimal frequency synthesis performance
    with the CLKFX and CLKFX180 outputs of the DCM comp
    clk_gen/dcm_24MHz_to_100MHz, consult the device Data Sheet.
-DRC detected 0 errors and 0 warnings.
+DRC detected 0 errors and 128 warnings.  Please see the previously displayed
+individual error or warning messages for more details.
 INFO:Security:50 - The XILINXD_LICENSE_FILE environment variable is set to
 '2100@licserver'.
 INFO:Security:52 - The LM_LICENSE_FILE environment variable is set to
