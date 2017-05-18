@@ -342,8 +342,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal rect_width_r : std_logic_vector(15 downto 0);
 	signal rect_height_r : std_logic_vector(15 downto 0);
 	
-	signal phase_s : std_logic_vector(1 downto 0) := "00";
-	signal phase_r : std_logic_vector(1 downto 0) := "00";
+	signal phase_s : std_logic_vector(1 downto 0) ;
+	signal phase_r : std_logic_vector(1 downto 0) ;
 	
 	
 	component reg is
@@ -425,14 +425,13 @@ architecture Behavioral of fb_less_2d_gpu is
 	rgb_o <= rgb_r when draw_s = '1'
 				else (others => '0');
 				
-				
+	mem_addr_s <= mem_addr_r+1 when mem_addr_r < 10 and phase_r < "11"
+		else (others => '0') when mem_addr_r = 10
+		else mem_addr_r;
+			
 	process(clk_i) begin
 		if rising_edge(clk_i) then
-			if(mem_addr_s < 4800 and phase_r < "11") then
-				mem_addr_r <= mem_addr_s+1;
-			else
-				mem_addr_r <= (others => '0');
-			end if;
+			mem_addr_r <= mem_addr_s;
 		end if;
 	end process;
 	

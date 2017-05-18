@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.68d on Thu May 18 12:23:17 2017
+// Written by: Map P.68d on Thu May 18 15:21:24 2017
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -59,10 +59,6 @@ PIN fb_less_2d_gpu_i/ram_i/Mram_mem11_pins<26> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem11" PINNAME CLKA;
 PIN fb_less_2d_gpu_i/ram_i/Mram_mem11_pins<27> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem11" PINNAME CLKB;
-PIN fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<26> = BEL
-        "fb_less_2d_gpu_i/ram_i/Mram_mem10" PINNAME CLKA;
-PIN fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<27> = BEL
-        "fb_less_2d_gpu_i/ram_i/Mram_mem10" PINNAME CLKB;
 PIN fb_less_2d_gpu_i/ram_i/Mram_mem9_pins<26> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem9" PINNAME CLKA;
 PIN fb_less_2d_gpu_i/ram_i/Mram_mem9_pins<27> = BEL
@@ -71,6 +67,10 @@ PIN fb_less_2d_gpu_i/ram_i/Mram_mem8_pins<26> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem8" PINNAME CLKA;
 PIN fb_less_2d_gpu_i/ram_i/Mram_mem8_pins<27> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem8" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem10" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem10" PINNAME CLKB;
 PIN fb_less_2d_gpu_i/ram_i/Mram_mem7_pins<26> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem7" PINNAME CLKA;
 PIN fb_less_2d_gpu_i/ram_i/Mram_mem7_pins<27> = BEL
@@ -91,14 +91,14 @@ PIN fb_less_2d_gpu_i/ram_i/Mram_mem3_pins<26> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem3" PINNAME CLKA;
 PIN fb_less_2d_gpu_i/ram_i/Mram_mem3_pins<27> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem3" PINNAME CLKB;
-PIN fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<26> = BEL
-        "fb_less_2d_gpu_i/ram_i/Mram_mem1" PINNAME CLKA;
-PIN fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<27> = BEL
-        "fb_less_2d_gpu_i/ram_i/Mram_mem1" PINNAME CLKB;
 PIN fb_less_2d_gpu_i/ram_i/Mram_mem2_pins<26> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem2" PINNAME CLKA;
 PIN fb_less_2d_gpu_i/ram_i/Mram_mem2_pins<27> = BEL
         "fb_less_2d_gpu_i/ram_i/Mram_mem2" PINNAME CLKB;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<26> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem1" PINNAME CLKA;
+PIN fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<27> = BEL
+        "fb_less_2d_gpu_i/ram_i/Mram_mem1" PINNAME CLKB;
 TIMEGRP clk_gen_clk_fx = BEL "clk_gen/buf_clk_fx" BEL "vga_ctrl_i/pixel_y_8"
         BEL "vga_ctrl_i/pixel_y_7" BEL "vga_ctrl_i/pixel_y_6" BEL
         "vga_ctrl_i/pixel_y_5" BEL "vga_ctrl_i/pixel_y_4" BEL
@@ -114,7 +114,10 @@ TIMEGRP clk_gen_clk_fx = BEL "clk_gen/buf_clk_fx" BEL "vga_ctrl_i/pixel_y_8"
         "vga_ctrl_i/pixel_x_d1_5" BEL "vga_ctrl_i/pixel_x_d1_4" BEL
         "vga_ctrl_i/vga_clk" BEL "vga_ctrl_i/n_sync" BEL "vga_ctrl_i/n_v_sync"
         BEL "vga_ctrl_i/n_blank" BEL "vga_ctrl_i/n_h_sync" BEL
-        "vga_ctrl_i/blue_7" BEL "fb_less_2d_gpu_i/phase_reg/r_q_0" BEL
+        "vga_ctrl_i/blue_7" BEL "fb_less_2d_gpu_i/mem_addr_r_3" BEL
+        "fb_less_2d_gpu_i/mem_addr_r_2" BEL "fb_less_2d_gpu_i/mem_addr_r_1"
+        BEL "fb_less_2d_gpu_i/mem_addr_r_0" BEL
+        "fb_less_2d_gpu_i/phase_reg/r_q_0" BEL
         "fb_less_2d_gpu_i/phase_reg/r_q_1" BEL "fb_less_2d_gpu_i/rgb_reg/r_q"
         BEL "fb_less_2d_gpu_i/rect_row_reg/r_q_15" BEL
         "fb_less_2d_gpu_i/rect_row_reg/r_q_14" BEL
@@ -197,12 +200,12 @@ TIMEGRP clk_gen_clk_fx = BEL "clk_gen/buf_clk_fx" BEL "vga_ctrl_i/pixel_y_8"
         "fb_less_2d_gpu_i/ram_i/Mram_mem12_pins<27>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem11_pins<26>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem11_pins<27>" PIN
-        "fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<26>" PIN
-        "fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<27>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem9_pins<26>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem9_pins<27>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem8_pins<26>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem8_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem10_pins<27>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem7_pins<26>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem7_pins<27>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem6_pins<26>" PIN
@@ -213,10 +216,10 @@ TIMEGRP clk_gen_clk_fx = BEL "clk_gen/buf_clk_fx" BEL "vga_ctrl_i/pixel_y_8"
         "fb_less_2d_gpu_i/ram_i/Mram_mem4_pins<27>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem3_pins<26>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem3_pins<27>" PIN
-        "fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<26>" PIN
-        "fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<27>" PIN
         "fb_less_2d_gpu_i/ram_i/Mram_mem2_pins<26>" PIN
-        "fb_less_2d_gpu_i/ram_i/Mram_mem2_pins<27>";
+        "fb_less_2d_gpu_i/ram_i/Mram_mem2_pins<27>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<26>" PIN
+        "fb_less_2d_gpu_i/ram_i/Mram_mem1_pins<27>";
 PIN SP6_BUFIO_INSERT_ML_BUFIO2_0_pins<0> = BEL "SP6_BUFIO_INSERT_ML_BUFIO2_0"
         PINNAME DIVCLK;
 PIN clk_gen/dcm_24MHz_to_100MHz_pins<3> = BEL "clk_gen/dcm_24MHz_to_100MHz"

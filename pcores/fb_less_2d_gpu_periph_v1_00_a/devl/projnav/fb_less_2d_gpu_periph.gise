@@ -86,8 +86,8 @@
     <file xil_pn:fileType="FILE_WEBTALK" xil_pn:name="fb_less_2d_gpu_standalone_usage.xml"/>
     <file xil_pn:fileType="FILE_XRPT" xil_pn:name="fb_less_2d_gpu_standalone_xst.xrpt"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="netgen"/>
-    <file xil_pn:branch="PostSynthSim" xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.nlf"/>
-    <file xil_pn:branch="PostSynthSim" xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.v"/>
+    <file xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.nlf"/>
+    <file xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.v"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ram.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="ram.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="ram.xst"/>
@@ -130,7 +130,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1495102986" xil_pn:in_ck="-1361208717814969128" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1495102977">
+    <transform xil_pn:end_ts="1495113672" xil_pn:in_ck="-1361208717814969128" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1495113664">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -152,7 +152,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1495102990" xil_pn:in_ck="-3545349828046752684" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="2005170809893112716" xil_pn:start_ts="1495102986">
+    <transform xil_pn:end_ts="1495113677" xil_pn:in_ck="-3545349828046752684" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="2005170809893112716" xil_pn:start_ts="1495113672">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -162,7 +162,7 @@
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.ngd"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1495102999" xil_pn:in_ck="-3545349828046752683" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="-2489532510156203999" xil_pn:start_ts="1495102990">
+    <transform xil_pn:end_ts="1495113686" xil_pn:in_ck="-3545349828046752683" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="-2489532510156203999" xil_pn:start_ts="1495113677">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
@@ -176,7 +176,7 @@
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_summary.xml"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_usage.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1495103012" xil_pn:in_ck="6223063450776036846" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="-3829590541433901613" xil_pn:start_ts="1495102999">
+    <transform xil_pn:end_ts="1495113699" xil_pn:in_ck="6223063450776036846" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="-3829590541433901613" xil_pn:start_ts="1495113686">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
@@ -190,7 +190,7 @@
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_pad.txt"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_par.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1495103024" xil_pn:in_ck="4572335426713284809" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="5341574683187206424" xil_pn:start_ts="1495103012">
+    <transform xil_pn:end_ts="1495113711" xil_pn:in_ck="4572335426713284809" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="5341574683187206424" xil_pn:start_ts="1495113699">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
@@ -202,7 +202,7 @@
       <outfile xil_pn:name="webtalk.log"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1495103012" xil_pn:in_ck="-3545349828046752815" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416184" xil_pn:start_ts="1495103007">
+    <transform xil_pn:end_ts="1495113699" xil_pn:in_ck="-3545349828046752815" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416184" xil_pn:start_ts="1495113695">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
