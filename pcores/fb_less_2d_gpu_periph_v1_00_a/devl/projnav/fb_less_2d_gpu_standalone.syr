@@ -135,12 +135,14 @@ Elaborating entity <fb_less_2d_gpu_standalone> (architecture <IMP>) from library
 Elaborating entity <vga_ctrl> (architecture <arch_v1>) from library <fb_less_2d_gpu_periph_v1_00_a>.
 
 Elaborating entity <fb_less_2d_gpu> (architecture <Behavioral>) with generics from library <fb_less_2d_gpu_periph_v1_00_a>.
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 390: Assignment to rect_list_s ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 501: Assignment to map_addr_r1 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 618: Assignment to img_pix_addr_r7 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 695: Assignment to sprt_addr_r10 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 746: Assignment to reg_intsect_r13 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 797: Assignment to palette_addr_r16 ignored, since the identifier is never used
+WARNING:HDLCompiler:871 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 334: Using initial value '0' for draw_s since it is never assigned
+WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 398: Assignment to rect_list_s ignored, since the identifier is never used
+WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 446: rst_n_i should be on the sensitivity list of the process
+WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 507: Assignment to map_addr_r1 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 624: Assignment to img_pix_addr_r7 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 701: Assignment to sprt_addr_r10 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 752: Assignment to reg_intsect_r13 ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 803: Assignment to palette_addr_r16 ignored, since the identifier is never used
 
 Elaborating entity <ram> (architecture <arch>) with generics from library <fb_less_2d_gpu_periph_v1_00_a>.
 
@@ -150,7 +152,17 @@ Elaborating entity <reg> (architecture <arch_reg>) with generics from library <w
 
 Elaborating entity <reg> (architecture <arch_reg>) with generics from library <work>.
 
+Elaborating entity <reg> (architecture <arch_reg>) with generics from library <work>.
+
 Elaborating entity <clk_gen_100MHz> (architecture <arch_v1>) from library <fb_less_2d_gpu_periph_v1_00_a>.
+WARNING:Xst:2972 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" line 824. All outputs of instance <ram_i> of block <ram> are unconnected in block <fb_less_2d_gpu>. Underlying logic will be removed.
+WARNING:Xst:2972 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" line 834. All outputs of instance <rgb_reg> of block <reg> are unconnected in block <fb_less_2d_gpu>. Underlying logic will be removed.
+WARNING:Xst:2972 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" line 846. All outputs of instance <rect_width_reg> of block <reg> are unconnected in block <fb_less_2d_gpu>. Underlying logic will be removed.
+WARNING:Xst:2972 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" line 858. All outputs of instance <rect_height_reg> of block <reg> are unconnected in block <fb_less_2d_gpu>. Underlying logic will be removed.
+WARNING:Xst:2972 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" line 870. All outputs of instance <rect_col_reg> of block <reg> are unconnected in block <fb_less_2d_gpu>. Underlying logic will be removed.
+WARNING:Xst:2972 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" line 882. All outputs of instance <rect_row_reg> of block <reg> are unconnected in block <fb_less_2d_gpu>. Underlying logic will be removed.
+WARNING:Xst:2972 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" line 895. All outputs of instance <phase_reg> of block <reg> are unconnected in block <fb_less_2d_gpu>. Underlying logic will be removed.
+WARNING:Xst:2972 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" line 907. All outputs of instance <index_reg> of block <reg> are unconnected in block <fb_less_2d_gpu>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -205,68 +217,10 @@ Synthesizing Unit <fb_less_2d_gpu>.
         OVERHEAD = 5
         SPRITE_Z = 1
 WARNING:Xst:647 - Input <phase_i> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 13-bit register for signal <mem_addr_r>.
-    Found 16-bit adder for signal <rect_col_r[15]_rect_width_r[15]_add_61_OUT> created at line 418.
-    Found 16-bit adder for signal <rect_row_r[15]_rect_height_r[15]_add_63_OUT> created at line 418.
-    Found 13-bit adder for signal <mem_addr_r[12]_GND_6_o_add_72_OUT> created at line 1241.
-    Found 16-bit comparator lessequal for signal <n0691> created at line 418
-    Found 16-bit comparator lessequal for signal <n0694> created at line 418
-    Found 16-bit comparator lessequal for signal <n0697> created at line 419
-    Found 16-bit comparator lessequal for signal <n0700> created at line 419
-    Found 13-bit comparator greater for signal <mem_addr_r[12]_GND_6_o_LessThan_69_o> created at line 428
-    Found 2-bit comparator greater for signal <phase_r[1]_PWR_6_o_LessThan_70_o> created at line 428
+INFO:Xst:3210 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" line 834: Output port <o_q> of the instance <rgb_reg> is unconnected or connected to loadless signal.
     Summary:
-	inferred   3 Adder/Subtractor(s).
-	inferred  13 D-type flip-flop(s).
-	inferred   6 Comparator(s).
-	inferred   7 Multiplexer(s).
+	no macro.
 Unit <fb_less_2d_gpu> synthesized.
-
-Synthesizing Unit <ram>.
-    Related source file is "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\ram.vhd".
-        DATA_WIDTH = 32
-        ADDR_WIDTH = 13
-    Found 8192x32-bit dual-port RAM <Mram_mem> for signal <mem>.
-    Found 32-bit register for signal <o_data>.
-    Summary:
-	inferred   1 RAM(s).
-	inferred  32 D-type flip-flop(s).
-Unit <ram> synthesized.
-
-Synthesizing Unit <reg_1>.
-    Related source file is "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\devl\projnav\reg.vhd".
-        WIDTH = 24
-        RST_INIT = 0
-    Register <r_q_dummy_dummy_dummy_dummy_dummy_dummy_dummy> equivalent to <r_q> has been removed
-    Register <r_q_dummy_dummy_dummy_dummy_dummy_dummy> equivalent to <r_q> has been removed
-    Register <r_q_dummy_dummy_dummy_dummy_dummy> equivalent to <r_q> has been removed
-    Register <r_q_dummy_dummy_dummy_dummy> equivalent to <r_q> has been removed
-    Register <r_q_dummy_dummy_dummy> equivalent to <r_q> has been removed
-    Register <r_q_dummy_dummy> equivalent to <r_q> has been removed
-    Register <r_q_dummy> equivalent to <r_q> has been removed
-    Found 1-bit register for signal <r_q>.
-    WARNING:Xst:2404 -  FFs/Latches <r_q<15:0>> (without init value) have a constant value of 0 in block <reg_1>.
-    Summary:
-	inferred   1 D-type flip-flop(s).
-Unit <reg_1> synthesized.
-
-Synthesizing Unit <reg_2>.
-    Related source file is "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\devl\projnav\reg.vhd".
-        WIDTH = 16
-        RST_INIT = 0
-    Found 16-bit register for signal <r_q>.
-    Summary:
-	inferred  16 D-type flip-flop(s).
-Unit <reg_2> synthesized.
-
-Synthesizing Unit <reg_3>.
-    Related source file is "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\devl\projnav\reg.vhd".
-        WIDTH = 2
-        RST_INIT = 0
-    Found 2-bit register for signal <r_q>.
-    Summary:
-	inferred   2 D-type flip-flop(s).
-Unit <reg_3> synthesized.
 
 Synthesizing Unit <clk_gen_100MHz>.
     Related source file is "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\clk_gen_100MHz_e.vhd".
@@ -278,35 +232,21 @@ Unit <clk_gen_100MHz> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 1
- 8192x32-bit dual-port RAM                             : 1
-# Adders/Subtractors                                   : 6
+# Adders/Subtractors                                   : 3
  10-bit adder                                          : 1
- 13-bit adder                                          : 1
- 16-bit adder                                          : 2
  2-bit adder                                           : 1
  9-bit adder                                           : 1
-# Registers                                            : 21
- 1-bit register                                        : 6
+# Registers                                            : 13
+ 1-bit register                                        : 5
  10-bit register                                       : 2
- 13-bit register                                       : 1
- 16-bit register                                       : 4
- 2-bit register                                        : 2
- 32-bit register                                       : 1
+ 2-bit register                                        : 1
  8-bit register                                        : 3
  9-bit register                                        : 2
-# Comparators                                          : 12
+# Comparators                                          : 6
  10-bit comparator greater                             : 1
  10-bit comparator lessequal                           : 2
- 13-bit comparator greater                             : 1
- 16-bit comparator lessequal                           : 4
- 2-bit comparator greater                              : 1
  9-bit comparator greater                              : 1
  9-bit comparator lessequal                            : 2
-# Multiplexers                                         : 7
- 16-bit 2-to-1 multiplexer                             : 4
- 2-bit 2-to-1 multiplexer                              : 2
- 24-bit 2-to-1 multiplexer                             : 1
 
 =========================================================================
 
@@ -314,36 +254,32 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-
-Synthesizing (advanced) Unit <fb_less_2d_gpu>.
-The following registers are absorbed into counter <mem_addr_r>: 1 register on signal <mem_addr_r>.
-Unit <fb_less_2d_gpu> synthesized (advanced).
-
-Synthesizing (advanced) Unit <ram>.
-INFO:Xst:3226 - The RAM <Mram_mem> will be implemented as a BLOCK RAM, absorbing the following register(s): <o_data>
-    -----------------------------------------------------------------------
-    | ram_type           | Block                               |          |
-    -----------------------------------------------------------------------
-    | Port A                                                              |
-    |     aspect ratio   | 8192-word x 32-bit                  |          |
-    |     mode           | write-first                         |          |
-    |     clkA           | connected to signal <i_clk>         | rise     |
-    |     weA            | connected to signal <GND>           | high     |
-    |     addrA          | connected to signal <GND>           |          |
-    |     diA            | connected to signal <GND>           |          |
-    -----------------------------------------------------------------------
-    | optimization       | speed                               |          |
-    -----------------------------------------------------------------------
-    | Port B                                                              |
-    |     aspect ratio   | 8192-word x 32-bit                  |          |
-    |     mode           | write-first                         |          |
-    |     clkB           | connected to signal <i_clk>         | rise     |
-    |     addrB          | connected to signal <i_r_addr>      |          |
-    |     doB            | connected to signal <o_data>        |          |
-    -----------------------------------------------------------------------
-    | optimization       | speed                               |          |
-    -----------------------------------------------------------------------
-Unit <ram> synthesized (advanced).
+WARNING:Xst:1710 - FF/Latch <green_7> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <green_6> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <green_5> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <green_4> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <green_3> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <green_2> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <green_1> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <green_0> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <red_7> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <red_6> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <red_5> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <red_4> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <red_3> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <red_2> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <red_1> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <red_0> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <blue_7> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <blue_6> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <blue_5> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <blue_4> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <blue_3> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <blue_2> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <blue_1> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <blue_0> (without init value) has a constant value of 0 in block <vga_ctrl_i>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1290 - Hierarchical block <fb_less_2d_gpu_i> is unconnected in block <fb_less_2d_gpu_standalone>.
+   It will be removed from the design.
 
 Synthesizing (advanced) Unit <vga_ctrl>.
 The following registers are absorbed into counter <phase>: 1 register on signal <phase>.
@@ -355,35 +291,25 @@ Unit <vga_ctrl> synthesized (advanced).
 Advanced HDL Synthesis Report
 
 Macro Statistics
-# RAMs                                                 : 1
- 8192x32-bit dual-port block RAM                       : 1
-# Adders/Subtractors                                   : 2
- 16-bit adder                                          : 2
-# Counters                                             : 4
+# Counters                                             : 3
  10-bit up counter                                     : 1
- 13-bit up counter                                     : 1
  2-bit up counter                                      : 1
  9-bit up counter                                      : 1
-# Registers                                            : 115
- Flip-Flops                                            : 115
-# Comparators                                          : 12
+# Registers                                            : 48
+ Flip-Flops                                            : 48
+# Comparators                                          : 6
  10-bit comparator greater                             : 1
  10-bit comparator lessequal                           : 2
- 13-bit comparator greater                             : 1
- 16-bit comparator lessequal                           : 4
- 2-bit comparator greater                              : 1
  9-bit comparator greater                              : 1
  9-bit comparator lessequal                            : 2
-# Multiplexers                                         : 7
- 16-bit 2-to-1 multiplexer                             : 4
- 2-bit 2-to-1 multiplexer                              : 2
- 24-bit 2-to-1 multiplexer                             : 1
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+INFO:Xst:2261 - The FF/Latch <blue_0> in Unit <vga_ctrl> is equivalent to the following 23 FFs/Latches, which will be removed : <blue_1> <blue_2> <blue_3> <blue_4> <blue_5> <blue_6> <blue_7> <red_0> <red_1> <red_2> <red_3> <red_4> <red_5> <red_6> <red_7> <green_0> <green_1> <green_2> <green_3> <green_4> <green_5> <green_6> <green_7> 
+WARNING:Xst:1710 - FF/Latch <blue_0> (without init value) has a constant value of 0 in block <vga_ctrl>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <pixel_x_d1_0> of sequential type is unconnected in block <vga_ctrl>.
 WARNING:Xst:2677 - Node <pixel_x_d1_1> of sequential type is unconnected in block <vga_ctrl>.
 WARNING:Xst:2677 - Node <pixel_x_d1_2> of sequential type is unconnected in block <vga_ctrl>.
@@ -393,36 +319,6 @@ WARNING:Xst:2677 - Node <pixel_y_d1_0> of sequential type is unconnected in bloc
 Optimizing unit <fb_less_2d_gpu_standalone> ...
 
 Optimizing unit <vga_ctrl> ...
-
-Optimizing unit <fb_less_2d_gpu> ...
-
-Optimizing unit <reg_2> ...
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/green_7> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/green_6> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/green_5> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/green_4> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/green_3> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/green_2> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/green_1> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/green_0> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/red_7> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/red_6> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/red_5> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/red_4> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/red_3> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/red_2> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/red_1> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <vga_ctrl_i/red_0> (without init value) has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <fb_less_2d_gpu_i/mem_addr_r_12> has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <fb_less_2d_gpu_i/mem_addr_r_11> has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <fb_less_2d_gpu_i/mem_addr_r_10> has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <fb_less_2d_gpu_i/mem_addr_r_9> has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <fb_less_2d_gpu_i/mem_addr_r_8> has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <fb_less_2d_gpu_i/mem_addr_r_7> has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <fb_less_2d_gpu_i/mem_addr_r_6> has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <fb_less_2d_gpu_i/mem_addr_r_5> has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <fb_less_2d_gpu_i/mem_addr_r_4> has a constant value of 0 in block <fb_less_2d_gpu_standalone>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <vga_ctrl_i/blue_7> in Unit <fb_less_2d_gpu_standalone> is equivalent to the following 7 FFs/Latches, which will be removed : <vga_ctrl_i/blue_6> <vga_ctrl_i/blue_5> <vga_ctrl_i/blue_4> <vga_ctrl_i/blue_3> <vga_ctrl_i/blue_2> <vga_ctrl_i/blue_1> <vga_ctrl_i/blue_0> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
@@ -434,8 +330,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 112
- Flip-Flops                                            : 112
+# Registers                                            : 40
+ Flip-Flops                                            : 40
 
 =========================================================================
 
@@ -458,26 +354,22 @@ Top Level Output File Name         : fb_less_2d_gpu_standalone.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 322
+# BELS                             : 95
 #      GND                         : 1
-#      INV                         : 6
-#      LUT1                        : 20
-#      LUT2                        : 36
-#      LUT3                        : 1
-#      LUT4                        : 102
-#      LUT5                        : 13
-#      LUT6                        : 15
-#      MUXCY                       : 72
+#      INV                         : 4
+#      LUT1                        : 17
+#      LUT2                        : 4
+#      LUT3                        : 10
+#      LUT4                        : 4
+#      LUT5                        : 10
+#      LUT6                        : 8
+#      MUXCY                       : 17
 #      VCC                         : 1
-#      XORCY                       : 55
-# FlipFlops/Latches                : 112
-#      FD                          : 11
-#      FDC                         : 67
-#      FDE                         : 19
-#      FDR                         : 2
-#      FDRE                        : 13
-# RAMS                             : 16
-#      RAMB16BWER                  : 16
+#      XORCY                       : 19
+# FlipFlops/Latches                : 40
+#      FD                          : 13
+#      FDE                         : 18
+#      FDRE                        : 9
 # Clock Buffers                    : 2
 #      BUFG                        : 2
 # IO Buffers                       : 32
@@ -494,24 +386,22 @@ Selected Device : 6slx45fgg676-2
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             112  out of  54576     0%  
- Number of Slice LUTs:                  193  out of  27288     0%  
-    Number used as Logic:               193  out of  27288     0%  
+ Number of Slice Registers:              40  out of  54576     0%  
+ Number of Slice LUTs:                   57  out of  27288     0%  
+    Number used as Logic:                57  out of  27288     0%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    226
-   Number with an unused Flip Flop:     114  out of    226    50%  
-   Number with an unused LUT:            33  out of    226    14%  
-   Number of fully used LUT-FF pairs:    79  out of    226    34%  
-   Number of unique control sets:         7
+ Number of LUT Flip Flop pairs used:     70
+   Number with an unused Flip Flop:      30  out of     70    42%  
+   Number with an unused LUT:            13  out of     70    18%  
+   Number of fully used LUT-FF pairs:    27  out of     70    38%  
+   Number of unique control sets:         3
 
 IO Utilization: 
  Number of IOs:                          32
  Number of bonded IOBs:                  32  out of    358     8%  
 
 Specific Feature Utilization:
- Number of Block RAM/FIFO:               16  out of    116    13%  
-    Number using Block RAM only:         16
  Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
 
 ---------------------------
@@ -535,7 +425,7 @@ Clock Information:
 -----------------------------------+------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)  | Load  |
 -----------------------------------+------------------------+-------+
-clk_24MHz_i                        | DCM_SP:CLKFX           | 128   |
+clk_24MHz_i                        | DCM_SP:CLKFX           | 40    |
 -----------------------------------+------------------------+-------+
 
 Asynchronous Control Signals Information:
@@ -546,9 +436,9 @@ Timing Summary:
 ---------------
 Speed Grade: -2
 
-   Minimum period: 21.931ns (Maximum Frequency: 45.597MHz)
+   Minimum period: 18.492ns (Maximum Frequency: 54.078MHz)
    Minimum input arrival time before clock: No path found
-   Maximum output required time after clock: 4.380ns
+   Maximum output required time after clock: 4.118ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -557,59 +447,46 @@ All values displayed in nanoseconds (ns)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_24MHz_i'
-  Clock period: 21.931ns (frequency: 45.597MHz)
-  Total number of paths / destination ports: 4610 / 213
+  Clock period: 18.492ns (frequency: 54.078MHz)
+  Total number of paths / destination ports: 460 / 67
 -------------------------------------------------------------------------
-Delay:               5.264ns (Levels of Logic = 16)
-  Source:            fb_less_2d_gpu_i/rect_width_reg/r_q_0 (FF)
-  Destination:       vga_ctrl_i/blue_7 (FF)
+Delay:               4.438ns (Levels of Logic = 3)
+  Source:            vga_ctrl_i/pixel_x_6 (FF)
+  Destination:       vga_ctrl_i/pixel_x_9 (FF)
   Source Clock:      clk_24MHz_i rising 4.2X
   Destination Clock: clk_24MHz_i rising 4.2X
 
-  Data Path: fb_less_2d_gpu_i/rect_width_reg/r_q_0 to vga_ctrl_i/blue_7
+  Data Path: vga_ctrl_i/pixel_x_6 to vga_ctrl_i/pixel_x_9
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              2   0.525   0.834  fb_less_2d_gpu_i/rect_width_reg/r_q_0 (fb_less_2d_gpu_i/rect_width_reg/r_q_0)
-     LUT2:I0->O            1   0.250   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_lut<0> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_lut<0>)
-     MUXCY:S->O            1   0.215   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<0> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<0>)
-     MUXCY:CI->O           1   0.023   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<1> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<1>)
-     MUXCY:CI->O           1   0.023   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<2> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<2>)
-     MUXCY:CI->O           1   0.023   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<3> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<3>)
-     MUXCY:CI->O           1   0.023   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<4> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<4>)
-     MUXCY:CI->O           1   0.023   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<5> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<5>)
-     MUXCY:CI->O           1   0.023   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<6> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<6>)
-     MUXCY:CI->O           1   0.023   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<7> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<7>)
-     MUXCY:CI->O           1   0.023   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<8> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<8>)
-     MUXCY:CI->O           1   0.023   0.000  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<9> (fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_cy<9>)
-     XORCY:CI->O           2   0.206   1.156  fb_less_2d_gpu_i/Madd_rect_col_r[15]_rect_width_r[15]_add_61_OUT_xor<10> (fb_less_2d_gpu_i/rect_col_r[15]_rect_width_r[15]_add_61_OUT<10>)
-     LUT5:I0->O            0   0.254   0.000  fb_less_2d_gpu_i/Mcompar_rect_col_r[15]_GND_6_o_LessThan_63_o_lutdi4 (fb_less_2d_gpu_i/Mcompar_rect_col_r[15]_GND_6_o_LessThan_63_o_lutdi4)
-     MUXCY:DI->O           1   0.181   0.000  fb_less_2d_gpu_i/Mcompar_rect_col_r[15]_GND_6_o_LessThan_63_o_cy<4> (fb_less_2d_gpu_i/Mcompar_rect_col_r[15]_GND_6_o_LessThan_63_o_cy<4>)
-     MUXCY:CI->O           3   0.235   0.874  fb_less_2d_gpu_i/Mcompar_rect_col_r[15]_GND_6_o_LessThan_63_o_cy<5> (fb_less_2d_gpu_i/rect_col_r[15]_GND_6_o_LessThan_63_o)
-     LUT4:I2->O            1   0.250   0.000  fb_less_2d_gpu_i/Mmux_phase_s21 (fb_less_2d_gpu_i/phase_s<1>)
-     FDC:D                     0.074          fb_less_2d_gpu_i/phase_reg/r_q_1
+     FD:C->Q               5   0.525   1.271  vga_ctrl_i/pixel_x_6 (vga_ctrl_i/pixel_x_6)
+     LUT6:I1->O            2   0.254   0.834  vga_ctrl_i/en_25MHz_pixel_x[9]_AND_4_o_SW0 (N2)
+     LUT6:I4->O            9   0.250   0.976  vga_ctrl_i/Mcount_pixel_x_val1 (vga_ctrl_i/Mcount_pixel_x_val)
+     LUT5:I4->O            1   0.254   0.000  vga_ctrl_i/pixel_x_9_rstpot (vga_ctrl_i/pixel_x_9_rstpot)
+     FD:D                      0.074          vga_ctrl_i/pixel_x_9
     ----------------------------------------
-    Total                      5.264ns (2.399ns logic, 2.864ns route)
-                                       (45.6% logic, 54.4% route)
+    Total                      4.438ns (1.357ns logic, 3.081ns route)
+                                       (30.6% logic, 69.4% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_24MHz_i'
-  Total number of paths / destination ports: 13 / 13
+  Total number of paths / destination ports: 5 / 5
 -------------------------------------------------------------------------
-Offset:              4.380ns (Levels of Logic = 1)
-  Source:            vga_ctrl_i/blue_7 (FF)
-  Destination:       blue_o<7> (PAD)
+Offset:              4.118ns (Levels of Logic = 1)
+  Source:            vga_ctrl_i/vga_clk (FF)
+  Destination:       vga_clk_o (PAD)
   Source Clock:      clk_24MHz_i rising 4.2X
 
-  Data Path: vga_ctrl_i/blue_7 to blue_o<7>
+  Data Path: vga_ctrl_i/vga_clk to vga_clk_o
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              8   0.525   0.943  vga_ctrl_i/blue_7 (vga_ctrl_i/blue_7)
-     OBUF:I->O                 2.912          blue_o_7_OBUF (blue_o<7>)
+     FD:C->Q               1   0.525   0.681  vga_ctrl_i/vga_clk (vga_ctrl_i/vga_clk)
+     OBUF:I->O                 2.912          vga_clk_o_OBUF (vga_clk_o)
     ----------------------------------------
-    Total                      4.380ns (3.437ns logic, 0.943ns route)
-                                       (78.5% logic, 21.5% route)
+    Total                      4.118ns (3.437ns logic, 0.681ns route)
+                                       (83.5% logic, 16.5% route)
 
 =========================================================================
 
@@ -621,20 +498,20 @@ Clock to Setup on destination clock clk_24MHz_i
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_24MHz_i    |    5.264|         |         |         |
+clk_24MHz_i    |    4.438|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.36 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.48 secs
  
 --> 
 
-Total memory usage is 279248 kilobytes
+Total memory usage is 294864 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   38 (   0 filtered)
+Number of warnings :   48 (   0 filtered)
 Number of infos    :    2 (   0 filtered)
 

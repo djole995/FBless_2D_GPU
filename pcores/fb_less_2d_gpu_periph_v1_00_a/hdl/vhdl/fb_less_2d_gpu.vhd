@@ -324,6 +324,11 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal mem_addr_s           :  unsigned(ADDR_WIDTH-1 downto 0) := to_unsigned(0, ADDR_WIDTH);
 	
 	-----------NEW--------------------------
+	constant ALPHA  : unsigned (7 downto 0) := "00000100";
+	type pixels is array (6400 downto 0) of std_logic_vector (23 downto 0);
+	
+	signal pixels_arr: pixels;  
+	
 	signal rect_s: std_logic_vector(87 downto 0);
 	signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
 	signal draw_s : std_logic := '0';
@@ -342,8 +347,11 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal rect_width_r : std_logic_vector(15 downto 0);
 	signal rect_height_r : std_logic_vector(15 downto 0);
 	
-	signal phase_s : std_logic_vector(1 downto 0) ;
-	signal phase_r : std_logic_vector(1 downto 0) ;
+	signal phase_s : std_logic_vector(1 downto 0);
+	signal phase_r : std_logic_vector(1 downto 0);
+	
+	signal index_s : std_logic_vector(7 downto 0);
+	signal index_r : std_logic_vector(7 downto 0);
 	
 	
 	component reg is
@@ -397,9 +405,9 @@ architecture Behavioral of fb_less_2d_gpu is
 		else "10" when phase_r = "01"
 		else "11";
 		
-			
+	
 
-	rgb_s <= x"FF0000";--mem_data_s(23 downto 0) when phase_s = "01"
+	rgb_s <= x"1F0000";--mem_data_s(23 downto 0) when phase_s = "01"
 		--else rgb_r;
 		
 	rect_row_s <= mem_data_s(31 downto 16) when phase_r = "00"
@@ -413,27 +421,34 @@ architecture Behavioral of fb_less_2d_gpu is
 		else rect_height_r;
 	
 	
+	index_s <= std_logic_vector(unsigned(index_r)+1) when unsigned(index_r) < 255
+		else (others => '0');
+		
+	pixels_arr(to_integer(unsigned(index_r))) <= (others => '1');
 	
 	
-	draw_s <= '0' when pixel_col_i >= unsigned(rect_col_r)+unsigned(rect_width_r) or pixel_row_i >= unsigned(rect_row_r)+unsigned(rect_height_r) 
-	or pixel_col_i <= unsigned(rect_col_r) or pixel_row_i <= unsigned(rect_row_r)
-			else '1';
+	--draw_s <= '0' when pixel_col_i >= unsigned(rect_col_r)+unsigned(rect_width_r) or pixel_row_i >= unsigned(rect_row_r)+unsigned(rect_height_r) 
+	--or pixel_col_i <= unsigned(rect_col_r) or pixel_row_i <= unsigned(rect_row_r)
+	--		else '1';
 				
 	--draw_s <= '0' when pixel_col_i <= unsigned(rect_col_r) or pixel_row_i <= unsigned(rect_row_r)
 		--		else '1';
 					
-	rgb_o <= rgb_r when draw_s = '1'
-				else (others => '0');
+	rgb_o <= pixels_arr(to_integer(unsigned(index_r)-1)) when draw_s = '1'
+				else x"000000";
 				
-	mem_addr_s <= mem_addr_r+1 when mem_addr_r < 10 and phase_r < "11"
-		else (others => '0') when mem_addr_r = 10
+	mem_addr_s <= mem_addr_r+1 when mem_addr_r < 2 and phase_r < "11"
+		else (others => '0') when mem_addr_r = 2
 		else mem_addr_r;
-			
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			mem_addr_r <= mem_addr_s;
-		end if;
-	end process;
+		
+	 process (clk_i)
+		begin
+		  if(rst_n_i = '0') then
+				mem_addr_r <= (others => '0');
+        elsif(rising_edge(clk_i)) then
+            mem_addr_r <= mem_addr_s;
+        end if;
+    end process;
 	
 	--mem_data_s(23 downto 0);
 	
@@ -483,20 +498,11 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	
 	
-	
-   -- map_index_s = (row/8)*80 + col/8;
-	map_index_size_8_s0  <= unsigned('0' & std_logic_vector(pixel_row_i(8 downto 3)) & "000000") 
-                   + unsigned('0' & std_logic_vector(pixel_row_i(8 downto 3)) & "0000")
-                   + pixel_col_i(9 downto 3);
+
+						
 						 
-	map_index_size_16_s0  <= unsigned ("00" & std_logic_vector(pixel_row_i(8 downto 4)) & "000000") 
-                   + unsigned("00" & std_logic_vector(pixel_row_i(8 downto 4)) & "0000")
-                   + pixel_col_i(9 downto 4);
-						 
-	map_index_s0 <= map_index_size_16_s0 when stat_img_size_is_16 = '1' else map_index_size_8_s0;
 
 	
-	map_addr_s0 <= map_index_s0 + MAP_OFFSET;
 	
 	process(clk_i) begin
 		if rising_edge(clk_i) then
@@ -896,6 +902,18 @@ architecture Behavioral of fb_less_2d_gpu is
 		in_rst => rst_n_i,
 		i_d => phase_s,
 		o_q => phase_r
+	);
+	
+	index_reg : reg 
+	GENERIC MAP (
+	   WIDTH => 8,
+		RST_INIT => 0
+	)		
+	PORT MAP (
+	   i_clk => clk_i,
+		in_rst => rst_n_i,
+		i_d => index_s,
+		o_q => index_r
 	);
 	
 	
