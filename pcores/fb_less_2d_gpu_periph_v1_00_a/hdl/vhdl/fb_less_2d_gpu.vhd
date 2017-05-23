@@ -325,7 +325,22 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	-----------NEW--------------------------
 	constant ALPHA  : unsigned (7 downto 0) := "00000100";
-	type pixels is array (6400 downto 0) of std_logic_vector (23 downto 0);
+	constant TILE_BITS : integer := 5;
+	constant TILE_MAT_WIDTH: integer := 15;
+	constant TILE_MAT_HEIGHT: integer := 20;
+	constant TILE_LIST_LEN : integer := 7;
+	constant DRAW_LIST_LEN : integer := 7;
+	type pixels is array (20 downto 0) of std_logic_vector (23 downto 0);
+	type draw_list_indices is array (0 downto 6) of std_logic_vector (8 downto 0);
+	type tile_mat_list_end is array (0 downto 299) of std_logic_vector(2 downto 0);
+	type tile_mat is array (0 downto 299) of draw_list_indices;
+	type tState is (IDLE, READ_POSITION, READ_DIMENSIONS, READ_COLOR);
+	
+	signal tile_mat_s : tile_mat;
+	signal tile_mat_list_end_s : tile_mat_list_end;
+	
+	signal current_state_s : tState;
+	signal next_state_s : tState;
 	
 	signal pixels_arr: pixels;  
 	
@@ -337,15 +352,27 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal rect_col_s : std_logic_vector(15 downto 0) := x"FFFF";
 	signal rect_width_s : std_logic_vector(15 downto 0) := x"00F0";
 	signal rect_height_s : std_logic_vector(15 downto 0) := x"00F0";
+	signal cnt_s : std_logic_vector(8 downto 0);
+	signal ty_s : std_logic_vector(15 downto 0);
+	signal tx_s: std_logic_vector(15 downto 0);
 	
 	--signal rect_s: std_logic_vector(87 downto 0);
 	--signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
+	signal cnt_r : std_logic_vector(8 downto 0);
+	signal ty_r : std_logic_vector(8 downto 0);
+	signal tx_r : std_logic_vector(8 downto 0);
 	signal draw_r : std_logic := '0';
 	signal rgb_r : std_logic_vector(23 downto 0);
 	signal rect_row_r : std_logic_vector(15 downto 0);
 	signal rect_col_r : std_logic_vector(15 downto 0);
 	signal rect_width_r : std_logic_vector(15 downto 0);
 	signal rect_height_r : std_logic_vector(15 downto 0);
+	
+	signal tx_beg: std_logic_vector(15 downto 0);
+	signal tx_end: std_logic_vector(15 downto 0);
+	
+	signal ty_beg: std_logic_vector(15 downto 0);
+	signal ty_end: std_logic_vector(15 downto 0);
 	
 	signal phase_s : std_logic_vector(1 downto 0);
 	signal phase_r : std_logic_vector(1 downto 0);
@@ -390,8 +417,50 @@ architecture Behavioral of fb_less_2d_gpu is
 			 end if;
 		  end if;
 	   end process;
-
-	--uvek 16x16
+		
+		process(clk_i, rst_n_i) begin
+			if(rst_n_i = '0') then
+				current_state_s <= IDLE;
+			elsif(rising_edge(clk_i) and change_state_en_s = '1') then
+				current_state_s <= next_state_s;
+			end if;
+		end process;
+		
+		process(current_state_s) begin
+			case(current_state_s) is
+				when IDLE =>
+					next_state_s <= READ_POSITION;
+				when READ_POSITION =>
+					rect_row_s <= mem_data_s(31 downto 16);
+					rect_col_s <= mem_data_s(15 downto 0);
+					mem_addr_s <= mem_addr_r+1;
+					next_state_s <= READ_DIMENSIONS;
+				when READ_DIMENSIONS => 
+					rect_width_s <= mem_data_s(31 downto 16);
+					rect_height_s <= mem_data_s(15 downto 0);
+					mem_addr_s <= mem_addr_r+1023;
+					next_state_s <= READ_COLOR;
+				when others =>
+					rgb_s <= x"1F0000";
+					mem_addr_s <= mem_addr_r-1022;
+					change_state_en_s <= '0';
+					next_state_s <= READ_POSITION;
+			end case;
+		end process;
+		
+		
+		--Counter in TilePartition
+		cnt_s <= std_logic_vector(unsigned(cnt_r)+1);
+		
+		ty_beg <= "00000" & rect_row_s(15 downto 4);
+		ty_end <= rect_row_r+rect_height_r
+		
+		ty_s <= "00000" & rect_row_r(15 downto 4) when start_s = '1'
+			else (others => '0') when ty_r = "00000" & ty_end(15 downto 4)
+			else ty_r+1
+		
+		
+			--uvek 16x16
 	stat_img_size_is_16 <= '1';
 	--80-72 64-56 49-40 32-24
 	
@@ -400,26 +469,10 @@ architecture Behavioral of fb_less_2d_gpu is
 		else mem_data_s & x"00000000000000" when phase_s = "10"
 		else (others => '0');
 	
-	phase_s <= "00" when pixel_col_i >= unsigned(rect_col_r)+unsigned(rect_width_r) and pixel_row_i >= unsigned(rect_row_r)+unsigned(rect_height_r)
-	   else	"01" when phase_r = "00"
-		else "10" when phase_r = "01"
-		else "11";
-		
-	
-
-	rgb_s <= x"1F0000";--mem_data_s(23 downto 0) when phase_s = "01"
-		--else rgb_r;
-		
-	rect_row_s <= mem_data_s(31 downto 16) when phase_r = "00"
-		else rect_row_r;
-	rect_col_s <= mem_data_s(15 downto 0) when phase_r = "00"
-		else rect_col_r;
-	
-	rect_width_s <= mem_data_s(31 downto 16) when phase_r = "01"
-		else rect_width_r;
-	rect_height_s <= mem_data_s(15 downto 0) when phase_r = "01"
-		else rect_height_r;
-	
+	--phase_s <= "00" when pixel_col_i >= unsigned(rect_col_r)+unsigned(rect_width_r) and pixel_row_i >= unsigned(rect_row_r)+unsigned(rect_height_r)
+	--   else	"01" when phase_r = "00"
+	--	else "10" when phase_r = "01"
+	--	else "11";
 	
 	index_s <= std_logic_vector(unsigned(index_r)+1) when unsigned(index_r) < 640*480
 		else (others => '0');
@@ -438,9 +491,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	rgb_o <= pixels_arr(to_integer(unsigned(index_r)-1)) when draw_s = '1'
 				else x"000000";
 				
-	mem_addr_s <= mem_addr_r+1 when mem_addr_r < 2 and phase_r < "11"
-		else (others => '0') when mem_addr_r = 2
-		else mem_addr_r;
+
 		
 	 process (clk_i)
 		begin
@@ -916,6 +967,44 @@ architecture Behavioral of fb_less_2d_gpu is
 		i_d => index_s,
 		o_q => index_r
 	);
+	
+	
+	cnt_reg : reg 
+	GENERIC MAP (
+	   WIDTH => 9,
+		RST_INIT => 0
+	)		
+	PORT MAP (
+	   i_clk => clk_i,
+		in_rst => rst_n_i,
+		i_d => cnt_s,
+		o_q => cnt_r
+	);
+	
+	ty_reg : reg 
+	GENERIC MAP (
+	   WIDTH => 9,
+		RST_INIT => 0
+	)		
+	PORT MAP (
+	   i_clk => clk_i,
+		in_rst => rst_n_i,
+		i_d => ty_s,
+		o_q => ty_r
+	);
+	
+	tx_reg : reg 
+	GENERIC MAP (
+	   WIDTH => 9,
+		RST_INIT => 0
+	)		
+	PORT MAP (
+	   i_clk => clk_i,
+		in_rst => rst_n_i,
+		i_d => tx_s,
+		o_q => tx_r
+	);
+	
 	
 	
 end Behavioral;
