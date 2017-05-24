@@ -342,11 +342,15 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal tile_mat_s : tile_mat;
 	signal tile_mat_list_end_s : tile_mat_list_end;
 	
+	
+	
+	signal tile_mat_r : tile_mat;
+	
 	signal current_state_s : tState;
 	signal next_state_s : tState;
 	
 	signal pixels_arr: pixels;  
-	
+		
 	signal rect_s: std_logic_vector(87 downto 0);
 	signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
 	signal draw_s : std_logic := '0';
@@ -361,6 +365,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	--signal rect_s: std_logic_vector(87 downto 0);
 	--signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
+	signal tile_mat_list_end_r : tile_mat_list_end;
 	signal cnt_r : std_logic_vector(8 downto 0);
 	signal ty_r : std_logic_vector(8 downto 0);
 	signal tx_r : std_logic_vector(8 downto 0);
@@ -370,6 +375,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal rect_col_r : std_logic_vector(15 downto 0);
 	signal rect_width_r : std_logic_vector(15 downto 0);
 	signal rect_height_r : std_logic_vector(15 downto 0);
+	
+	signal stop_tile_partiotion_s: std_logic;
 	
 	signal start_tile_partition: std_logic;
 	
@@ -474,11 +481,24 @@ architecture Behavioral of fb_less_2d_gpu is
 		
 		ty_s <= ty_beg when start_tile_partition_s = '1'
 			else (others => '0') when ty_r = "00000" & ty_end(15 downto 4)
-			else ty_r+1;
+			else ty_r+1 when tx_r = 0
+			else ty_r;
 			
 		tx_s <= tx_beg when start_tile_partition_s = '1'
 			else (others => '0') when tx_r = "00000" & tx_end(15 downto 4)
 			else tx_r+1;
+			
+		tile_mat_list_end_s(ty*20 + tx)(list_end_s(ty*20 + tx)) <= cnt_r; 
+		
+		
+		process(clk_i) begin
+			if rising_edge(clk_i) then
+				tile_mat_r <= tile_mat_s;
+			end if;
+		end process;
+		
+		
+		
 			
 		
 		
