@@ -330,6 +330,9 @@ architecture Behavioral of fb_less_2d_gpu is
 	constant TILE_MAT_HEIGHT: integer := 20;
 	constant TILE_LIST_LEN : integer := 7;
 	constant DRAW_LIST_LEN : integer := 7;
+	constant SCREEN_WIDTH : integer := 640;
+	constant SCREEN_HEIGHT : integer := 480;
+	
 	type pixels is array (20 downto 0) of std_logic_vector (23 downto 0);
 	type draw_list_indices is array (0 downto 6) of std_logic_vector (8 downto 0);
 	type tile_mat_list_end is array (0 downto 299) of std_logic_vector(2 downto 0);
@@ -367,6 +370,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal rect_col_r : std_logic_vector(15 downto 0);
 	signal rect_width_r : std_logic_vector(15 downto 0);
 	signal rect_height_r : std_logic_vector(15 downto 0);
+	
+	signal start_tile_partition: std_logic;
 	
 	signal tx_beg: std_logic_vector(15 downto 0);
 	signal tx_end: std_logic_vector(15 downto 0);
@@ -449,20 +454,35 @@ architecture Behavioral of fb_less_2d_gpu is
 		end process;
 		
 		
-		--Counter in TilePartition
+		--Counter in TilePartition (Index in draw list)
 		cnt_s <= std_logic_vector(unsigned(cnt_r)+1);
 		
-		ty_beg <= "00000" & rect_row_s(15 downto 4);
-		ty_end <= rect_row_r+rect_height_r
+		--start_tile_partition signalize that one rect is read form memory
+		--when we can start processing it to determine which tile/tiles rect belongs
+		start_tile_partition_s <= '1' when current_state_s = READ_COLOR
+			else '0';
 		
-		ty_s <= "00000" & rect_row_r(15 downto 4) when start_s = '1'
+		ty_beg <= "00000" & rect_row_r(15 downto 4);
+			
+		--End ty index = ty_end >> TILE_BITS	
+		ty_end <= rect_row_r+rect_height_r;
+		
+		tx_beg <= "00000" & rect_col_r(15 downto 4);
+			
+		--End tx index = tx_end >> TILE_BITS
+		tx_end <= rect_col_r+rect_col_r;
+		
+		ty_s <= ty_beg when start_tile_partition_s = '1'
 			else (others => '0') when ty_r = "00000" & ty_end(15 downto 4)
-			else ty_r+1
+			else ty_r+1;
+			
+		tx_s <= tx_beg when start_tile_partition_s = '1'
+			else (others => '0') when tx_r = "00000" & tx_end(15 downto 4)
+			else tx_r+1;
+			
 		
 		
-			--uvek 16x16
-	stat_img_size_is_16 <= '1';
-	--80-72 64-56 49-40 32-24
+
 	
 	rect_list_s <=  x"0000000000000000" & mem_data_s(23 downto 0) when phase_s = "00"
 		else x"00000000" & mem_data_s & x"000000" when phase_s = "01"
@@ -503,6 +523,10 @@ architecture Behavioral of fb_less_2d_gpu is
     end process;
 	
 	--mem_data_s(23 downto 0);
+	
+				--uvek 16x16
+	stat_img_size_is_16 <= '1';
+	--80-72 64-56 49-40 32-24
 	
 	------------------------------------
 	--- STAGE 0, citanje indeksa mape ---
