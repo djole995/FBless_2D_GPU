@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 2.00 secs
-Total CPU time to Xst completion: 2.19 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/xst
 
 
-Total REAL time to Xst completion: 2.00 secs
-Total CPU time to Xst completion: 2.21 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: fb_less_2d_gpu.prj
 
@@ -48,22 +48,16 @@ Parsing architecture <arch_reg> of entity <reg>.
 Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" into library fb_less_2d_gpu_periph_v1_00_a
 Parsing entity <fb_less_2d_gpu>.
 Parsing architecture <Behavioral> of entity <fb_less_2d_gpu>.
-ERROR:HDLCompiler:69 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 429: <change_state_en_s> is not declared.
-ERROR:HDLCompiler:69 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 451: <change_state_en_s> is not declared.
-ERROR:HDLCompiler:69 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 462: <start_tile_partition_s> is not declared.
-ERROR:HDLCompiler:1731 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 468: found '0' definitions of operator "+", cannot determine exact overloaded matching definition for "+"
-ERROR:HDLCompiler:1731 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 473: found '0' definitions of operator "+", cannot determine exact overloaded matching definition for "+"
-ERROR:HDLCompiler:69 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 475: <start_tile_partition_s> is not declared.
-ERROR:HDLCompiler:1731 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 477: found '0' definitions of operator "+", cannot determine exact overloaded matching definition for "+"
-ERROR:HDLCompiler:69 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 479: <start_tile_partition_s> is not declared.
-ERROR:HDLCompiler:1731 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 481: found '0' definitions of operator "+", cannot determine exact overloaded matching definition for "+"
-ERROR:HDLCompiler:854 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 62: Unit <behavioral> ignored due to previous errors.
-VHDL file D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd ignored due to errors
+
+
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 2.95 secs
+ 
 --> 
 
-Total memory usage is 186948 kilobytes
+Total memory usage is 185700 kilobytes
 
-Number of errors   :   10 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

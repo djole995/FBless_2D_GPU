@@ -20,6 +20,7 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
+use ieee.std_logic_unsigned.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -337,7 +338,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	type draw_list_indices is array (0 downto 6) of std_logic_vector (8 downto 0);
 	type tile_mat_list_end is array (0 downto 299) of std_logic_vector(2 downto 0);
 	type tile_mat is array (0 downto 299) of draw_list_indices;
-	type tState is (IDLE, READ_POSITION, READ_DIMENSIONS, READ_COLOR);
+	type tState is (IDLE, READ_POSITION, READ_DIMENSIONS, READ_COLOR, TILE_PARTITION, RENDER);
 	
 	signal tile_mat_s : tile_mat;
 	signal tile_mat_list_end_s : tile_mat_list_end;
@@ -376,9 +377,10 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal rect_width_r : std_logic_vector(15 downto 0);
 	signal rect_height_r : std_logic_vector(15 downto 0);
 	
-	signal stop_tile_partiotion_s: std_logic;
+	signal stop_tile_partition_s: std_logic;
 	
-	signal start_tile_partition: std_logic;
+	signal start_tile_partition_s: std_logic;
+	signal change_state_en_s: std_logic;
 	
 	signal tx_beg: std_logic_vector(15 downto 0);
 	signal tx_end: std_logic_vector(15 downto 0);
@@ -472,23 +474,23 @@ architecture Behavioral of fb_less_2d_gpu is
 		ty_beg <= "00000" & rect_row_r(15 downto 4);
 			
 		--End ty index = ty_end >> TILE_BITS	
-		ty_end <= rect_row_r+rect_height_r;
+		ty_end <= std_logic_vector(unsigned(rect_row_r)+unsigned(rect_height_r));
 		
 		tx_beg <= "00000" & rect_col_r(15 downto 4);
 			
 		--End tx index = tx_end >> TILE_BITS
-		tx_end <= rect_col_r+rect_col_r;
+		tx_end <= std_logic_vector(unsigned(rect_col_r)+unsigned(rect_col_r));
 		
 		ty_s <= ty_beg when start_tile_partition_s = '1'
 			else (others => '0') when ty_r = "00000" & ty_end(15 downto 4)
-			else ty_r+1 when tx_r = 0
+			else std_logic_vector(unsigned(ty_r)+1) when unsigned(tx_r) = 0
 			else ty_r;
 			
 		tx_s <= tx_beg when start_tile_partition_s = '1'
 			else (others => '0') when tx_r = "00000" & tx_end(15 downto 4)
-			else tx_r+1;
+			else std_logic_vector(unsigned(tx_r)+1);
 			
-		tile_mat_list_end_s(ty*20 + tx)(list_end_s(ty*20 + tx)) <= cnt_r; 
+		--tile_mat_s(to_integer(unsigned(ty_r)*20 + unsigned(tx_r)*20))(to_integer(tile_mat_list_end_s(unsigned(ty_r) + unsigned(tx_r)))) <= cnt_r; 
 		
 		
 		process(clk_i) begin
@@ -542,12 +544,6 @@ architecture Behavioral of fb_less_2d_gpu is
         end if;
     end process;
 	
-	--mem_data_s(23 downto 0);
-	
-				--uvek 16x16
-	stat_img_size_is_16 <= '1';
-	--80-72 64-56 49-40 32-24
-	
 	------------------------------------
 	--- STAGE 0, citanje indeksa mape ---
 	------------------------------------
@@ -589,43 +585,6 @@ architecture Behavioral of fb_less_2d_gpu is
                         "0001" when reg_intsect_s0(1) = '1' else
                         "0000" when reg_intsect_s0(0) = '1' else
                         "0000"; 				
-	
-
-	
-	
-	
-
-						
-						 
-
-	
-	
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			reg_intsect_r1 <= reg_intsect_s0;
-			reg_intersected_r1 <= reg_intersected_s0;
-			map_addr_r1  <= map_addr_s0;
-		end if;
-	end process;
-						
-	
-	------------------------------------ 
-	---   FAZA 1,2 nista posebno     ---
-	------------------------------------
-	
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			reg_intersected_r2 <= reg_intersected_r1;
-			reg_intsect_r2 <= reg_intsect_r1;
-		end if;
-	end process;
-	
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-		reg_intsect_r3 <= reg_intsect_r2;
-			reg_intersected_r3 <= reg_intersected_r2;
-		end if;
-	end process;
 
 	
 	------------------------------------
@@ -638,18 +597,6 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	img_row_s3 <= pixel_row_i(3 downto 0) when stat_img_size_is_16 = '1' else '0' & pixel_row_i(2 downto 0);
 	img_col_s3 <= pixel_col_i(3 downto 0) when stat_img_size_is_16 = '1' else '0' & pixel_col_i(2 downto 0);	
-	
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			reg_intsect_r4 <= reg_intsect_r3;
-			img_addr_r4 <= img_addr_s3;
-			img_rot_r4 <= img_rot_s3;
-			img_z_coor_r4 <= img_z_coor_s3;
-			img_row_r4 <= img_row_s3;
-			img_col_r4 <= img_col_s3;
-			reg_intersected_r4 <= reg_intersected_r3;
-		end if;
-	end process;
 	
 	--------------------------------------------------
 	--- STAGE 4,  img_tex_col_s, img_tex_row_s      ---
@@ -672,17 +619,6 @@ architecture Behavioral of fb_less_2d_gpu is
 			img_col_r4        when "00000001",   -- 90	--skinuli nulu spreda
 			stat_img_size - img_row_r4   when "00000010",	  -- 180
 			stat_img_size - img_col_r4   when others;       -- 270
-			
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			img_tex_col_r5 <= img_tex_col_s4;
-			img_tex_row_r5 <= img_tex_row_s4;
-			reg_intersected_r5 <= reg_intersected_r4;
-			img_addr_r5 <= img_addr_r4;
-			img_z_coor_r5 <= img_z_coor_r4;
-			reg_intsect_r5 <= reg_intsect_r4;
-		end if;
-	end process;
 
 	--------------------------------------------------
 	--- STAGE 5,  img_tex_offset_s                 ---
@@ -692,17 +628,6 @@ architecture Behavioral of fb_less_2d_gpu is
 		img_tex_row_r5 & img_tex_col_r5
 		when stat_img_size_is_16 = '1' else 
 		"00" & img_tex_row_r5(2 downto 0) & img_tex_col_r5(2 downto 0);
-	
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			img_tex_word_r6 <= img_tex_offset_s5(7 downto 2);
-			img_tex_pix_sel_r6 <= img_tex_offset_s5(1 downto 0);
-			reg_intersected_r6 <= reg_intersected_r5;
-			img_addr_r6 <= img_addr_r5;
-			img_z_coor_r6 <= img_z_coor_r5;
-			reg_intsect_r6 <= reg_intsect_r5;
-		end if;
-	end process;
 
 	
 	----------------------------------
@@ -716,21 +641,6 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	sprt_int_row_s6 <= pixel_row_i - reg_row_s(to_integer(reg_intersected_r6));
 	sprt_int_col_s6 <= pixel_col_i - reg_col_s(to_integer(reg_intersected_r6));
-	
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			img_pix_addr_r7 <= img_pix_addr_s6;
-			img_addr_r7 <= img_addr_r6;
-			img_z_coor_r7 <= img_z_coor_r6;
-			img_tex_pix_sel_r7 <= img_tex_pix_sel_r6;
-			max_r7 <= max_s6;
-			rot_r7 <= rot_s6;
-			sprt_int_col_r7 <= sprt_int_col_s6;
-			sprt_int_row_r7 <= sprt_int_row_s6;
-			reg_intersected_r7 <= reg_intersected_r6;
-			reg_intsect_r7 <= reg_intsect_r6;
-		end if;
-	end process;
 	
 	
 	-----------------------------------------------------------------
@@ -750,34 +660,6 @@ architecture Behavioral of fb_less_2d_gpu is
 				  max_r7 - sprt_row_s7  when rot_r7 = x"02" else  -- 180
 				  max_r7 - sprt_col_s7;                           -- 270
 				  
-				  
-	 process(clk_i) begin
-      if rising_edge(clk_i) then
-			s_col_r8 <= s_col_s7;
-			s_row_r8 <= s_row_s7;
-			img_tex_pix_sel_r8 <= img_tex_pix_sel_r7;
-			img_z_coor_r8 <= img_z_coor_r7;
-			reg_intersected_r8 <= reg_intersected_r7;
-			reg_intsect_r8 <= reg_intsect_r7;
-      end if;
-	end process;
-	
-
-    -----------------------------------------------------
-    --- STAGE 8, sprt_tex_offset_r, img_color_idx_r 	---
-    -----------------------------------------------------
-				  
-	 sprt_tex_offset_s8 <= s_row_r8 & s_col_r8;
-
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			img_tex_pix_sel_r9 <= img_tex_pix_sel_r8;
-			reg_intersected_r9 <= reg_intersected_r8;
-			sprt_tex_offset_r9 <= sprt_tex_offset_s8;
-			img_z_coor_r9 <= img_z_coor_r8;
-			reg_intsect_r9 <= reg_intsect_r8;
- 		end if;
-	end process;
 	
 	
 	-------------------------------------------------------------------
@@ -794,45 +676,6 @@ architecture Behavioral of fb_less_2d_gpu is
 
 	sprt_addr_s9 <= reg_pointer_s(to_integer(reg_intersected_r9))(12 downto 0) + sprt_tex_offset_r9(7 downto 2);
 	
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			sprt_tex_offset_r10 <= sprt_tex_offset_r9;
-			img_z_coor_r10 <= img_z_coor_r9;
-			sprt_addr_r10 <= sprt_addr_s9;                     
-			img_color_idx_r10 <= img_color_idx_s9;
-			reg_intersected_r10 <= reg_intersected_r9;
-			reg_intsect_r10 <= reg_intsect_r9;
-		end if;
-	end process;
-	
-    -------------------------------
-    --- STAGE 10, palette_idx_s	---
-    -------------------------------
-	
-		process(clk_i) begin
-		if rising_edge(clk_i) then
-			sprt_tex_offset_r11 <= sprt_tex_offset_r10;
-			img_z_coor_r11 <= img_z_coor_r10;                    
-			img_color_idx_r11 <= img_color_idx_r10;
-			reg_intersected_r11 <= reg_intersected_r10;
-			reg_intsect_r11 <= reg_intsect_r10;
-		end if;
-	end process;
-	
-	-------------------------------
-    --- STAGE 11, palette_idx_s	---
-    -------------------------------
-	
-		process(clk_i) begin
-		if rising_edge(clk_i) then
-			sprt_tex_offset_r12 <= sprt_tex_offset_r11;
-			img_z_coor_r12 <= img_z_coor_r11;                    
-			img_color_idx_r12 <= img_color_idx_r11;
-			reg_intersected_r12 <= reg_intersected_r11;
-			reg_intsect_r12 <= reg_intsect_r11;
-		end if;
-	end process;
-	
 	-------------------------------
     --- STAGE 12, palette_idx_s	---
     -------------------------------
@@ -844,16 +687,6 @@ architecture Behavioral of fb_less_2d_gpu is
 			unsigned(mem_data_s(15 downto  8)) when "10",
 			unsigned(mem_data_s(23 downto 16)) when "01",
 			unsigned(mem_data_s(31 downto 24)) when others;
-			
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			img_z_coor_r13 <= img_z_coor_r12;                    
-			img_color_idx_r13 <= img_color_idx_r12;
-			reg_intersected_r13 <= reg_intersected_r12;
-			spr_color_idx_r13 <= spr_color_idx_s12;
-			reg_intsect_r13 <= reg_intsect_r12;
-		end if;
-	end process;
 	
 	-------------------------------
     --- STAGE 13, palette_idx_s	---
@@ -872,13 +705,6 @@ architecture Behavioral of fb_less_2d_gpu is
                       ) else 
                       img_color_idx_r13; 		
 	
-			
-	process(clk_i) begin
-		if rising_edge(clk_i) then
-			palette_idx_r14 <= palette_idx_s13;
-		end if;
-	end process;
-	
 	-----------------------------------
 	--- STAGE 14, zero_stg_addr_r	---
 	-----------------------------------
@@ -890,30 +716,12 @@ architecture Behavioral of fb_less_2d_gpu is
 			palette_addr_r15 <= palette_addr_s14;
       end if;
 	end process;
-   	
-	
-	-----------------------------------
-	--- STAGE 15, zero_stg_addr_r	---
-	-----------------------------------
-	
-	process(clk_i) begin
-      if rising_edge(clk_i) then
-			palette_addr_r16 <= palette_addr_r15;
-      end if;
-	end process;
 	
 	
 	-----------------------------------------------------------------------------------
 	--                            RAM                                --
 	-----------------------------------------------------------------------------------
 						
-   
-	--with phase_i select
-	--	mem_addr_s <= (others => '0');      
-		--	map_addr_r1       when "01",
-		--	img_pix_addr_r7   when "11",
-		--	palette_addr_r16  when "00",
-		--	sprt_addr_r10     when others;
 		
 	
 	

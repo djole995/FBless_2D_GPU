@@ -5,35 +5,5 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
-<msg type="error" file="HDLCompiler" num="69" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 429: &lt;<arg fmt="%s" index="1">change_state_en_s</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 451: &lt;<arg fmt="%s" index="1">change_state_en_s</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 462: &lt;<arg fmt="%s" index="1">start_tile_partition_s</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1731" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 468: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;+&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;+&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1731" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 473: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;+&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;+&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 475: &lt;<arg fmt="%s" index="1">start_tile_partition_s</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1731" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 477: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;+&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;+&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="69" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 479: &lt;<arg fmt="%s" index="1">start_tile_partition_s</arg>&gt; is not declared.
-</msg>
-
-<msg type="error" file="HDLCompiler" num="1731" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 481: found &apos;<arg fmt="%d" index="1">0</arg>&apos; definitions of operator <arg fmt="%s" index="2">&quot;+&quot;</arg>, cannot determine exact overloaded matching definition for <arg fmt="%s" index="2">&quot;+&quot;</arg>
-</msg>
-
-<msg type="error" file="HDLCompiler" num="854" delta="new" >"D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 62: Unit &lt;<arg fmt="%s" index="1">behavioral</arg>&gt; ignored due to previous errors.
-</msg>
-
 </messages>
 
