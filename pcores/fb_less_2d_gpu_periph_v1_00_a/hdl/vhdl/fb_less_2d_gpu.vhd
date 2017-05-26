@@ -338,7 +338,20 @@ architecture Behavioral of fb_less_2d_gpu is
 	type draw_list_indices is array (0 downto 6) of std_logic_vector (8 downto 0);
 	type tile_mat_list_end is array (0 downto 299) of std_logic_vector(2 downto 0);
 	type tile_mat is array (0 downto 299) of draw_list_indices;
-	type tState is (IDLE, READ_POSITION, READ_DIMENSIONS, READ_COLOR, TILE_PARTITION, RENDER);
+	type tState is (IDLE, READ_INDEX, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER);
+	
+	type tile_list_type is record
+		list_end: std_logic_vector(7 downto 0);
+		list: draw_list_indices;
+	end record;
+	
+	type tile_mat_type is record
+		mat : tile_list_type(0 downto TILE_MAT_HEIGHT, 0 downto TILE_MAT_WIDTH);
+	end record;
+	
+	
+	signal tile_mat: tile_mat_type;
+	
 	
 	signal tile_mat_s : tile_mat;
 	signal tile_mat_list_end_s : tile_mat_list_end;
