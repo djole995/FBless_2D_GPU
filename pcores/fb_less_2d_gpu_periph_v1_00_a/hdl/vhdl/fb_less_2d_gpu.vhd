@@ -366,7 +366,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal current_state_s : tState;
 	signal next_state_s : tState;
 	
-	signal pixels_arr: pixels;  
+	signal pixels_s: pixels;
+	signal pixels_r: pixels;	
 		
 	signal rect_s: std_logic_vector(87 downto 0);
 	signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
@@ -414,6 +415,11 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	signal weight_r : weight;
 	signal weight_s : weight;
+	
+	--Temp signals used for counting resulting color and transparency for every pixel--
+	signal w_s: std_logic_vector(15 downto 0);
+	signal iw_s: std_logic_vector(15 downto 0);
+	signal m_s: std_logic_vector(15 downto 0);
 	
 	signal stop_tile_partition_s: std_logic;
 	
@@ -522,6 +528,7 @@ architecture Behavioral of fb_less_2d_gpu is
 							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4+1) <= mem_data_s(23 downto 16);
 							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4+2) <= mem_data_s(15 downto 8);
 							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4+3) <= mem_data_s(7 downto 0);
+							wait for 100 ns;
 							--TODO: Add one cycle delay betwen iteration (waiting for second memory location read)--
 						end loop;
 						--Initializing resulting color components, executed in one cycle-- 
@@ -569,22 +576,42 @@ architecture Behavioral of fb_less_2d_gpu is
 								--Pixel belongs to rect? --
 								if(rect_col_r <= x_r and x_r < rect_col_r+rect_width_r
 									and rect_row_r <= y and y < rect_row_r+rect_height_r) then
-									w_s <= std_logic_vector(shift_left(to_unsigned(rgba_r(7 downto 0), 16), SHIFT-8));
-									iw_s <= FIX_ONE - w_r;
-									
-									m_s <= shift_right((w_r*weight(ix) + HALF), SHIFT);
-									
-									acc_r_s(ix) <= acc_r_r(ix) + m_r*rgba_r(15 downto 8);
-									acc_g_s(ix) <= acc_g_r(ix) + m_r*rgba_r(23 downto 16);
-									acc_g_s(ix) <= acc_g_r(ix) + m_r*rgba_r(31 downto 24);
-									
-									weight_s(ix) <= shift_right(iw_r*weight_r(ix) + HALF, SHIFT);
-									
-									--TODO: Make registers for signals w, iw and m-- 
+									--w_s = (u16) color.alpha << (SHIFT(13) - 8), hardcoded (shift_left doesn't accept concatenated vectors)-- 
+									w_s <= "000" & rgba_r(7 downto 0) & "00000";--std_logic_vector(shift_left(unsigned("00000000" & rgba_r(7 downto 0)), SHIFT-8));
+									wait for 100 ns;
+									iw_s <= FIX_ONE - w_s;
+									m_s <= std_logic_vector(shift_right(unsigned(w_s*weight_r(ix) + HALF), SHIFT));
+									wait for 100 ns;
+									acc_r_s(ix) <= acc_r_r(ix) + m_s*rgba_r(15 downto 8);
+									acc_g_s(ix) <= acc_g_r(ix) + m_s*rgba_r(23 downto 16);
+									acc_g_s(ix) <= acc_g_r(ix) + m_s*rgba_r(31 downto 24);
+									wait for 100 ns;
+									weight_s(ix) <= std_logic_vector(shift_right(unsigned(iw_s*weight_r(ix) + HALF), SHIFT));
 									
 								end if;
 							end loop;
+							--all_zeros_s <= '1';
+							--wait for 100 ns;
+							--for ix in 0 to TILE_LINE-1 loop
+							--	if(weight_r(ix) /= 0) then
+								--	all_zeros_s <= '0';
+								--end if;
+							--end loop;
+							--If all weights are zeros line is fully opaque and all remaining rects are covered (invisible)-- 
+							if(weight_r(0) = 0 and weight_r(1) = 0 and weight_r(2) = 0
+								and weight_r(3) = 0 and weight_r(4) = 0 and weight_r(5) = 0
+								and weight_r(6) = 0) then
+									exit RENDER_TILE_LINE;
+							end if;
 						end loop RENDER_TILE_LINE;
+						
+						for ix in 0 to TILE_LINE-1 loop
+							x_s <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
+							wait for 100 ns;
+							pixels_s(y, to_integer(unsigned(x_r)))(23 downto 16) <= acc_r_r(ix);
+							pixels_s(y, to_integer(unsigned(x_r)))(15 downto 8) <= acc_g_r(ix);
+							pixels_s(y, to_integer(unsigned(x_r)))(7 downto 0) <= acc_b_r(ix);
+						end loop;
 					end loop;
 				end loop;
 		end process;
