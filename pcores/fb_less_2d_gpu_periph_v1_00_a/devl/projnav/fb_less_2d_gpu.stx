@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 1.00 secs
+Total REAL time to Xst completion: 0.00 secs
 Total CPU time to Xst completion: 0.28 secs
  
 --> Parameter xsthdpdir set to D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/xst
 
 
-Total REAL time to Xst completion: 1.00 secs
-Total CPU time to Xst completion: 0.29 secs
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.28 secs
  
 --> Reading design: fb_less_2d_gpu.prj
 
@@ -51,11 +51,11 @@ Parsing architecture <Behavioral> of entity <fb_less_2d_gpu>.
 
 
 Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 10.95 secs
+Total CPU time to Xst completion: 10.70 secs
  
 --> 
 
-Total memory usage is 186692 kilobytes
+Total memory usage is 186884 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    0 (   0 filtered)

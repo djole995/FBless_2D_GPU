@@ -345,7 +345,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	type tile_mat is array (0 downto 299) of draw_list_indices;
 	type tState is (IDLE, READ_INDEX, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER);
 	type acc_color is array(0 downto TILE_LINE-1) of std_logic_vector(7 downto 0);
-	type weight is array(0 downto TILE_LINE-1) of std_logic_vector(15 downto 0);
+	type tile_line_arr_u16 is array(0 downto TILE_LINE-1) of std_logic_vector(15 downto 0);
 	
 	type tile_list_type is array(0 downto 7) of std_logic_vector (7 downto 0);
 	
@@ -401,8 +401,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal i_r: std_logic_vector(15 downto 0);
 	signal i_s: std_logic_vector(15 downto 0);
 	
-	signal x_r: std_logic_vector(15 downto 0);
-	signal x_s: std_logic_vector(15 downto 0);
+	signal x_r: tile_line_arr_u16;
+	signal x_s: tile_line_arr_u16;
 	
 	signal acc_r_r: acc_color;
 	signal acc_r_s: acc_color;
@@ -413,13 +413,13 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal acc_b_r: acc_color;
 	signal acc_b_s: acc_color;
 	
-	signal weight_r : weight;
-	signal weight_s : weight;
+	signal weight_r : tile_line_arr_u16;
+	signal weight_s : tile_line_arr_u16;
 	
 	--Temp signals used for counting resulting color and transparency for every pixel--
-	signal w_s: std_logic_vector(15 downto 0);
-	signal iw_s: std_logic_vector(15 downto 0);
-	signal m_s: std_logic_vector(15 downto 0);
+	signal w_s: tile_line_arr_u16;
+	signal iw_s: tile_line_arr_u16;
+	signal m_s: tile_line_arr_u16;
 	
 	signal stop_tile_partition_s: std_logic;
 	
@@ -509,29 +509,41 @@ architecture Behavioral of fb_less_2d_gpu is
 		
 		
 		--iterating throught rows (outer loop)
-		y_s <= y_r+1 when tx_r = TILE_MAT_WIDTH and y_r < SCREEN_HEIGHT
-			else y_r;
+	--	y_s <= y_r+1 when tx_r = TILE_MAT_WIDTH and y_r < SCREEN_HEIGHT
+	--		else y_r;
 		--Vertical Tile index = y >> TILE_BITS(5)--
-		ty_s <= "00000" & y_r(10 downto 0);
+	--	ty_s <= "00000" & y_r(10 downto 0);
 		--Horizontal tile index (inner loop) 
-		tx_s <= tx_r+1 when tx_r < std_logic_vector(shift_right(to_unsigned(SCREEN_WIDTH, 10), TILE_BITS))
-			else (others => '0');
+	--	tx_s <= tx_r+1 when tx_r < std_logic_vector(shift_right(to_unsigned(SCREEN_WIDTH, 10), TILE_BITS))
+	--		else (others => '0');
+			
+						--iterating throught rows (outer loop)--
+	y_s <= y_r+1 when tx_r = TILE_MAT_WIDTH and y_r < SCREEN_HEIGHT
+	else y_r;
+		--Vertical tile index--
+		ty_s <= std_logic_vector(shift_right(unsigned(y_r), TILE_BITS));
+					
+		--Horizontal tile index (inner loop) --
+		tx_s <= tx_r+1 when tx_r < std_logic_vector(shift_right(to_unsigned(SCREEN_WIDTH, 16), TILE_BITS))
+		else (others => '0');
 			
 		process
 			begin
-				for y in 0 to SCREEN_HEIGHT-1 loop
-					ty_s <= std_logic_vector(shift_right(to_unsigned(y, 16), TILE_BITS));
-					for tx in 0 to TILE_MAT_WIDTH-1 loop
+
 					--Reading tile_mat element from memory. One tile_mat element takes two 32-bit location--
-						for I in 0 to 1 loop
-							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4) <= mem_data_s(31 downto 24);
-							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4+1) <= mem_data_s(23 downto 16);
-							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4+2) <= mem_data_s(15 downto 8);
-							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4+3) <= mem_data_s(7 downto 0);
-							wait for 100 ns;
-							--TODO: Add one cycle delay betwen iteration (waiting for second memory location read)--
-						end loop;
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0) <= mem_data_s(31 downto 24);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(1) <= mem_data_s(23 downto 16);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(2) <= mem_data_s(15 downto 8);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(3) <= mem_data_s(7 downto 0);
+						mem_addr_s <= mem_addr_r+1;
+						wait for 100 ns;
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(4) <= mem_data_s(31 downto 24);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(5) <= mem_data_s(23 downto 16);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(6) <= mem_data_s(15 downto 8);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(7) <= mem_data_s(7 downto 0);
+						
 						--Initializing resulting color components, executed in one cycle-- 
+						--Parallel statements--
 						for I in 0 to TILE_LINE-1 loop
 							acc_r_s(I) <= (others => '0');
 							acc_g_s(I) <= (others => '0');
@@ -542,10 +554,10 @@ architecture Behavioral of fb_less_2d_gpu is
 						RENDER_TILE_LINE: loop
 							if(ti_r < TILE_LIST_LEN) then
 								--tile_mat_r(0) = tile_list.end--
-								if(ti_r = tile_mat_r(to_integer(unsigned(ty_r)), tx)(0)) then
+								if(ti_r = tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0)) then
 									exit RENDER_TILE_LINE;
 								else
-									i_s <= tile_mat_r(to_integer(unsigned(ty_r)), tx)(to_integer(unsigned(ti_r)));
+									i_s <= tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(to_integer(unsigned(ti_r)));
 									ti_s <= ti_r+1;
 								end if;
 							else
@@ -566,27 +578,28 @@ architecture Behavioral of fb_less_2d_gpu is
 							wait for 100 ns;
 							rect_width_s <= mem_data_s(31 downto 16);
 							rect_height_s <= mem_data_s(15 downto 0);
-								--Rect rgba location = 2*i+1 + RECT_NUMBER(256)*2--
+								--Rect rgba location = 2*i+1 + RECT_NUMBER(256)*2-1 --
 							mem_addr_s <= mem_addr_r+511;
 							wait for 100 ns;
 							rgba_s <= mem_data_s;
 							
+							--Rendering tile line in parallel--
 							for ix in 0 to TILE_LINE-1 loop
-								x_s <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
+								x_s(ix) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
 								--Pixel belongs to rect? --
-								if(rect_col_r <= x_r and x_r < rect_col_r+rect_width_r
-									and rect_row_r <= y and y < rect_row_r+rect_height_r) then
+								if(rect_col_r <= x_s(ix) and x_s(ix) < rect_col_r+rect_width_r
+									and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
 									--w_s = (u16) color.alpha << (SHIFT(13) - 8), hardcoded (shift_left doesn't accept concatenated vectors)-- 
-									w_s <= "000" & rgba_r(7 downto 0) & "00000";--std_logic_vector(shift_left(unsigned("00000000" & rgba_r(7 downto 0)), SHIFT-8));
+									w_s(ix) <= "000" & rgba_r(7 downto 0) & "00000";--std_logic_vector(shift_left(unsigned("00000000" & rgba_r(7 downto 0)), SHIFT-8));
 									wait for 100 ns;
-									iw_s <= FIX_ONE - w_s;
-									m_s <= std_logic_vector(shift_right(unsigned(w_s*weight_r(ix) + HALF), SHIFT));
+									iw_s(ix) <= FIX_ONE - w_s(ix);
+									m_s(ix) <= std_logic_vector(shift_right(unsigned(w_s(ix)*weight_r(ix) + HALF), SHIFT));
 									wait for 100 ns;
-									acc_r_s(ix) <= acc_r_r(ix) + m_s*rgba_r(15 downto 8);
-									acc_g_s(ix) <= acc_g_r(ix) + m_s*rgba_r(23 downto 16);
-									acc_g_s(ix) <= acc_g_r(ix) + m_s*rgba_r(31 downto 24);
+									acc_r_s(ix) <= acc_r_r(ix) + m_s(ix)*rgba_r(15 downto 8);
+									acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(23 downto 16);
+									acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(31 downto 24);
 									wait for 100 ns;
-									weight_s(ix) <= std_logic_vector(shift_right(unsigned(iw_s*weight_r(ix) + HALF), SHIFT));
+									weight_s(ix) <= std_logic_vector(shift_right(unsigned(iw_s(ix)*weight_r(ix) + HALF), SHIFT));
 									
 								end if;
 							end loop;
@@ -605,89 +618,53 @@ architecture Behavioral of fb_less_2d_gpu is
 							end if;
 						end loop RENDER_TILE_LINE;
 						
+						--Writting resulting rgb components of tile line in parallel--
 						for ix in 0 to TILE_LINE-1 loop
-							x_s <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
+							x_s(ix) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
 							wait for 100 ns;
-							pixels_s(y, to_integer(unsigned(x_r)))(23 downto 16) <= acc_r_r(ix);
-							pixels_s(y, to_integer(unsigned(x_r)))(15 downto 8) <= acc_g_r(ix);
-							pixels_s(y, to_integer(unsigned(x_r)))(7 downto 0) <= acc_b_r(ix);
+							pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(23 downto 16) <= acc_r_r(ix);
+							pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(15 downto 8) <= acc_g_r(ix);
+							pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(7 downto 0) <= acc_b_r(ix);
 						end loop;
-					end loop;
-				end loop;
 		end process;
 		
 		
-		--start_tile_partition signalize that one rect is read form memory
-		--when we can start processing it to determine which tile/tiles rect belongs
---		start_tile_partition_s <= '1' when current_state_s = READ_COLOR
---			else '0';
-		
---		ty_beg <= "00000" & rect_row_r(15 downto 4);
-			
-		--End ty index = ty_end >> TILE_BITS	
---		ty_end <= std_logic_vector(unsigned(rect_row_r)+unsigned(rect_height_r));
-		
---		tx_beg <= "00000" & rect_col_r(15 downto 4);
-			
-		--End tx index = tx_end >> TILE_BITS
---		tx_end <= std_logic_vector(unsigned(rect_col_r)+unsigned(rect_col_r));
-		
-
-			
-		
-		--ty_s <= ty_beg when start_tile_partition_s = '1'
-		--	else (others => '0') when ty_r = "00000" & ty_end(15 downto 4)
-		--	else std_logic_vector(unsigned(ty_r)+1) when unsigned(tx_r) = 0
-		--	else ty_r;
-			
-		--tx_s <= tx_beg when start_tile_partition_s = '1'
-		--	else (others => '0') when tx_r = "00000" & tx_end(15 downto 4)
-		--	else std_logic_vector(unsigned(tx_r)+1);
-			
-		--tile_mat_s(to_integer(unsigned(ty_r)*20 + unsigned(tx_r)*20))(to_integer(tile_mat_list_end_s(unsigned(ty_r) + unsigned(tx_r)))) <= cnt_r; 
-		
-		
+		--Custom type registers--
 		process(clk_i) begin
 			if rising_edge(clk_i) then
 				tile_mat_r <= tile_mat_s;
 			end if;
 		end process;
 		
+		process(clk_i) begin
+			if rising_edge(clk_i) then
+				acc_r_r <= acc_r_s;
+			end if;
+		end process;
 		
+		process(clk_i) begin
+			if rising_edge(clk_i) then
+				acc_g_r <= acc_g_s;
+			end if;
+		end process;
 		
+		process(clk_i) begin
+			if rising_edge(clk_i) then
+				acc_b_r <= acc_b_s;
+			end if;
+		end process;
+		
+		process(clk_i) begin
+			if rising_edge(clk_i) then
+				pixels_r <= pixels_s;
+			end if;
+		end process;
 			
-		
-		
-
-	
-	rect_list_s <=  x"0000000000000000" & mem_data_s(23 downto 0) when phase_s = "00"
-		else x"00000000" & mem_data_s & x"000000" when phase_s = "01"
-		else mem_data_s & x"00000000000000" when phase_s = "10"
-		else (others => '0');
-	
-	--phase_s <= "00" when pixel_col_i >= unsigned(rect_col_r)+unsigned(rect_width_r) and pixel_row_i >= unsigned(rect_row_r)+unsigned(rect_height_r)
-	--   else	"01" when phase_r = "00"
-	--	else "10" when phase_r = "01"
-	--	else "11";
-	
-	index_s <= std_logic_vector(unsigned(index_r)+1) when unsigned(index_r) < 640*480
-		else (others => '0');
-		
---	pixels_arr(to_integer(unsigned(index_r))) <= (others => '1') when unsigned(index_r) < 200
---		else (others => '0');
-	
-	draw_s <= '1';
-	--draw_s <= '0' when pixel_col_i >= unsigned(rect_col_r)+unsigned(rect_width_r) or pixel_row_i >= unsigned(rect_row_r)+unsigned(rect_height_r) 
-	--or pixel_col_i <= unsigned(rect_col_r) or pixel_row_i <= unsigned(rect_row_r)
-	--		else '1';
-				
-	--draw_s <= '0' when pixel_col_i <= unsigned(rect_col_r) or pixel_row_i <= unsigned(rect_row_r)
-		--		else '1';
-					
---	rgb_o <= pixels_arr(to_integer(unsigned(index_r)-1)) when draw_s = '1'
---				else x"000000";
-				
-
+		process(clk_i) begin
+			if rising_edge(clk_i) then
+				weight_r <= weight_s;
+			end if;
+		end process;
 		
 	 process (clk_i)
 		begin
@@ -697,6 +674,12 @@ architecture Behavioral of fb_less_2d_gpu is
             mem_addr_r <= mem_addr_s;
         end if;
     end process;
+	 
+	 
+	 -------------------------------END------------------------------------
+	 
+	 
+	 
 	
 	------------------------------------
 	--- STAGE 0, citanje indeksa mape ---
@@ -977,7 +960,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	y_reg : reg 
 	GENERIC MAP (
-	   WIDTH => 9,
+	   WIDTH => 16,
 		RST_INIT => 0
 	)		
 	PORT MAP (
@@ -989,7 +972,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	ty_reg : reg 
 	GENERIC MAP (
-	   WIDTH => 9,
+	   WIDTH => 16,
 		RST_INIT => 0
 	)		
 	PORT MAP (
@@ -1001,7 +984,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	tx_reg : reg 
 	GENERIC MAP (
-	   WIDTH => 9,
+	   WIDTH => 16,
 		RST_INIT => 0
 	)		
 	PORT MAP (
@@ -1009,6 +992,30 @@ architecture Behavioral of fb_less_2d_gpu is
 		in_rst => rst_n_i,
 		i_d => tx_s,
 		o_q => tx_r
+	);
+	
+	ti_reg : reg 
+	GENERIC MAP (
+	   WIDTH => 8,
+		RST_INIT => 0
+	)		
+	PORT MAP (
+	   i_clk => clk_i,
+		in_rst => rst_n_i,
+		i_d => ti_s,
+		o_q => ti_r
+	);
+	
+	i_reg : reg 
+	GENERIC MAP (
+	   WIDTH => 16,
+		RST_INIT => 0
+	)		
+	PORT MAP (
+	   i_clk => clk_i,
+		in_rst => rst_n_i,
+		i_d => i_s,
+		o_q => i_r
 	);
 	
 	
