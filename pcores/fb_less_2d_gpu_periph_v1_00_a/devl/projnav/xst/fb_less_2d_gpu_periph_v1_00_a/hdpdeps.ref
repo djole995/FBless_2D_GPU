@@ -1,0 +1,15 @@
+V3 8
+EN fb_less_2d_gpu_periph_v1_00_a/fb_less_2d_gpu 0 \
+      FL D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/../../hdl/vhdl/fb_less_2d_gpu.vhd \
+      PB ieee/std_logic_1164 1370735607 PB ieee/NUMERIC_STD 1370735611 \
+      PB ieee/STD_LOGIC_UNSIGNED 1370735609
+AR fb_less_2d_gpu_periph_v1_00_a/fb_less_2d_gpu/Behavioral 0 \
+      FL D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/../../hdl/vhdl/fb_less_2d_gpu.vhd \
+      EN fb_less_2d_gpu_periph_v1_00_a/fb_less_2d_gpu 0 CP ram CP reg
+FL D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/../../hdl/vhdl/ram.vhd 2017/05/23.20:39:13 P.68d
+EN fb_less_2d_gpu_periph_v1_00_a/ram 1495903756 \
+      FL D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/../../hdl/vhdl/ram.vhd \
+      PB ieee/std_logic_1164 1370735607 PB ieee/NUMERIC_STD 1370735611
+AR fb_less_2d_gpu_periph_v1_00_a/ram/arch 1495903757 \
+      FL D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/../../hdl/vhdl/ram.vhd \
+      EN fb_less_2d_gpu_periph_v1_00_a/ram 1495903756

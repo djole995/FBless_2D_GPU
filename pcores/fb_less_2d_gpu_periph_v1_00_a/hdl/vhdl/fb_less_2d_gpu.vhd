@@ -21,6 +21,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 use ieee.std_logic_unsigned.all;
+--use ieee.std_logic_arith.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -333,32 +334,34 @@ architecture Behavioral of fb_less_2d_gpu is
 	constant DRAW_LIST_LEN : integer := 7;
 	constant SCREEN_WIDTH : integer := 640;
 	constant SCREEN_HEIGHT : integer := 480;
+	constant TILE_LINE : integer := 32;
+	constant FIX_ONE: integer := 8192;
+	constant HALF: integer := 4096;
+	constant SHIFT: integer := 13;
 	
-	type pixels is array (20 downto 0) of std_logic_vector (23 downto 0);
+	type pixels is array (0 downto SCREEN_HEIGHT-1, 0 downto SCREEN_WIDTH-1) of std_logic_vector(23 downto 0);
 	type draw_list_indices is array (0 downto 6) of std_logic_vector (8 downto 0);
 	type tile_mat_list_end is array (0 downto 299) of std_logic_vector(2 downto 0);
 	type tile_mat is array (0 downto 299) of draw_list_indices;
 	type tState is (IDLE, READ_INDEX, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER);
+	type acc_color is array(0 downto TILE_LINE-1) of std_logic_vector(7 downto 0);
+	type weight is array(0 downto TILE_LINE-1) of std_logic_vector(15 downto 0);
 	
-	type tile_list_type is record
-		list_end: std_logic_vector(7 downto 0);
-		list: draw_list_indices;
-	end record;
+	type tile_list_type is array(0 downto 7) of std_logic_vector (7 downto 0);
 	
-	type tile_mat_type is record
-		mat : tile_list_type(0 downto TILE_MAT_HEIGHT, 0 downto TILE_MAT_WIDTH);
-	end record;
+	type tile_mat_type is array (0 downto TILE_MAT_HEIGHT, 0 downto TILE_MAT_WIDTH) of tile_list_type;
 	
 	
-	signal tile_mat: tile_mat_type;
+	signal tile_mat_s: tile_mat_type;
+	signal tile_mat_r: tile_mat_type;
 	
 	
-	signal tile_mat_s : tile_mat;
+	--signal tile_mat_s : tile_mat;
 	signal tile_mat_list_end_s : tile_mat_list_end;
 	
 	
 	
-	signal tile_mat_r : tile_mat;
+--	signal tile_mat_r : tile_mat;
 	
 	signal current_state_s : tState;
 	signal next_state_s : tState;
@@ -368,27 +371,49 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal rect_s: std_logic_vector(87 downto 0);
 	signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
 	signal draw_s : std_logic := '0';
-	signal rgb_s : std_logic_vector(23 downto 0);
+	signal rgba_s : std_logic_vector(31 downto 0);
 	signal rect_row_s : std_logic_vector(15 downto 0) := x"FFFF";
 	signal rect_col_s : std_logic_vector(15 downto 0) := x"FFFF";
 	signal rect_width_s : std_logic_vector(15 downto 0) := x"00F0";
 	signal rect_height_s : std_logic_vector(15 downto 0) := x"00F0";
-	signal cnt_s : std_logic_vector(8 downto 0);
+	signal y_s : std_logic_vector(8 downto 0);
 	signal ty_s : std_logic_vector(15 downto 0);
-	signal tx_s: std_logic_vector(15 downto 0);
+	signal tx_s: std_logic_vector(15 downto 0); 
 	
 	--signal rect_s: std_logic_vector(87 downto 0);
 	--signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
 	signal tile_mat_list_end_r : tile_mat_list_end;
-	signal cnt_r : std_logic_vector(8 downto 0);
+	signal y_r : std_logic_vector(8 downto 0);
 	signal ty_r : std_logic_vector(8 downto 0);
 	signal tx_r : std_logic_vector(8 downto 0);
 	signal draw_r : std_logic := '0';
-	signal rgb_r : std_logic_vector(23 downto 0);
+	signal rgba_r : std_logic_vector(31 downto 0);
 	signal rect_row_r : std_logic_vector(15 downto 0);
 	signal rect_col_r : std_logic_vector(15 downto 0);
 	signal rect_width_r : std_logic_vector(15 downto 0);
 	signal rect_height_r : std_logic_vector(15 downto 0);
+	
+	--Tile list index
+	signal ti_r: std_logic_vector(7 downto 0);
+	signal ti_s: std_logic_vector(7 downto 0);
+	
+	signal i_r: std_logic_vector(15 downto 0);
+	signal i_s: std_logic_vector(15 downto 0);
+	
+	signal x_r: std_logic_vector(15 downto 0);
+	signal x_s: std_logic_vector(15 downto 0);
+	
+	signal acc_r_r: acc_color;
+	signal acc_r_s: acc_color;
+	
+	signal acc_g_r: acc_color;
+	signal acc_g_s: acc_color;
+	
+	signal acc_b_r: acc_color;
+	signal acc_b_s: acc_color;
+	
+	signal weight_r : weight;
+	signal weight_s : weight;
 	
 	signal stop_tile_partition_s: std_logic;
 	
@@ -406,6 +431,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	signal index_s : std_logic_vector(19 downto 0);
 	signal index_r : std_logic_vector(19 downto 0);
+	
 	
 	
 	component reg is
@@ -468,7 +494,7 @@ architecture Behavioral of fb_less_2d_gpu is
 					mem_addr_s <= mem_addr_r+1023;
 					next_state_s <= READ_COLOR;
 				when others =>
-					rgb_s <= x"1F0000";
+	--				rgb_s <= x"1F0000";
 					mem_addr_s <= mem_addr_r-1022;
 					change_state_en_s <= '0';
 					next_state_s <= READ_POSITION;
@@ -476,32 +502,120 @@ architecture Behavioral of fb_less_2d_gpu is
 		end process;
 		
 		
-		--Counter in TilePartition (Index in draw list)
-		cnt_s <= std_logic_vector(unsigned(cnt_r)+1);
+		--iterating throught rows (outer loop)
+		y_s <= y_r+1 when tx_r = TILE_MAT_WIDTH and y_r < SCREEN_HEIGHT
+			else y_r;
+		--Vertical Tile index = y >> TILE_BITS(5)--
+		ty_s <= "00000" & y_r(10 downto 0);
+		--Horizontal tile index (inner loop) 
+		tx_s <= tx_r+1 when tx_r < std_logic_vector(shift_right(to_unsigned(SCREEN_WIDTH, 10), TILE_BITS))
+			else (others => '0');
+			
+		process
+			begin
+				for y in 0 to SCREEN_HEIGHT-1 loop
+					ty_s <= std_logic_vector(shift_right(to_unsigned(y, 16), TILE_BITS));
+					for tx in 0 to TILE_MAT_WIDTH-1 loop
+					--Reading tile_mat element from memory. One tile_mat element takes two 32-bit location--
+						for I in 0 to 1 loop
+							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4) <= mem_data_s(31 downto 24);
+							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4+1) <= mem_data_s(23 downto 16);
+							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4+2) <= mem_data_s(15 downto 8);
+							tile_mat_s(to_integer(unsigned(ty_r)), tx)(I*4+3) <= mem_data_s(7 downto 0);
+							--TODO: Add one cycle delay betwen iteration (waiting for second memory location read)--
+						end loop;
+						--Initializing resulting color components, executed in one cycle-- 
+						for I in 0 to TILE_LINE-1 loop
+							acc_r_s(I) <= (others => '0');
+							acc_g_s(I) <= (others => '0');
+							acc_b_s(I) <= (others => '0');
+							weight_s(I) <= (others => '0');
+						end loop;
+						
+						RENDER_TILE_LINE: loop
+							if(ti_r < TILE_LIST_LEN) then
+								--tile_mat_r(0) = tile_list.end--
+								if(ti_r = tile_mat_r(to_integer(unsigned(ty_r)), tx)(0)) then
+									exit RENDER_TILE_LINE;
+								else
+									i_s <= tile_mat_r(to_integer(unsigned(ty_r)), tx)(to_integer(unsigned(ti_r)));
+									ti_s <= ti_r+1;
+								end if;
+							else
+								if(i_r = 0) then
+									exit RENDER_TILE_LINE;
+								else
+									i_s <= i_r-1;
+								end if;
+							end if;
+							--Calculating indexed rect memory location--
+								--Rect position location = 2*i--
+							mem_addr_s <= shift_right(unsigned(i_r), 1);
+							wait for 100 ns;
+							rect_row_s <= mem_data_s(31 downto 16);
+							rect_col_s <= mem_data_s(15 downto 0);
+								--Rect dimensions location = 2*i+1--
+							mem_addr_s <= mem_addr_r+1;
+							wait for 100 ns;
+							rect_width_s <= mem_data_s(31 downto 16);
+							rect_height_s <= mem_data_s(15 downto 0);
+								--Rect rgba location = 2*i+1 + RECT_NUMBER(256)*2--
+							mem_addr_s <= mem_addr_r+511;
+							wait for 100 ns;
+							rgba_s <= mem_data_s;
+							
+							for ix in 0 to TILE_LINE-1 loop
+								x_s <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
+								--Pixel belongs to rect? --
+								if(rect_col_r <= x_r and x_r < rect_col_r+rect_width_r
+									and rect_row_r <= y and y < rect_row_r+rect_height_r) then
+									w_s <= std_logic_vector(shift_left(to_unsigned(rgba_r(7 downto 0), 16), SHIFT-8));
+									iw_s <= FIX_ONE - w_r;
+									
+									m_s <= shift_right((w_r*weight(ix) + HALF), SHIFT);
+									
+									acc_r_s(ix) <= acc_r_r(ix) + m_r*rgba_r(15 downto 8);
+									acc_g_s(ix) <= acc_g_r(ix) + m_r*rgba_r(23 downto 16);
+									acc_g_s(ix) <= acc_g_r(ix) + m_r*rgba_r(31 downto 24);
+									
+									weight_s(ix) <= shift_right(iw_r*weight_r(ix) + HALF, SHIFT);
+									
+									--TODO: Make registers for signals w, iw and m-- 
+									
+								end if;
+							end loop;
+						end loop RENDER_TILE_LINE;
+					end loop;
+				end loop;
+		end process;
+		
 		
 		--start_tile_partition signalize that one rect is read form memory
 		--when we can start processing it to determine which tile/tiles rect belongs
-		start_tile_partition_s <= '1' when current_state_s = READ_COLOR
-			else '0';
+--		start_tile_partition_s <= '1' when current_state_s = READ_COLOR
+--			else '0';
 		
-		ty_beg <= "00000" & rect_row_r(15 downto 4);
+--		ty_beg <= "00000" & rect_row_r(15 downto 4);
 			
 		--End ty index = ty_end >> TILE_BITS	
-		ty_end <= std_logic_vector(unsigned(rect_row_r)+unsigned(rect_height_r));
+--		ty_end <= std_logic_vector(unsigned(rect_row_r)+unsigned(rect_height_r));
 		
-		tx_beg <= "00000" & rect_col_r(15 downto 4);
+--		tx_beg <= "00000" & rect_col_r(15 downto 4);
 			
 		--End tx index = tx_end >> TILE_BITS
-		tx_end <= std_logic_vector(unsigned(rect_col_r)+unsigned(rect_col_r));
+--		tx_end <= std_logic_vector(unsigned(rect_col_r)+unsigned(rect_col_r));
 		
-		ty_s <= ty_beg when start_tile_partition_s = '1'
-			else (others => '0') when ty_r = "00000" & ty_end(15 downto 4)
-			else std_logic_vector(unsigned(ty_r)+1) when unsigned(tx_r) = 0
-			else ty_r;
+
 			
-		tx_s <= tx_beg when start_tile_partition_s = '1'
-			else (others => '0') when tx_r = "00000" & tx_end(15 downto 4)
-			else std_logic_vector(unsigned(tx_r)+1);
+		
+		--ty_s <= ty_beg when start_tile_partition_s = '1'
+		--	else (others => '0') when ty_r = "00000" & ty_end(15 downto 4)
+		--	else std_logic_vector(unsigned(ty_r)+1) when unsigned(tx_r) = 0
+		--	else ty_r;
+			
+		--tx_s <= tx_beg when start_tile_partition_s = '1'
+		--	else (others => '0') when tx_r = "00000" & tx_end(15 downto 4)
+		--	else std_logic_vector(unsigned(tx_r)+1);
 			
 		--tile_mat_s(to_integer(unsigned(ty_r)*20 + unsigned(tx_r)*20))(to_integer(tile_mat_list_end_s(unsigned(ty_r) + unsigned(tx_r)))) <= cnt_r; 
 		
@@ -532,8 +646,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	index_s <= std_logic_vector(unsigned(index_r)+1) when unsigned(index_r) < 640*480
 		else (others => '0');
 		
-	pixels_arr(to_integer(unsigned(index_r))) <= (others => '1') when unsigned(index_r) < 200
-		else (others => '0');
+--	pixels_arr(to_integer(unsigned(index_r))) <= (others => '1') when unsigned(index_r) < 200
+--		else (others => '0');
 	
 	draw_s <= '1';
 	--draw_s <= '0' when pixel_col_i >= unsigned(rect_col_r)+unsigned(rect_width_r) or pixel_row_i >= unsigned(rect_row_r)+unsigned(rect_height_r) 
@@ -543,8 +657,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	--draw_s <= '0' when pixel_col_i <= unsigned(rect_col_r) or pixel_row_i <= unsigned(rect_row_r)
 		--		else '1';
 					
-	rgb_o <= pixels_arr(to_integer(unsigned(index_r)-1)) when draw_s = '1'
-				else x"000000";
+--	rgb_o <= pixels_arr(to_integer(unsigned(index_r)-1)) when draw_s = '1'
+--				else x"000000";
 				
 
 		
@@ -748,7 +862,7 @@ architecture Behavioral of fb_less_2d_gpu is
 		o_data				=> mem_data_s
 	);
 	
-	rgb_reg : reg 
+	rgba_reg : reg 
 	GENERIC MAP (
 	   WIDTH => 24,
 		RST_INIT => 0
@@ -756,8 +870,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	PORT MAP (
 	   i_clk => clk_i,
 		in_rst => rst_n_i,
-		i_d => rgb_s,
-		o_q => rgb_r
+		i_d => rgba_s,
+		o_q => rgba_r
 	);
 	
 	rect_width_reg : reg 
@@ -834,7 +948,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	);
 	
 	
-	cnt_reg : reg 
+	y_reg : reg 
 	GENERIC MAP (
 	   WIDTH => 9,
 		RST_INIT => 0
@@ -842,8 +956,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	PORT MAP (
 	   i_clk => clk_i,
 		in_rst => rst_n_i,
-		i_d => cnt_s,
-		o_q => cnt_r
+		i_d => y_s,
+		o_q => y_r
 	);
 	
 	ty_reg : reg 
