@@ -135,22 +135,23 @@ Elaborating entity <fb_less_2d_gpu_standalone> (architecture <IMP>) from library
 Elaborating entity <vga_ctrl> (architecture <arch_v1>) from library <fb_less_2d_gpu_periph_v1_00_a>.
 
 Elaborating entity <fb_less_2d_gpu> (architecture <Behavioral>) with generics from library <fb_less_2d_gpu_periph_v1_00_a>.
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 398: Assignment to rect_list_s ignored, since the identifier is never used
-WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 447: rst_n_i should be on the sensitivity list of the process
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 508: Assignment to map_addr_r1 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 625: Assignment to img_pix_addr_r7 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 702: Assignment to sprt_addr_r10 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 753: Assignment to reg_intsect_r13 ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 804: Assignment to palette_addr_r16 ignored, since the identifier is never used
-
-Elaborating entity <ram> (architecture <arch>) with generics from library <fb_less_2d_gpu_periph_v1_00_a>.
-
-Elaborating entity <reg> (architecture <arch_reg>) with generics from library <work>.
-
-Elaborating entity <reg> (architecture <arch_reg>) with generics from library <work>.
-
-Elaborating entity <reg> (architecture <arch_reg>) with generics from library <work>.
-
-Elaborating entity <reg> (architecture <arch_reg>) with generics from library <work>.
+WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 483: change_state_en_s should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 493: mem_data_s should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 494: mem_data_s should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 495: mem_addr_r should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 498: mem_data_s should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 499: mem_data_s should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 500: mem_addr_r should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 504: mem_addr_r should be on the sensitivity list of the process
+ERROR:HDLCompiler:926 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 580: Multiple wait statements in one process are not supported in this case.
+Netlist fb_less_2d_gpu(Behavioral) remains a blackbox, due to errors in its contents
 
 Elaborating entity <clk_gen_100MHz> (architecture <arch_v1>) from library <fb_less_2d_gpu_periph_v1_00_a>.
+--> 
+
+Total memory usage is 3197716 kilobytes
+
+Number of errors   :    1 (   0 filtered)
+Number of warnings :    8 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+

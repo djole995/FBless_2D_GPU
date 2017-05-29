@@ -102,42 +102,38 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1495123359" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1495123359">
+    <transform xil_pn:end_ts="1496073452" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1496073452">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1495123359" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-8798189510163441030" xil_pn:start_ts="1495123359">
+    <transform xil_pn:end_ts="1496073452" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-8798189510163441030" xil_pn:start_ts="1496073452">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1495123359" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="9074640315221555659" xil_pn:start_ts="1495123359">
+    <transform xil_pn:end_ts="1496073452" xil_pn:name="TRAN_regenerateCores" xil_pn:prop_ck="9074640315221555659" xil_pn:start_ts="1496073452">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1495123359" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1495123359">
+    <transform xil_pn:end_ts="1496073452" xil_pn:name="TRAN_SubProjectAbstractToPreProxy" xil_pn:start_ts="1496073452">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1495123359" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-2709419302696027332" xil_pn:start_ts="1495123359">
+    <transform xil_pn:end_ts="1496073452" xil_pn:name="TRAN_xawsTohdl" xil_pn:prop_ck="-2709419302696027332" xil_pn:start_ts="1496073452">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1495123359" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="8977612015859452503" xil_pn:start_ts="1495123359">
+    <transform xil_pn:end_ts="1496073452" xil_pn:name="TRAN_SubProjectPreToStructuralProxy" xil_pn:prop_ck="8977612015859452503" xil_pn:start_ts="1496073452">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1495123359" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="6885918042040053909" xil_pn:start_ts="1495123359">
+    <transform xil_pn:end_ts="1496073452" xil_pn:name="TRAN_platgen" xil_pn:prop_ck="6885918042040053909" xil_pn:start_ts="1496073452">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1495123460" xil_pn:in_ck="-1361208717814969128" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1495123359">
-      <status xil_pn:value="AbortedRun"/>
+    <transform xil_pn:end_ts="1496074670" xil_pn:in_ck="-1361208717814969128" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1496074646">
+      <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.lso"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.ngc"/>
@@ -145,6 +141,7 @@
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.prj"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.syr"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.xst"/>
+      <outfile xil_pn:name="fb_less_2d_gpu_standalone_xst.xrpt"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
       <outfile xil_pn:name="xst"/>
     </transform>
