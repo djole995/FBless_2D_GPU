@@ -531,22 +531,24 @@ architecture Behavioral of fb_less_2d_gpu is
 			begin
 
 					--Reading tile_mat element from memory. One tile_mat element takes two 32-bit location--
+						--READ_MATLIST_LOWORD state--
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0) <= mem_data_s(31 downto 24);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(1) <= mem_data_s(23 downto 16);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(2) <= mem_data_s(15 downto 8);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(3) <= mem_data_s(7 downto 0);
-						--Stall--
+
 						mem_addr_s <= mem_addr_r+1 after 50 ns;
-						--Stall--
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(4) <= mem_data_s(31 downto 24) after 100 ns;
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(5) <= mem_data_s(23 downto 16) after 100 ns;
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(6) <= mem_data_s(15 downto 8) after 100 ns;
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(7) <= mem_data_s(7 downto 0) after 100 ns;
+						--READ_MATLIST_HIWORD--
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(4) <= mem_data_s(31 downto 24);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(5) <= mem_data_s(23 downto 16);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(6) <= mem_data_s(15 downto 8);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(7) <= mem_data_s(7 downto 0);
 						--Stall--
 						mem_addr_s <= mem_addr_r+1 after 150 ns;
 						
 						--Initializing resulting color components, executed in one cycle-- 
 						--Parallel statements--
+						--READ_MATLIST_LOWORD state--
 						for I in 0 to TILE_LINE-1 loop
 							acc_r_s(I) <= (others => '0');
 							acc_g_s(I) <= (others => '0');
@@ -554,43 +556,50 @@ architecture Behavioral of fb_less_2d_gpu is
 							weight_s(I) <= (others => '0');
 						end loop;
 						
-						---Stall block--
-						ti_s <= x"01"; 
+						--READ_MATLIST_LOWORD state--
+						ti_s <= x"01";
+						
+						
+						--TODO: Replace loop with state machine--
 						RENDER_TILE_LINE: loop
+							--READ_INDEX--
 							if(ti_r < TILE_LIST_LEN) then
-								--tile_mat_r(0) = tile_list.end--
 								if(ti_r = tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0)) then
 									exit RENDER_TILE_LINE;
 								else
-									i_s <= "00000000" & tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(to_integer(unsigned(ti_r))) after 200 ns;
-									ti_s <= ti_r+1 after 200 ns;
+									i_s <= "00000000" & tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(to_integer(unsigned(ti_r)));
+									ti_s <= ti_r+1;
 								end if;
 							else
 								if(i_r = 0) then
 									exit RENDER_TILE_LINE;
 								else
-									i_s <= i_r-1 after 200 ns;
+									i_s <= i_r-1;
 								end if;
 							end if;
+							
+							
 							--Calculating indexed rect memory location--
 								--Rect position location = 2*i--
-							--Stall--
-							mem_addr_s <= shift_right(unsigned(i_r(12 downto 0)), 1) after 300 ns;
-							--Stall--
-							rect_row_s <= mem_data_s(31 downto 16) after 400 ns;
-							rect_col_s <= mem_data_s(15 downto 0) after 400 ns;
+							mem_addr_s <= shift_right(unsigned(i_r(12 downto 0)), 1);
+							
+							--READ_POSITION--
+							rect_row_s <= mem_data_s(31 downto 16);
+							rect_col_s <= mem_data_s(15 downto 0);
 							
 								--Rect dimensions location = 2*i+1--
-							--Stall--
-							mem_addr_s <= mem_addr_r+1 after 500 ns;
-							--Stall--
+							mem_addr_s <= mem_addr_r+1;
+							
+							--READ_DIMENSIONS--
 							rect_width_s <= mem_data_s(31 downto 16);
 							rect_height_s <= mem_data_s(15 downto 0);
 								--Rect rgba location = 2*i+1 + RECT_NUMBER(256)*2-1 --
 							mem_addr_s <= mem_addr_r+511;
+							--READ_COLOR--
 							wait until rising_edge(clk_i);
 							rgba_s <= mem_data_s;
 							
+							--RENDER--
 							--Rendering tile line in parallel--
 							for ix in 0 to TILE_LINE-1 loop
 								x_s(ix) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
@@ -599,14 +608,17 @@ architecture Behavioral of fb_less_2d_gpu is
 									and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
 									--w_s = (u16) color.alpha << (SHIFT(13) - 8), hardcoded (shift_left doesn't accept concatenated vectors)-- 
 									w_s(ix) <= "000" & rgba_r(7 downto 0) & "00000";--std_logic_vector(shift_left(unsigned("00000000" & rgba_r(7 downto 0)), SHIFT-8));
-									wait until rising_edge(clk_i);
+									
+									--CALCULATE iw and m--
 									iw_s(ix) <= FIX_ONE - w_s(ix);
 									m_s(ix) <= std_logic_vector(shift_right(unsigned(w_s(ix)*weight_r(ix) + HALF), SHIFT));
-									wait until rising_edge(clk_i);
+									
+									--CALCULATE m--
 									acc_r_s(ix) <= acc_r_r(ix) + m_s(ix)*rgba_r(15 downto 8);
 									acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(23 downto 16);
 									acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(31 downto 24);
-									wait until rising_edge(clk_i);
+									
+									--CALCULATE_WEIGHT--
 									weight_s(ix) <= std_logic_vector(shift_right(unsigned(iw_s(ix)*weight_r(ix) + HALF), SHIFT));
 									
 								end if;
@@ -618,6 +630,8 @@ architecture Behavioral of fb_less_2d_gpu is
 								--	all_zeros_s <= '0';
 								--end if;
 							--end loop;
+							
+							--CHECK_OPAQUE--
 							--If all weights are zeros line is fully opaque and all remaining rects are covered (invisible)-- 
 							if(weight_r(0) = 0 and weight_r(1) = 0 and weight_r(2) = 0
 								and weight_r(3) = 0 and weight_r(4) = 0 and weight_r(5) = 0
@@ -626,6 +640,7 @@ architecture Behavioral of fb_less_2d_gpu is
 							end if;
 						end loop RENDER_TILE_LINE;
 						
+						--WRITE_TILE_LINE--
 						--Writting resulting rgb components of tile line in parallel--
 						for ix in 0 to TILE_LINE-1 loop
 							x_s(ix) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
