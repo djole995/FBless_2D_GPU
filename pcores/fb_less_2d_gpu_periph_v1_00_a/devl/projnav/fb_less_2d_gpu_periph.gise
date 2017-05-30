@@ -130,12 +130,9 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1496074670" xil_pn:in_ck="-1361208717814969128" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1496074646">
+    <transform xil_pn:end_ts="1496160027" xil_pn:in_ck="-1361208717814969128" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1496160021">
       <status xil_pn:value="FailedRun"/>
-      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.lso"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.ngc"/>

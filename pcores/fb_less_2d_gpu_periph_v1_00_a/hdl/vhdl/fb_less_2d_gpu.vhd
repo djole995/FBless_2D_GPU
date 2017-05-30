@@ -343,7 +343,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	type draw_list_indices is array (0 to 6) of std_logic_vector (8 downto 0);
 	type tile_mat_list_end is array (0 to 299) of std_logic_vector(2 downto 0);
 	type tile_mat is array (0 to 299) of draw_list_indices;
-	type tState is (IDLE, READ_INDEX, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER);
+	type tState is (IDLE, INC_Y, INC_TX, CALC_TY, READ_UPPER, READ_LOWER, READ_INDEX, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER, CALC_W, CALC_IW_M, CALC_ACC, CALC_WEIGHT, CHECK_OPAQUE, WRITE_PIXEL, FINISH);
 	type acc_color is array(0 to TILE_LINE-1) of std_logic_vector(7 downto 0);
 	type tile_line_arr_u16 is array(0 to TILE_LINE-1) of std_logic_vector(15 downto 0);
 	
@@ -363,8 +363,15 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 --	signal tile_mat_r : tile_mat;
 	
+	--Global state--
 	signal current_state_s : tState;
 	signal next_state_s : tState;
+	
+	--Rendering calculation phase, valid in RENDER state only--
+	signal current_render_state_s : tState;
+	signal next_render_state_s : tState;
+	signal start_rendering_s: std_logic_vector(0 downto 0);
+	signal start_rendering_r: std_logic_vector(0 downto 0);
 	
 	signal pixels_s: pixels;
 	signal pixels_r: pixels;	
@@ -477,6 +484,7 @@ architecture Behavioral of fb_less_2d_gpu is
 		  end if;
 	   end process;
 		
+		--Global state register--
 		process(clk_i, rst_n_i) begin
 			if(rst_n_i = '0') then
 				current_state_s <= IDLE;
@@ -485,25 +493,71 @@ architecture Behavioral of fb_less_2d_gpu is
 			end if;
 		end process;
 		
-		process(current_state_s) begin
+		--Global state--
+		process(current_state_s, current_render_state_s) begin
 			case(current_state_s) is
 				when IDLE =>
+					next_state_s <= CALC_TY;
+				when CALC_TY =>
+					next_state_s <= READ_UPPER;
+				when READ_UPPER =>
+					next_state_s <= READ_LOWER;
+				when READ_LOWER =>
+					next_state_s <= READ_INDEX;
+				when READ_INDEX =>
 					next_state_s <= READ_POSITION;
 				when READ_POSITION =>
-					rect_row_s <= mem_data_s(31 downto 16);
-					rect_col_s <= mem_data_s(15 downto 0);
-					mem_addr_s <= mem_addr_r+1;
 					next_state_s <= READ_DIMENSIONS;
-				when READ_DIMENSIONS => 
-					rect_width_s <= mem_data_s(31 downto 16);
-					rect_height_s <= mem_data_s(15 downto 0);
-					mem_addr_s <= mem_addr_r+1023;
+				when READ_DIMENSIONS =>
 					next_state_s <= READ_COLOR;
+				when READ_COLOR =>
+					next_state_s <= RENDER;
+				when RENDER =>
+					--Rendering is not finished => stall state--
+					if(current_render_state_s = IDLE) then
+						next_state_s <= CHECK_OPAQUE;
+					end if;
+				when CHECK_OPAQUE =>
+					next_state_s <= WRITE_PIXEL;
+				when WRITE_PIXEL =>
+					--Outer loop finished => algorithm finished--
+					if(y_r = SCREEN_HEIGHT-1 and tx_r = TILE_MAT_WIDTH-1) then
+						next_state_s <= FINISH;
+					--Break inner loop, continue outer loop--
+					elsif(tx_r = TILE_MAT_WIDTH-1) then
+						next_state_s <= INC_Y;
+					--Continue inner loop--
+					else
+						next_state_s <= INC_TX;
+					end if;
+				when INC_Y =>
+						next_state_s <= CALC_TY;
+				when INC_TX =>
+					next_state_s <= READ_UPPER;
+					
+				--STOP state--
+				--Algorithm is finished, draw pixels--
 				when others =>
-	--				rgb_s <= x"1F0000";
-					mem_addr_s <= mem_addr_r-1022;
-					change_state_en_s <= '0';
-					next_state_s <= READ_POSITION;
+					next_state_s <= current_state_s;
+			end case;
+		end process;
+		
+		--Render state--
+		process(current_render_state_s, start_rendering_r) begin
+			case(current_render_state_s) is
+				when IDLE =>
+					--Rendering is triggered => start rendering calculations--
+					if(start_rendering_r = "1") then
+						next_render_state_s <= CALC_W;
+					end if;
+				when CALC_W =>
+					next_state_s <= CALC_IW_M;
+				when CALC_IW_M =>
+					next_state_s <= CALC_ACC;
+				when CALC_ACC =>
+					next_state_s <= CALC_WEIGHT;
+				when others =>
+					next_state_s <= IDLE;
 			end case;
 		end process;
 		
@@ -529,26 +583,32 @@ architecture Behavioral of fb_less_2d_gpu is
 			
 		process
 			begin
-
+				case (current_state_s) is
+					when INC_Y => 
+						y_s <= y_r+1;
+					when INC_TX =>
+						tx_s <= tx_r+1;
+					when CALC_TY =>
+						ty_s <= std_logic_vector(shift_right(unsigned(y_r), TILE_BITS));
+					when READ_UPPER =>
 					--Reading tile_mat element from memory. One tile_mat element takes two 32-bit location--
 						--READ_MATLIST_LOWORD state--
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0) <= mem_data_s(31 downto 24);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(1) <= mem_data_s(23 downto 16);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(2) <= mem_data_s(15 downto 8);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(3) <= mem_data_s(7 downto 0);
-
-						mem_addr_s <= mem_addr_r+1 after 50 ns;
+					
+						mem_addr_s <= mem_addr_r+1;
+					when READ_LOWER => 
 						--READ_MATLIST_HIWORD--
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(4) <= mem_data_s(31 downto 24);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(5) <= mem_data_s(23 downto 16);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(6) <= mem_data_s(15 downto 8);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(7) <= mem_data_s(7 downto 0);
-						--Stall--
-						mem_addr_s <= mem_addr_r+1 after 150 ns;
+						mem_addr_s <= mem_addr_r+1;
 						
 						--Initializing resulting color components, executed in one cycle-- 
 						--Parallel statements--
-						--READ_MATLIST_LOWORD state--
 						for I in 0 to TILE_LINE-1 loop
 							acc_r_s(I) <= (others => '0');
 							acc_g_s(I) <= (others => '0');
@@ -556,23 +616,23 @@ architecture Behavioral of fb_less_2d_gpu is
 							weight_s(I) <= (others => '0');
 						end loop;
 						
-						--READ_MATLIST_LOWORD state--
 						ti_s <= x"01";
-						
-						
+					
+					when READ_INDEX =>
 						--TODO: Replace loop with state machine--
-						RENDER_TILE_LINE: loop
 							--READ_INDEX--
 							if(ti_r < TILE_LIST_LEN) then
 								if(ti_r = tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0)) then
-									exit RENDER_TILE_LINE;
+									-----------------------Dummy line, break loop-----------------------------------------------
+									ti_s <= x"00";
 								else
 									i_s <= "00000000" & tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(to_integer(unsigned(ti_r)));
 									ti_s <= ti_r+1;
 								end if;
 							else
 								if(i_r = 0) then
-									exit RENDER_TILE_LINE;
+									-----------------------Dummy line, break loop-----------------------------------------------
+									ti_s <= x"00";
 								else
 									i_s <= i_r-1;
 								end if;
@@ -583,72 +643,75 @@ architecture Behavioral of fb_less_2d_gpu is
 								--Rect position location = 2*i--
 							mem_addr_s <= shift_right(unsigned(i_r(12 downto 0)), 1);
 							
-							--READ_POSITION--
+						when READ_POSITION => 
 							rect_row_s <= mem_data_s(31 downto 16);
 							rect_col_s <= mem_data_s(15 downto 0);
 							
 								--Rect dimensions location = 2*i+1--
 							mem_addr_s <= mem_addr_r+1;
 							
-							--READ_DIMENSIONS--
+						when READ_DIMENSIONS => 
 							rect_width_s <= mem_data_s(31 downto 16);
 							rect_height_s <= mem_data_s(15 downto 0);
 								--Rect rgba location = 2*i+1 + RECT_NUMBER(256)*2-1 --
 							mem_addr_s <= mem_addr_r+511;
-							--READ_COLOR--
-							wait until rising_edge(clk_i);
-							rgba_s <= mem_data_s;
 							
-							--RENDER--
+						when READ_COLOR =>
+							rgba_s <= mem_data_s;
+							start_rendering_s <= "1";
+						when RENDER =>
 							--Rendering tile line in parallel--
 							for ix in 0 to TILE_LINE-1 loop
 								x_s(ix) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
 								--Pixel belongs to rect? --
 								if(rect_col_r <= x_s(ix) and x_s(ix) < rect_col_r+rect_width_r
 									and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
-									--w_s = (u16) color.alpha << (SHIFT(13) - 8), hardcoded (shift_left doesn't accept concatenated vectors)-- 
-									w_s(ix) <= "000" & rgba_r(7 downto 0) & "00000";--std_logic_vector(shift_left(unsigned("00000000" & rgba_r(7 downto 0)), SHIFT-8));
 									
-									--CALCULATE iw and m--
-									iw_s(ix) <= FIX_ONE - w_s(ix);
-									m_s(ix) <= std_logic_vector(shift_right(unsigned(w_s(ix)*weight_r(ix) + HALF), SHIFT));
-									
-									--CALCULATE m--
-									acc_r_s(ix) <= acc_r_r(ix) + m_s(ix)*rgba_r(15 downto 8);
-									acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(23 downto 16);
-									acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(31 downto 24);
-									
-									--CALCULATE_WEIGHT--
-									weight_s(ix) <= std_logic_vector(shift_right(unsigned(iw_s(ix)*weight_r(ix) + HALF), SHIFT));
+									--Execute one of the calculations based on render state--
+									if(current_render_state_s = CALC_W) then
+										--w_s = (u16) color.alpha << (SHIFT(13) - 8), hardcoded (shift_left doesn't accept concatenated vectors)-- 
+										w_s(ix) <= "000" & rgba_r(7 downto 0) & "00000";
+									elsif(current_render_state_s = CALC_IW_M) then
+										--CALCULATE iw and m--
+										iw_s(ix) <= FIX_ONE - w_s(ix);
+										m_s(ix) <= std_logic_vector(shift_right(unsigned(w_s(ix)*weight_r(ix) + HALF), SHIFT));
+									elsif(current_render_state_s = CALC_ACC) then
+										--CALCULATE ACC--
+										acc_r_s(ix) <= acc_r_r(ix) + m_s(ix)*rgba_r(15 downto 8);
+										acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(23 downto 16);
+										acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(31 downto 24);
+									else	
+										--CALCULATE_WEIGHT--
+										weight_s(ix) <= std_logic_vector((shift_right(unsigned(iw_s(ix)*weight_r(ix) + HALF), SHIFT));
+										
+										--Stall rendering till next RENDER state--
+										start_rendering_s <= "0";
+									end if;
 									
 								end if;
 							end loop;
-							--all_zeros_s <= '1';
-							--wait for 100 ns;
-							--for ix in 0 to TILE_LINE-1 loop
-							--	if(weight_r(ix) /= 0) then
-								--	all_zeros_s <= '0';
-								--end if;
-							--end loop;
-							
+
+						when CHECK_OPAQUE =>
 							--CHECK_OPAQUE--
 							--If all weights are zeros line is fully opaque and all remaining rects are covered (invisible)-- 
 							if(weight_r(0) = 0 and weight_r(1) = 0 and weight_r(2) = 0
 								and weight_r(3) = 0 and weight_r(4) = 0 and weight_r(5) = 0
 								and weight_r(6) = 0) then
-									exit RENDER_TILE_LINE;
+								-----------------------Dummy line, break loop-----------------------------------------------
+								ti_s <= x"00";
 							end if;
-						end loop RENDER_TILE_LINE;
 						
-						--WRITE_TILE_LINE--
-						--Writting resulting rgb components of tile line in parallel--
-						for ix in 0 to TILE_LINE-1 loop
-							x_s(ix) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
-							wait until rising_edge(clk_i);
-							pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(23 downto 16) <= acc_r_r(ix);
-							pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(15 downto 8) <= acc_g_r(ix);
-							pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(7 downto 0) <= acc_b_r(ix);
-						end loop;
+						when others =>
+							--WRITE_TILE_LINE--
+							--Writting resulting rgb components of tile line in parallel--
+							for ix in 0 to TILE_LINE-1 loop
+								x_s(ix) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
+								wait until rising_edge(clk_i);
+								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(23 downto 16) <= acc_r_r(ix);
+								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(15 downto 8) <= acc_g_r(ix);
+								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(7 downto 0) <= acc_b_r(ix);
+							end loop;
+					end case;
 		end process;
 		
 		
@@ -1041,6 +1104,17 @@ architecture Behavioral of fb_less_2d_gpu is
 		o_q => i_r
 	);
 	
+	start_render_reg : reg 
+	GENERIC MAP (
+	   WIDTH => 1,
+		RST_INIT => 0
+	)		
+	PORT MAP (
+	   i_clk => clk_i,
+		in_rst => rst_n_i,
+		i_d => start_rendering_s,
+		o_q => start_rendering_r
+	);
 	
 	
 end Behavioral;

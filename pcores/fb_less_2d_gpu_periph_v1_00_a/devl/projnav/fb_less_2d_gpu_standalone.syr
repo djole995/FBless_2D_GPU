@@ -120,38 +120,14 @@ Parsing architecture <arch_v1> of entity <vga_ctrl>.
 Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" into library fb_less_2d_gpu_periph_v1_00_a
 Parsing entity <fb_less_2d_gpu>.
 Parsing architecture <Behavioral> of entity <fb_less_2d_gpu>.
-Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\clk_gen_100MHz_a.vhd" into library fb_less_2d_gpu_periph_v1_00_a
-Parsing architecture <arch_v1> of entity <clk_gen_100mhz>.
-Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_standalone.vhd" into library work
-Parsing entity <fb_less_2d_gpu_standalone>.
-Parsing architecture <IMP> of entity <fb_less_2d_gpu_standalone>.
-
-=========================================================================
-*                            HDL Elaboration                            *
-=========================================================================
-
-Elaborating entity <fb_less_2d_gpu_standalone> (architecture <IMP>) from library <work>.
-
-Elaborating entity <vga_ctrl> (architecture <arch_v1>) from library <fb_less_2d_gpu_periph_v1_00_a>.
-
-Elaborating entity <fb_less_2d_gpu> (architecture <Behavioral>) with generics from library <fb_less_2d_gpu_periph_v1_00_a>.
-WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 483: change_state_en_s should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 493: mem_data_s should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 494: mem_data_s should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 495: mem_addr_r should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 498: mem_data_s should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 499: mem_data_s should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 500: mem_addr_r should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 504: mem_addr_r should be on the sensitivity list of the process
-ERROR:HDLCompiler:926 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 580: Multiple wait statements in one process are not supported in this case.
-Netlist fb_less_2d_gpu(Behavioral) remains a blackbox, due to errors in its contents
-
-Elaborating entity <clk_gen_100MHz> (architecture <arch_v1>) from library <fb_less_2d_gpu_periph_v1_00_a>.
+ERROR:HDLCompiler:806 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 685: Syntax error near "(".
+ERROR:HDLCompiler:854 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 64: Unit <behavioral> ignored due to previous errors.
+VHDL file D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd ignored due to errors
 --> 
 
-Total memory usage is 3197716 kilobytes
+Total memory usage is 208916 kilobytes
 
-Number of errors   :    1 (   0 filtered)
-Number of warnings :    8 (   0 filtered)
+Number of errors   :    2 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
