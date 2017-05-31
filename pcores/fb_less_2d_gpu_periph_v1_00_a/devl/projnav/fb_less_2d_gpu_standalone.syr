@@ -120,14 +120,19 @@ Parsing architecture <arch_v1> of entity <vga_ctrl>.
 Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" into library fb_less_2d_gpu_periph_v1_00_a
 Parsing entity <fb_less_2d_gpu>.
 Parsing architecture <Behavioral> of entity <fb_less_2d_gpu>.
-ERROR:HDLCompiler:806 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 685: Syntax error near "(".
-ERROR:HDLCompiler:854 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 64: Unit <behavioral> ignored due to previous errors.
-VHDL file D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd ignored due to errors
---> 
+WARNING:HDLCompiler:1369 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 340: Possible infinite loop; process does not have a wait statement
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\clk_gen_100MHz_a.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing architecture <arch_v1> of entity <clk_gen_100mhz>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_standalone.vhd" into library work
+Parsing entity <fb_less_2d_gpu_standalone>.
+Parsing architecture <IMP> of entity <fb_less_2d_gpu_standalone>.
 
-Total memory usage is 208916 kilobytes
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
 
-Number of errors   :    2 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
-Number of infos    :    0 (   0 filtered)
+Elaborating entity <fb_less_2d_gpu_standalone> (architecture <IMP>) from library <work>.
 
+Elaborating entity <vga_ctrl> (architecture <arch_v1>) from library <fb_less_2d_gpu_periph_v1_00_a>.
+
+Elaborating entity <fb_less_2d_gpu> (architecture <Behavioral>) with generics from library <fb_less_2d_gpu_periph_v1_00_a>.

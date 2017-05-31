@@ -3,16 +3,16 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.39 secs
  
 --> Parameter xsthdpdir set to D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.06 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.39 secs
  
---> Reading design: fb_less_2d_gpu.prj
+--> Reading design: fb_less_2d_gpu_standalone.prj
 
 TABLE OF CONTENTS
   1) Synthesis Options Summary
@@ -39,24 +39,35 @@ TABLE OF CONTENTS
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl_e.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing entity <vga_ctrl>.
 Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\ram.vhd" into library fb_less_2d_gpu_periph_v1_00_a
 Parsing entity <ram>.
 Parsing architecture <arch> of entity <ram>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\clk_gen_100MHz_e.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing entity <clk_gen_100MHz>.
 Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\devl\projnav\reg.vhd" into library work
 Parsing entity <reg>.
 Parsing architecture <arch_reg> of entity <reg>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\vga_ctrl_a.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing architecture <arch_v1> of entity <vga_ctrl>.
 Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" into library fb_less_2d_gpu_periph_v1_00_a
 Parsing entity <fb_less_2d_gpu>.
 Parsing architecture <Behavioral> of entity <fb_less_2d_gpu>.
-WARNING:HDLCompiler:1369 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 322: Possible infinite loop; process does not have a wait statement
+WARNING:HDLCompiler:1369 - "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu.vhd" Line 340: Possible infinite loop; process does not have a wait statement
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\clk_gen_100MHz_a.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing architecture <arch_v1> of entity <clk_gen_100mhz>.
+Parsing VHDL file "D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\hdl\vhdl\fb_less_2d_gpu_standalone.vhd" into library work
+Parsing entity <fb_less_2d_gpu_standalone>.
+Parsing architecture <IMP> of entity <fb_less_2d_gpu_standalone>.
 
 
-Total REAL time to Xst completion: 3.00 secs
-Total CPU time to Xst completion: 2.98 secs
+Total REAL time to Xst completion: 4.00 secs
+Total CPU time to Xst completion: 3.48 secs
  
 --> 
 
-Total memory usage is 185956 kilobytes
+Total memory usage is 197860 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    1 (   0 filtered)

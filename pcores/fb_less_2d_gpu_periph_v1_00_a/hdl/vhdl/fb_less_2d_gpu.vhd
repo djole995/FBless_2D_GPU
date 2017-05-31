@@ -75,251 +75,14 @@ architecture Behavioral of fb_less_2d_gpu is
    );
    end component ram;
 
-	-- Types --
-   type registers_t  is array (0 to REGISTER_NUMBER-1) of unsigned (63 downto  0);
-   type coor_row_t 	is array (0 to REGISTER_NUMBER-1) of unsigned (8 downto 0);
-   type coor_col_t   is array (0 to REGISTER_NUMBER-1) of unsigned (9 downto 0);
-   type pointer_t    is array (0 to REGISTER_NUMBER-1) of unsigned (15 downto 0);
-   type rotation_t   is array (0 to REGISTER_NUMBER-1) of unsigned (7 downto 0);
-   type size_t       is array (0 to REGISTER_NUMBER-1) of unsigned (3 downto 0);
-	
-	-- Constants --
-   --constant size_8_c       : unsigned (3 downto 0) := "0111";
-
-   constant overhead_c     : std_logic_vector( OVERHEAD-1 downto 0 ) := ( others => '0' );
-   constant sprite_z_coor  : unsigned (7 downto 0) := "00000100";
-	
-   -- Globals --
-   signal registers_s      : registers_t :=                                -- Array representing registers 
-   --   row   |    col  |en&size|  rot  | pointer
-   (( x"0130" & x"00e3" & x"8f" & x"00" & x"01FF" ),  --mario
-    ( x"0170" & x"00d5" & x"8f" & x"00" & x"01BF" ),  --enemie
-    ( x"0170" & x"011b" & x"8f" & x"00" & x"01BF" ),
-    ( x"0170" & x"014d" & x"8f" & x"00" & x"01BF" ),
-    ( x"0170" & x"01b1" & x"8f" & x"00" & x"01BF" ), 
-    ( x"0130" & x"01c6" & x"8f" & x"00" & x"013f" ),  --coin
-    ( x"0130" & x"01d5" & x"8f" & x"00" & x"013f" ),
-    ( x"0130" & x"01e4" & x"8f" & x"00" & x"013f" ),
-    ( x"0130" & x"01f3" & x"8f" & x"00" & x"013f" ),
-    ( x"0000" & x"0090" & x"7f" & x"00" & x"03d0" )); --brick
-    
-	signal reg_word_addr : signed(ADDR_WIDTH-1 downto 0);
-	signal reg_idx       : signed(ADDR_WIDTH-1 downto 1);
-	 
-   signal thrd_stg_addr_s  : unsigned(ADDR_WIDTH-1 downto 0);              -- Addresses needed in third stage
-   signal scnd_stg_addr_s  : unsigned(ADDR_WIDTH-1 downto 0);              -- Addresses needed in second stage
-   signal frst_stg_addr_s  : unsigned(ADDR_WIDTH-1 downto 0);              -- Addresses needed in first stage
-   signal zero_stg_addr_s  : unsigned(ADDR_WIDTH-1 downto 0);              -- Addresses needed in zero stage
-   signal zero_stg_addr_r  : unsigned(ADDR_WIDTH-1 downto 0);
-
-   signal reg_intersected_r: unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);    -- Register storing the index of intersected sprite
-   signal reg_row_s        : coor_row_t;                                   -- Sprite start row
-   signal reg_col_s        : coor_col_t;                                   -- Sprite start column
-   signal reg_rot_s        : rotation_t;                                   -- Rotation of sprite
-   signal img_z_coor_s     : unsigned(7 downto 0);                         -- Z coor of static img
-   signal img_z_coor_r     : unsigned(7 downto 0);                         -- Z coor of static img
-   signal spr_color_idx_s  : unsigned(7 downto 0);                         -- Sprite color index
-   signal address_s        : unsigned(ADDR_WIDTH-1 downto 0);              -- Memory address line 
+ 
 	
    -- Memory --
    signal mem_data_s       : std_logic_vector(DATA_WIDTH-1 downto 0);      -- Data from local memory
    signal mem_address_s    : std_logic_vector(ADDR_WIDTH-1 downto 0);      -- Address used to read from memory
-	
-   -- Zero stage --
-   signal local_addr_s     : signed(ADDR_WIDTH-1 downto 0);	
-   signal reg_size_s       : size_t;
-   signal reg_en_s         : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-   signal reg_pointer_s    : pointer_t;
-   signal reg_end_row_s    : coor_row_t;
-   signal reg_end_col_s    : coor_col_t;
-   signal rel_addr_s       : unsigned(12 downto 0);
-   signal map_index_s      : unsigned(12 downto 0);
-	
-   -- First stage --
-   signal img_rot_s        : unsigned(7 downto 0);
-   signal img_index_s      : unsigned(15 downto 0);
-   signal img_row_s        : unsigned(2 downto 0);
-   signal img_col_s        : unsigned(2 downto 0);
-   signal img_tex_row_s    : unsigned(3 downto 0);
-   signal img_tex_col_s    : unsigned(3 downto 0);
-   signal img_tex_offset_s : unsigned(5 downto 0);
-   signal img_tex_pix_sel_r: unsigned(1 downto 0);
-   signal img_addr_s       : unsigned(ADDR_WIDTH-1 downto 0);
-	
-	-- Second stage --
-   signal scnd_stg_data_s  : std_logic_vector(DATA_WIDTH-1 downto 0);
-   signal max_s            : unsigned(3 downto 0);
-   signal sprt_size_s      : std_logic;
-   signal sprt_int_row_s   : unsigned(8 downto 0);
-   signal sprt_int_col_s   : unsigned(9 downto 0);
-   signal sprt_row_s       : unsigned(3 downto 0);
-   signal sprt_col_s       : unsigned(3 downto 0);
-   signal rot_s            : unsigned(7 downto 0);
-   signal s_row_s          : unsigned(3 downto 0);
-   signal s_col_s          : unsigned(3 downto 0);
-   signal sprt_tex_offset_s: unsigned(7 downto 0);
-   signal sprt_tex_offset_r: unsigned(7 downto 0);   
-   signal img_color_idx_r  : unsigned(7 downto 0);
-   signal img_color_idx_s  : unsigned(7 downto 0);
-	
-   -- Third stage --
-   signal thrd_stg_data_s  : std_logic_vector(DATA_WIDTH-1 downto 0);
-   signal stage_data_s     : std_logic_vector(DATA_WIDTH-1 downto 0);
-   signal palette_idx_s    : unsigned(7 downto 0);
-	signal spr_color_idx_r  : unsigned(7 downto 0); 
-   
-   -- Testing signals --
-   signal test_s           : unsigned(11 downto 0);
-   
-    ------------ mi radimo ------------------------------------------
-	
-	signal stat_img_size        : unsigned(3 downto 0);
-	signal map_index_size_8_s0	 : unsigned(12 downto 0);
-	signal map_index_size_16_s0 : unsigned(12 downto 0);
-	signal stat_img_size_is_16  : std_logic;
-	
-	--- STAGE 0 ---
-   signal reg_intersected_s0        : unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);    -- Index of intersected sprite
-	signal map_index_s0     	      :  unsigned(12 downto 0);
-	signal map_addr_s0       	      :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal map_addr_r1               :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal reg_intersected_r1        :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-   signal reg_intsect_s0            : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-	signal reg_intsect_r1            : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-	
-	--- STAGE 1 ---
-	signal reg_intersected_r2         :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-	signal reg_intsect_r2    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-	
-	
-	--- STAGE 2 ---
-	signal reg_intersected_r3         :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-	signal reg_intsect_r3   : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-	
-	
-	--- STAGE 3 ---
-	signal img_z_coor_s3             :  unsigned(7 downto 0);
-	signal img_rot_s3                :  unsigned(7 downto 0);
-	signal img_addr_s3               :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal img_col_s3                :  unsigned(3 downto 0);
-	signal img_row_s3                :  unsigned(3 downto 0);  --doaj 3 - 0
-	signal img_addr_r4               :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal img_row_r4                :  unsigned(3 downto 0);
-	signal img_col_r4                :  unsigned(3 downto 0);
-	signal img_rot_r4                :  unsigned(7 downto 0);
-	signal img_z_coor_r4             :  unsigned(7 downto 0);
-	signal reg_intersected_r4        :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0); 
-		signal reg_intsect_r4    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
 
 	
-	--- STAGE 4 ---
-	signal img_tex_col_s4            :  unsigned(3 downto 0);
-	signal img_tex_row_s4            :  unsigned(3 downto 0);
-	signal img_addr_r5               :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal img_z_coor_r5             :  unsigned(7 downto 0);
-	signal img_tex_col_r5            :  unsigned(3 downto 0);
-	signal img_tex_row_r5            :  unsigned(3 downto 0); 
-	signal reg_intersected_r5        :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-		signal reg_intsect_r5    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
 
-	
-	--- STAGE 5 ---
-	signal img_tex_offset_s5         :  unsigned(7 downto 0);
-	signal img_tex_word_r6           :  unsigned(5 downto 0);
-	signal img_addr_r6               :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal img_tex_pix_sel_r6        :  unsigned(1 downto 0);
-	signal img_z_coor_r6             :  unsigned(7 downto 0);
-	signal reg_intersected_r6        :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-		signal reg_intsect_r6    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-
-	
-	--- STAGE 6 ---
-	signal img_pix_addr_s6          :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal max_s6                   :  unsigned(3 downto 0);
-	signal rot_s6                   :  unsigned(7 downto 0);
-	signal sprt_int_col_s6          :  unsigned(9 downto 0);
-	signal sprt_int_row_s6          :  unsigned(8 downto 0);
-	signal img_pix_addr_r7          :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal img_tex_pix_sel_r7       :  unsigned(1 downto 0);
-	signal img_addr_r7              :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal img_z_coor_r7            :  unsigned(7 downto 0);
-	signal reg_intersected_r7       :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-	signal max_r7                   :  unsigned(3 downto 0);
-	signal rot_r7                   :  unsigned(7 downto 0);
-	signal sprt_int_col_r7          :  unsigned(9 downto 0);
-	signal sprt_int_row_r7          :  unsigned(8 downto 0);
-		signal reg_intsect_r7    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-
-	
-	--- STAGE 7 ---
-	signal s_col_s7                :  unsigned(3 downto 0);
-	signal s_row_s7                :  unsigned(3 downto 0);
-	signal s_col_r8                :  unsigned(3 downto 0);
-	signal s_row_r8                :  unsigned(3 downto 0);
-	signal sprt_col_s7             :  unsigned(3 downto 0);
-	signal sprt_row_s7             :  unsigned(3 downto 0);
-	signal img_tex_pix_sel_r8      :  unsigned(1 downto 0);
-	signal img_z_coor_r8           :  unsigned(7 downto 0);
-	signal reg_intersected_r8      :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-		signal reg_intsect_r8    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-
-	
-	--- STAGE 8 ---
-	signal sprt_tex_offset_s8     :  unsigned(7 downto 0);
-	signal sprt_tex_offset_r9     :  unsigned(7 downto 0);
-	signal img_z_coor_r9          :  unsigned(7 downto 0);
-	signal reg_intersected_r9     :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-	signal img_tex_pix_sel_r9     :  unsigned(1 downto 0);
-		signal reg_intsect_r9    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-
-	
-	--- STAGE 9 ---
-	signal img_color_idx_s9       :  unsigned(7 downto 0);
-	signal sprt_addr_s9           :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal sprt_tex_offset_r10    :  unsigned(7 downto 0);
-	signal img_z_coor_r10         :  unsigned(7 downto 0);
-	signal sprt_addr_r10          :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal img_color_idx_r10       :  unsigned(7 downto 0);
-	signal reg_intersected_r10    :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-		signal reg_intsect_r10    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-
-	
-	--- STAGE 10 ---
-	signal sprt_tex_offset_r11    :  unsigned(7 downto 0);
-	signal img_z_coor_r11         :  unsigned(7 downto 0);
-	signal img_color_idx_r11      :  unsigned(7 downto 0);
-	signal reg_intersected_r11    :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-		signal reg_intsect_r11    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-
-	
-	--- STAGE 11 ---
-	signal sprt_tex_offset_r12    :  unsigned(7 downto 0);
-	signal img_z_coor_r12         :  unsigned(7 downto 0);
-	signal img_color_idx_r12      :  unsigned(7 downto 0);
-	signal reg_intersected_r12    :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-		signal reg_intsect_r12    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-
-	
-	--- STAGE 12 ---
-	signal sprt_tex_offset_r13    :  unsigned(7 downto 0);
-	signal img_z_coor_r13         :  unsigned(7 downto 0);
-	signal img_color_idx_r13      :  unsigned(7 downto 0);
-	signal reg_intersected_r13    :  unsigned(NUM_BITS_FOR_REG_NUM-1 downto 0);
-	signal spr_color_idx_r13      :  unsigned(7 downto 0);
-	signal spr_color_idx_s12      :  unsigned(7 downto 0);
-		signal reg_intsect_r13    : std_logic_vector(REGISTER_NUMBER-1 downto 0);
-
-	
-	--- STAGE 13 ---
-	signal palette_idx_s13       :  unsigned(7 downto 0);
-	signal palette_idx_r14       :  unsigned(7 downto 0);
-	
-	--- STAGE 14 ---
-	signal palette_addr_s14  :  unsigned(ADDR_WIDTH-1 downto 0);
-	signal palette_addr_r15  :  unsigned(ADDR_WIDTH-1 downto 0);
-	
-	--- STAGE 15 ---
-	signal palette_addr_r16  :  unsigned(ADDR_WIDTH-1 downto 0);
 
 	--- memory ---
 	signal mem_addr_r           :  unsigned(ADDR_WIDTH-1 downto 0) := to_unsigned(0, ADDR_WIDTH);
@@ -364,11 +127,11 @@ architecture Behavioral of fb_less_2d_gpu is
 --	signal tile_mat_r : tile_mat;
 	
 	--Global state--
-	signal current_state_s : tState;
+	signal current_state_s : tState := IDLE;
 	signal next_state_s : tState;
 	
 	--Rendering calculation phase, valid in RENDER state only--
-	signal current_render_state_s : tState;
+	signal current_render_state_s : tState := IDLE;
 	signal next_render_state_s : tState;
 	signal start_rendering_s: std_logic_vector(0 downto 0);
 	signal start_rendering_r: std_logic_vector(0 downto 0);
@@ -467,34 +230,27 @@ architecture Behavioral of fb_less_2d_gpu is
    -----------------------------------------------------------------------------------
    --                            GLOBAL                                             --
    -----------------------------------------------------------------------------------
-
-	local_addr_s <= signed(bus_addr_i) - C_BASEADDR;     
-	reg_word_addr <= signed(local_addr_s) - REGISTER_OFFSET;
-	reg_idx <= reg_word_addr(ADDR_WIDTH-1 downto 1);
-	   process(clk_i) begin
-		  if rising_edge(clk_i) then
-			 if bus_we_i = '1' and 0 <= reg_word_addr and reg_word_addr < REGISTER_NUMBER*2 then
-				if reg_word_addr(0) = '1' then
-						registers_s(to_integer(reg_idx))(63 downto 32) <= unsigned(bus_data_i);
-					else
-						registers_s(to_integer(reg_idx))(31 downto 0) <= unsigned(bus_data_i);
-					end if;
-					
-			 end if;
-		  end if;
-	   end process;
 		
 		--Global state register--
 		process(clk_i, rst_n_i) begin
 			if(rst_n_i = '0') then
 				current_state_s <= IDLE;
-			elsif(rising_edge(clk_i) and change_state_en_s = '1') then
+			elsif(rising_edge(clk_i)) then
 				current_state_s <= next_state_s;
 			end if;
 		end process;
 		
+				--Render state register--
+		process(clk_i, rst_n_i) begin
+			if(rst_n_i = '0') then
+				current_state_s <= IDLE;
+			elsif(rising_edge(clk_i)) then
+				current_render_state_s <= next_render_state_s;
+			end if;
+		end process;
+		
 		--Global state--
-		process(current_state_s, current_render_state_s) begin
+		process(current_state_s, current_render_state_s, y_r, tx_r) begin
 			case(current_state_s) is
 				when IDLE =>
 					next_state_s <= CALC_TY;
@@ -551,44 +307,29 @@ architecture Behavioral of fb_less_2d_gpu is
 						next_render_state_s <= CALC_W;
 					end if;
 				when CALC_W =>
-					next_state_s <= CALC_IW_M;
+					next_render_state_s <= CALC_IW_M;
 				when CALC_IW_M =>
-					next_state_s <= CALC_ACC;
+					next_render_state_s <= CALC_ACC;
 				when CALC_ACC =>
-					next_state_s <= CALC_WEIGHT;
+					next_render_state_s <= CALC_WEIGHT;
 				when others =>
-					next_state_s <= IDLE;
+					next_render_state_s <= IDLE;
 			end case;
 		end process;
 		
-		
-		--iterating throught rows (outer loop)
-	--	y_s <= y_r+1 when tx_r = TILE_MAT_WIDTH and y_r < SCREEN_HEIGHT
-	--		else y_r;
-		--Vertical Tile index = y >> TILE_BITS(5)--
-	--	ty_s <= "00000" & y_r(10 downto 0);
-		--Horizontal tile index (inner loop) 
-	--	tx_s <= tx_r+1 when tx_r < std_logic_vector(shift_right(to_unsigned(SCREEN_WIDTH, 10), TILE_BITS))
-	--		else (others => '0');
-			
-						--iterating throught rows (outer loop)--
-	y_s <= y_r+1 when tx_r = TILE_MAT_WIDTH and y_r < SCREEN_HEIGHT
-	else y_r;
-		--Vertical tile index--
-		ty_s <= std_logic_vector(shift_right(unsigned(y_r), TILE_BITS));
-					
-		--Horizontal tile index (inner loop) --
-		tx_s <= tx_r+1 when tx_r < std_logic_vector(shift_right(to_unsigned(SCREEN_WIDTH, 16), TILE_BITS))
-		else (others => '0');
+	
 			
 		process
 			begin
 				case (current_state_s) is
 					when INC_Y => 
+						--Iterating throught rows, outer loop--
 						y_s <= y_r+1;
 					when INC_TX =>
+						--Iterating throught vertical tiles, inner loop--
 						tx_s <= tx_r+1;
 					when CALC_TY =>
+						--Calculating horizontal tile index--
 						ty_s <= std_logic_vector(shift_right(unsigned(y_r), TILE_BITS));
 					when READ_UPPER =>
 					--Reading tile_mat element from memory. One tile_mat element takes two 32-bit location--
@@ -619,7 +360,6 @@ architecture Behavioral of fb_less_2d_gpu is
 						ti_s <= x"01";
 					
 					when READ_INDEX =>
-						--TODO: Replace loop with state machine--
 							--READ_INDEX--
 							if(ti_r < TILE_LIST_LEN) then
 								if(ti_r = tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0)) then
@@ -674,15 +414,19 @@ architecture Behavioral of fb_less_2d_gpu is
 									elsif(current_render_state_s = CALC_IW_M) then
 										--CALCULATE iw and m--
 										iw_s(ix) <= FIX_ONE - w_s(ix);
-										m_s(ix) <= std_logic_vector(shift_right(unsigned(w_s(ix)*weight_r(ix) + HALF), SHIFT));
+										--TODO: add 16-bit temp variable for m--
+										--m_s(ix) <= std_logic_vector(shift_right(unsigned(w_s(ix)*weight_r(ix) + HALF), SHIFT));
 									elsif(current_render_state_s = CALC_ACC) then
 										--CALCULATE ACC--
-										acc_r_s(ix) <= acc_r_r(ix) + m_s(ix)*rgba_r(15 downto 8);
-										acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(23 downto 16);
-										acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(31 downto 24);
+										--TODO: add 16-bit temp variables for acc--
+										--acc_r_s(ix) <= acc_r_r(ix) + m_s(ix)*rgba_r(15 downto 8);
+										--acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(23 downto 16);
+										--acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(31 downto 24);
+										
 									else	
 										--CALCULATE_WEIGHT--
-										weight_s(ix) <= std_logic_vector((shift_right(unsigned(iw_s(ix)*weight_r(ix) + HALF), SHIFT));
+										--TODO: add 16-bit temp variable for weight--
+										--weight_s(ix) <= std_logic_vector(shift_right(unsigned(iw_s(ix)*weight_r(ix) + HALF), SHIFT));
 										
 										--Stall rendering till next RENDER state--
 										start_rendering_s <= "0";
@@ -706,7 +450,6 @@ architecture Behavioral of fb_less_2d_gpu is
 							--Writting resulting rgb components of tile line in parallel--
 							for ix in 0 to TILE_LINE-1 loop
 								x_s(ix) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
-								wait until rising_edge(clk_i);
 								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(23 downto 16) <= acc_r_r(ix);
 								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(15 downto 8) <= acc_g_r(ix);
 								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(7 downto 0) <= acc_b_r(ix);
@@ -763,182 +506,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	 
 	 
 	 -------------------------------END------------------------------------
-	 
-	 
-	 
 	
-	------------------------------------
-	--- STAGE 0, citanje indeksa mape ---
-	------------------------------------
-	
-	
-	comp_gen: for i in 0 to REGISTER_NUMBER-1 generate	
-      -- Slice out data from registers --
-		reg_row_s(i)    <= registers_s(i)(56 downto 48);
-		reg_col_s(i)    <= registers_s(i)(41 downto 32);
-		reg_size_s(i)   <= registers_s(i)(27 downto 24);
-		reg_en_s(i)     <= registers_s(i)(31);
-		reg_rot_s(i)    <= registers_s(i)(23 downto 16);
-		reg_pointer_s(i)<= registers_s(i)(15 downto 0);
-		
-      -- Prepare some additional data, based on known values --
-		reg_end_row_s(i) <= reg_row_s(i) + reg_size_s(i);
-		reg_end_col_s(i) <= reg_col_s(i) + reg_size_s(i);
-		
-		reg_intsect_s0(i) <= '1' when 
-                          ( pixel_row_i >= reg_row_s(i)      and
-                            pixel_row_i <= reg_end_row_s(i)  and
-                            pixel_col_i >= reg_col_s(i)      and
-                            pixel_col_i <= reg_end_col_s(i)
-                          ) and reg_en_s(i) = '1'  
-                          else
-                          '0';
-	end generate comp_gen;
 
-
-		
-	reg_intersected_s0 <= "1001" when reg_intsect_s0(9) = '1' else
-                        "1000" when reg_intsect_s0(8) = '1' else
-                        "0111" when reg_intsect_s0(7) = '1' else
-                        "0110" when reg_intsect_s0(6) = '1' else
-                        "0101" when reg_intsect_s0(5) = '1' else
-                        "0100" when reg_intsect_s0(4) = '1' else
-                        "0011" when reg_intsect_s0(3) = '1' else
-                        "0010" when reg_intsect_s0(2) = '1' else
-                        "0001" when reg_intsect_s0(1) = '1' else
-                        "0000" when reg_intsect_s0(0) = '1' else
-                        "0000"; 				
-
-	
-	------------------------------------
-	--- STAGE 3,  z, rot, addr        ---
-	------------------------------------
-	
-	img_z_coor_s3 <= unsigned(mem_data_s(31 downto 24));
-	img_rot_s3    <= unsigned(mem_data_s(23 downto 16));
-	img_addr_s3   <= unsigned(mem_data_s(ADDR_WIDTH-1 downto 0));
-	
-	img_row_s3 <= pixel_row_i(3 downto 0) when stat_img_size_is_16 = '1' else '0' & pixel_row_i(2 downto 0);
-	img_col_s3 <= pixel_col_i(3 downto 0) when stat_img_size_is_16 = '1' else '0' & pixel_col_i(2 downto 0);	
-	
-	--------------------------------------------------
-	--- STAGE 4,  img_tex_col_s, img_tex_row_s      ---
-	--------------------------------------------------
-	
-	--if 7 when 8 then 15 when 16? bravo una
-	
-	stat_img_size <= "1111" when stat_img_size_is_16 = '1' else "0111";
-	
-	with img_rot_r4 select
-		img_tex_col_s4 <= 
-		   img_col_r4       when "00000000",   -- 0  --skinuli nulu spreda
-		   stat_img_size - img_row_r4   when "00000001",   -- 90    --size_8_c
-			stat_img_size - img_col_r4  when "00000010",   -- 180
-			img_row_r4		  when others; 		 -- 270   --skinuli nulu spreda
-	
-	with img_rot_r4 select
-		img_tex_row_s4 <= 
-			img_row_r4        when "00000000",   -- 0   --skinuli nulu spreda
-			img_col_r4        when "00000001",   -- 90	--skinuli nulu spreda
-			stat_img_size - img_row_r4   when "00000010",	  -- 180
-			stat_img_size - img_col_r4   when others;       -- 270
-
-	--------------------------------------------------
-	--- STAGE 5,  img_tex_offset_s                 ---
-	--------------------------------------------------	
-			
-	img_tex_offset_s5 <= 
-		img_tex_row_r5 & img_tex_col_r5
-		when stat_img_size_is_16 = '1' else 
-		"00" & img_tex_row_r5(2 downto 0) & img_tex_col_r5(2 downto 0);
-
-	
-	----------------------------------
-	--- STAGE 6,  scnd_stg_addr_r  ---
-	----------------------------------
-	
-	img_pix_addr_s6 <= img_addr_r6 + img_tex_word_r6;
-	
-	max_s6      <= reg_size_s(to_integer(reg_intersected_r6));
-	rot_s6      <= reg_rot_s(to_integer(reg_intersected_r6));		
-	
-	sprt_int_row_s6 <= pixel_row_i - reg_row_s(to_integer(reg_intersected_r6));
-	sprt_int_col_s6 <= pixel_col_i - reg_col_s(to_integer(reg_intersected_r6));
-	
-	
-	-----------------------------------------------------------------
-	--- STAGE 7,  img_color_idx_r ,sprt_tex_offset_r  img_z_coor_r ---                
-	-----------------------------------------------------------------
-	
-	sprt_row_s7 <= sprt_int_row_r7(3 downto 0);
-	sprt_col_s7 <= sprt_int_col_r7(3 downto 0);
-	
-	s_col_s7 <= sprt_col_s7             when rot_r7 = x"00" else -- 0
-				  max_r7 - sprt_row_s7 when rot_r7 = x"01" else -- 90
-				  max_r7 - sprt_col_s7 when rot_r7 = x"02" else -- 180
-				  sprt_row_s7;                                -- 270
-				  
-	s_row_s7 <= sprt_row_s7              when rot_r7 = x"00" else  -- 0
-				  sprt_col_s7			when rot_r7 = x"01" else  -- 90
-				  max_r7 - sprt_row_s7  when rot_r7 = x"02" else  -- 180
-				  max_r7 - sprt_col_s7;                           -- 270
-				  
-	
-	
-	-------------------------------------------------------------------
-    --- STAGE 9, sprt_tex_offset_r, img_color_idx_r, img_z_coor_r	---
-    -------------------------------------------------------------------
-	
-	-- Get color index of static image.
-	with img_tex_pix_sel_r9 select	
-		img_color_idx_s9 <= 	
-			unsigned(mem_data_s( 7 downto  0)) when "11",
-			unsigned(mem_data_s(15 downto  8)) when "10",
-			unsigned(mem_data_s(23 downto 16)) when "01",
-			unsigned(mem_data_s(31 downto 24)) when others;
-
-	sprt_addr_s9 <= reg_pointer_s(to_integer(reg_intersected_r9))(12 downto 0) + sprt_tex_offset_r9(7 downto 2);
-	
-	-------------------------------
-    --- STAGE 12, palette_idx_s	---
-    -------------------------------
-	
-	--	 Calclulate color index of sprite --
-	with sprt_tex_offset_r12(1 downto 0) select
-      spr_color_idx_s12 <= 
-			unsigned(mem_data_s( 7 downto  0)) when "11",
-			unsigned(mem_data_s(15 downto  8)) when "10",
-			unsigned(mem_data_s(23 downto 16)) when "01",
-			unsigned(mem_data_s(31 downto 24)) when others;
-	
-	-------------------------------
-    --- STAGE 13, palette_idx_s	---
-    -------------------------------
-	--palette_idx_s13 <= img_color_idx_r13;
-	
-	palette_idx_s13   <= spr_color_idx_r13 when 
-                       (
-                        reg_intsect_r1 (to_integer(reg_intersected_r13)) = '1' and
-                        (
-                           -- z sort --
-                           ( ( img_z_coor_r13 <= sprite_z_coor ) and ( spr_color_idx_r13 > x"00" ) ) or
-                           -- alpha sort ( if static img index is transparent ) --
-                           ( ( img_z_coor_r13 > sprite_z_coor ) and ( img_color_idx_r13 = x"00" ) )
-                        )
-                      ) else 
-                      img_color_idx_r13; 		
-	
-	-----------------------------------
-	--- STAGE 14, zero_stg_addr_r	---
-	-----------------------------------
-	
-    palette_addr_s14 <= (ADDR_WIDTH-1 downto 8 => '0') & palette_idx_r14;
-	 
-	 process(clk_i) begin
-      if rising_edge(clk_i) then
-			palette_addr_r15 <= palette_addr_s14;
-      end if;
-	end process;
 	
 	
 	-----------------------------------------------------------------------------------
