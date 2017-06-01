@@ -12,7 +12,7 @@
     <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved. -->
   </header>
 
-  <version xil_pn:ise_version="14.7" xil_pn:schema_version="2"/>
+  <version xil_pn:ise_version="14.6" xil_pn:schema_version="2"/>
 
   <files>
     <file xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu_periph.vhd" xil_pn:type="FILE_VHDL">
@@ -21,41 +21,6 @@
       <association xil_pn:name="PostRouteSimulation" xil_pn:seqID="1"/>
       <association xil_pn:name="PostTranslateSimulation" xil_pn:seqID="1"/>
       <library xil_pn:name="fb_less_2d_gpu_periph_v1_00_a"/>
-    </file>
-    <file xil_pn:name="../../hdl/vhdl/user_logic.vhd" xil_pn:type="FILE_VHDL">
-      <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
-      <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
-      <library xil_pn:name="fb_less_2d_gpu_periph_v1_00_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/proc_common_pkg.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="proc_common_v3_00_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/ipif_pkg.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="proc_common_v3_00_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/or_muxcy.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="proc_common_v3_00_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/or_gate128.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="proc_common_v3_00_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/family_support.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="proc_common_v3_00_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/pselect_f.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="proc_common_v3_00_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/counter_f.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="proc_common_v3_00_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/address_decoder.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="axi_lite_ipif_v1_01_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="axi_lite_ipif_v1_01_a"/>
-    </file>
-    <file xil_pn:name="/Xilinx/14.6/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/axi_lite_ipif.vhd" xil_pn:type="FILE_VHDL">
-      <library xil_pn:name="axi_lite_ipif_v1_01_a"/>
     </file>
     <file xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="1"/>
@@ -70,6 +35,7 @@
     <file xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu_standalone.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
+      <library xil_pn:name="fb_less_2d_gpu_periph_v1_00_a"/>
     </file>
     <file xil_pn:name="../../hdl/vhdl/clk_gen_100MHz_a.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
@@ -97,10 +63,12 @@
     <file xil_pn:name="flip_flop.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="0"/>
+      <library xil_pn:name="fb_less_2d_gpu_periph_v1_00_a"/>
     </file>
     <file xil_pn:name="reg.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="0"/>
       <association xil_pn:name="Implementation" xil_pn:seqID="2"/>
+      <library xil_pn:name="fb_less_2d_gpu_periph_v1_00_a"/>
     </file>
     <file xil_pn:name="../../sim/fb_less_2d_gpu_tb.vhd" xil_pn:type="FILE_VHDL">
       <association xil_pn:name="BehavioralSimulation" xil_pn:seqID="2"/>
@@ -136,7 +104,7 @@
     <property xil_pn:name="Change Device Speed To" xil_pn:value="-2" xil_pn:valueState="default"/>
     <property xil_pn:name="Change Device Speed To Post Trace" xil_pn:value="-2" xil_pn:valueState="default"/>
     <property xil_pn:name="Combinatorial Logic Optimization" xil_pn:value="false" xil_pn:valueState="default"/>
-    <property xil_pn:name="Compile EDK Simulation Library" xil_pn:value="true" xil_pn:valueState="non-default"/>
+    <property xil_pn:name="Compile EDK Simulation Library" xil_pn:value="true" xil_pn:valueState="default"/>
     <property xil_pn:name="Compile SIMPRIM (Timing) Simulation Library" xil_pn:value="true" xil_pn:valueState="default"/>
     <property xil_pn:name="Compile UNISIM (Functional) Simulation Library" xil_pn:value="true" xil_pn:valueState="default"/>
     <property xil_pn:name="Compile XilinxCoreLib (CORE Generator) Simulation Library" xil_pn:value="true" xil_pn:valueState="default"/>
