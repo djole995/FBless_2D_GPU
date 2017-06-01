@@ -137,3 +137,10 @@
 09:39:04.953 INFO  - Refreshed build settings on project hello_world 
 10:33:44.745 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
 10:36:10.473 ERROR - Unexpected error while parsing XMD response ?: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near  
+08:15:05.332 INFO  - Restoring local repository preferences: 
+		 D:\work\lprs2\2013_2014\Resene_vezbe\lab56\basic_system 
+08:15:05.878 ERROR - Unable to read in MSS file D:\Sabac_i_Radenkovic\FBless_2D_GPU\SDK\SDK_Workspace\hello_world_bsp\system.mss. 
+08:15:05.894 ERROR - Unable to read in MSS file D:\Sabac_i_Radenkovic\FBless_2D_GPU\SDK\SDK_Workspace\hello_world_bsp\system.mss. 
+08:15:06.018 WARN  - Unable to determine location of documentation for OS . 
+08:15:06.018 ERROR - Unable to read in MSS file D:\Sabac_i_Radenkovic\FBless_2D_GPU\SDK\SDK_Workspace\hello_world_bsp\system.mss. 
+08:15:06.034 ERROR - Unable to read in MSS file D:\Sabac_i_Radenkovic\FBless_2D_GPU\SDK\SDK_Workspace\hello_world_bsp\system.mss. 

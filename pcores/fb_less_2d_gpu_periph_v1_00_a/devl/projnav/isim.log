@@ -1,5 +1,5 @@
 ISim log file
-Running: D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\devl\projnav\fb_less_2d_gpu_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/fb_less_2d_gpu_isim_beh.wdb 
+Running: D:\Sabac_i_Radenkovic\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\devl\projnav\testbench_isim_beh.exe -intstyle ise -gui -tclbatch isim.cmd -wdb D:/Sabac_i_Radenkovic/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_isim_beh.wdb 
 ISim P.68d (signature 0x7708f090)
 ----------------------------------------------------------------------
 INFO:Security:50 - The XILINXD_LICENSE_FILE environment variable is set to '2100@licserver'.
@@ -18,5 +18,13 @@ Time resolution is 1 ps
 # onerror resume
 # wave add /
 # run 1000 ns
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run 1.00us
+Simulator is doing circuit initialization process.
+Finished circuit initialization process.
+# restart
+# run 1.00us
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.

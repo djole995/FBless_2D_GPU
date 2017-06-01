@@ -8,16 +8,7 @@
 <!-- Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.    -->
 
 <messages>
-<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;/home/mika/Desktop/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/sim/fb_less_2d_gpu_tb.vhd&quot; into library work</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/mika/Desktop/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/sim/fb_less_2d_gpu_tb.vhd</arg>&quot; Line <arg fmt="%d" index="2">13</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&lt;&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/mika/Desktop/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/sim/fb_less_2d_gpu_tb.vhd</arg>&quot; Line <arg fmt="%d" index="2">22</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&lt;&quot;.</arg>
-</msg>
-
-<msg type="error" file="ProjectMgmt" num="806" >&quot;<arg fmt="%s" index="1">/home/mika/Desktop/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/sim/fb_less_2d_gpu_tb.vhd</arg>&quot; Line <arg fmt="%d" index="2">28</arg>. <arg fmt="%s" index="3">Syntax error near &quot;&lt;&quot;.</arg>
+<msg type="info" file="ProjectMgmt" num="1061" ><arg fmt="%s" index="1">Parsing VHDL file &quot;D:/Sabac_i_Radenkovic/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/sim/fb_less_2d_gpu_tb.vhd&quot; into library fb_less_2d_gpu_periph_v1_00_a</arg>
 </msg>
 
 </messages>
