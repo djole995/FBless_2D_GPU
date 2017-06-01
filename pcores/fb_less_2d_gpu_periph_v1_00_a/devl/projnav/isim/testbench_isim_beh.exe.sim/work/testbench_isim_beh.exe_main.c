@@ -17,6 +17,8 @@ struct XSI_INFO xsi_info;
 char *IEEE_P_2592010699;
 char *STD_STANDARD;
 char *IEEE_P_1242562249;
+char *IEEE_P_3499444699;
+char *IEEE_P_3620187407;
 
 
 int main(int argc, char **argv)
@@ -27,6 +29,15 @@ int main(int argc, char **argv)
     xsi_register_min_prec_unit(-12);
     ieee_p_2592010699_init();
     ieee_p_1242562249_init();
+    ieee_p_3499444699_init();
+    ieee_p_3620187407_init();
+    fb_less_2d_gpu_periph_v1_00_a_a_3213253685_1446275585_init();
+    fb_less_2d_gpu_periph_v1_00_a_a_0581594743_2620846905_init();
+    fb_less_2d_gpu_periph_v1_00_a_a_2598529468_2620846905_init();
+    fb_less_2d_gpu_periph_v1_00_a_a_1682954871_2620846905_init();
+    fb_less_2d_gpu_periph_v1_00_a_a_2469850802_2620846905_init();
+    fb_less_2d_gpu_periph_v1_00_a_a_0788513494_2620846905_init();
+    fb_less_2d_gpu_periph_v1_00_a_a_0602906791_2620846905_init();
     fb_less_2d_gpu_periph_v1_00_a_a_1530147970_3212880686_init();
     fb_less_2d_gpu_periph_v1_00_a_a_1949178628_2372691052_init();
 
@@ -37,6 +48,8 @@ int main(int argc, char **argv)
     xsi_register_ieee_std_logic_1164(IEEE_P_2592010699);
     STD_STANDARD = xsi_get_engine_memory("std_standard");
     IEEE_P_1242562249 = xsi_get_engine_memory("ieee_p_1242562249");
+    IEEE_P_3499444699 = xsi_get_engine_memory("ieee_p_3499444699");
+    IEEE_P_3620187407 = xsi_get_engine_memory("ieee_p_3620187407");
 
     return xsi_run_simulation(argc, argv);
 
