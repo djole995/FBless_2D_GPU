@@ -107,7 +107,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	type draw_list_indices is array (0 to 6) of std_logic_vector (8 downto 0);
 	type tile_mat_list_end is array (0 to 299) of std_logic_vector(2 downto 0);
 	type tile_mat is array (0 to 299) of draw_list_indices;
-	type tState is (IDLE, INC_Y, INC_TX, CALC_TY, READ_UPPER, READ_LOWER, READ_INDEX, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER, CALC_W, CALC_IW_M, CALC_ACC, CALC_WEIGHT, CHECK_OPAQUE, WRITE_PIXEL, FINISH);
+	type tState is (IDLE, INC_Y, INC_TX, CALC_TY, READ_UPPER, WAIT_VALID_DATA, READ_LOWER, READ_INDEX, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER, CALC_W, CALC_IW_M, CALC_ACC, CALC_WEIGHT, CHECK_OPAQUE, WRITE_PIXEL, FINISH);
 	type acc_color is array(0 to TILE_LINE-1) of std_logic_vector(7 downto 0);
 	type tile_line_arr_u16 is array(0 to TILE_LINE-1) of std_logic_vector(15 downto 0);
 	
@@ -281,7 +281,7 @@ begin
 			end if;
 		end process;
 		
-		--New vertical tile--
+		--New vertical tile (y mod TILE_LINE-1 = 0)--
 		read_tile_mat <= y_r and std_logic_vector(to_unsigned(TILE_LINE-1, 16));
 		
 		--Global state--
@@ -290,13 +290,15 @@ begin
 				when IDLE =>
 					next_state_s <= CALC_TY;
 				when CALC_TY =>
-					--New tile -> read tile mat element--
-					if((read_tile_mat = 0 and y_r > 0) or tx_s = 0) then
+					--New tile -> read tile mat element from memory--
+					if(read_tile_mat = 0) then
 						next_state_s <= READ_UPPER;--INC_TX;READ_UPPER;
 					else
 						next_state_s <= WRITE_PIXEL;
 					end if;
 				when READ_UPPER =>
+					next_state_s <= WAIT_VALID_DATA;--READ_LOWER;
+				when WAIT_VALID_DATA =>
 					next_state_s <= READ_LOWER;
 				when READ_LOWER =>
 					next_state_s <= WRITE_PIXEL;--READ_INDEX;
