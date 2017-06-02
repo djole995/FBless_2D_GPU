@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="testbench" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="21" />
+   <wvobject fp_name="/testbench/clk_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_i</obj_property>
+      <obj_property name="ObjectShortName">clk_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/rst_n_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst_n_i</obj_property>
+      <obj_property name="ObjectShortName">rst_n_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/bus_addr_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bus_addr_i[12:0]</obj_property>
+      <obj_property name="ObjectShortName">bus_addr_i[12:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/bus_data_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">bus_data_i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">bus_data_i[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/bus_we_i" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">bus_we_i</obj_property>
+      <obj_property name="ObjectShortName">bus_we_i</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/pixel_row_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pixel_row_i[8:0]</obj_property>
+      <obj_property name="ObjectShortName">pixel_row_i[8:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/pixel_col_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pixel_col_i[9:0]</obj_property>
+      <obj_property name="ObjectShortName">pixel_col_i[9:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/phase_i" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">phase_i[1:0]</obj_property>
+      <obj_property name="ObjectShortName">phase_i[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/rgb_o" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rgb_o[23:0]</obj_property>
+      <obj_property name="ObjectShortName">rgb_o[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/data_width" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">data_width</obj_property>
+      <obj_property name="ObjectShortName">data_width</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/color_width" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">color_width</obj_property>
+      <obj_property name="ObjectShortName">color_width</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/addr_width" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">addr_width</obj_property>
+      <obj_property name="ObjectShortName">addr_width</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/clk_period" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">clk_period</obj_property>
+      <obj_property name="ObjectShortName">clk_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/tile_mat_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tile_mat_r[0:15]</obj_property>
+      <obj_property name="ObjectShortName">tile_mat_r[0:15]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/y_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">y_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">y_r[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/tx_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tx_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">tx_r[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/ty_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ty_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ty_r[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/mem_addr_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">mem_addr_r[12:0]</obj_property>
+      <obj_property name="ObjectShortName">mem_addr_r[12:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/current_state_s" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">current_state_s</obj_property>
+      <obj_property name="ObjectShortName">current_state_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/read_tile_mat" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">read_tile_mat[15:0]</obj_property>
+      <obj_property name="ObjectShortName">read_tile_mat[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/next_state_s" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">next_state_s</obj_property>
+      <obj_property name="ObjectShortName">next_state_s</obj_property>
+   </wvobject>
+</wave_config>

@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/Sabac_i_Radenkovic/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/sim/fb_less_2d_gpu_tb.vhd";
+static const char *ng0 = "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/sim/fb_less_2d_gpu_tb.vhd";
 extern char *IEEE_P_2592010699;
 
 unsigned char ieee_p_2592010699_sub_1690584930_503743352(char *, unsigned char );

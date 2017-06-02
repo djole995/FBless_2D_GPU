@@ -209,6 +209,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal index_s : std_logic_vector(19 downto 0);
 	signal index_r : std_logic_vector(19 downto 0);
 	
+	signal read_tile_mat : std_logic_vector(15 downto 0);
 	
 	
 	component reg is
@@ -280,17 +281,25 @@ begin
 			end if;
 		end process;
 		
+		--New vertical tile--
+		read_tile_mat <= y_r and std_logic_vector(to_unsigned(TILE_LINE-1, 16));
+		
 		--Global state--
-		process(current_state_s, current_render_state_s, y_r, tx_r) begin
+		process(current_state_s, current_render_state_s, y_r, tx_r, tx_s, read_tile_mat) begin
 			case(current_state_s) is
 				when IDLE =>
 					next_state_s <= CALC_TY;
 				when CALC_TY =>
-					next_state_s <= READ_UPPER;--INC_TX;READ_UPPER;
+					--New tile -> read tile mat element--
+					if((read_tile_mat = 0 and y_r > 0) or tx_s = 0) then
+						next_state_s <= READ_UPPER;--INC_TX;READ_UPPER;
+					else
+						next_state_s <= WRITE_PIXEL;
+					end if;
 				when READ_UPPER =>
 					next_state_s <= READ_LOWER;
 				when READ_LOWER =>
-					next_state_s <= INC_TX;--READ_INDEX;
+					next_state_s <= WRITE_PIXEL;--READ_INDEX;
 				when READ_INDEX =>
 					next_state_s <= READ_POSITION;
 				when READ_POSITION =>
@@ -320,7 +329,7 @@ begin
 				when INC_Y =>
 					next_state_s <= INC_TX;
 				when INC_TX =>
-					next_state_s <= READ_UPPER;
+					next_state_s <= CALC_TY;
 					
 				--STOP state--
 				--Algorithm is finished, draw pixels--
@@ -373,7 +382,6 @@ begin
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(1) <= mem_data_s(23 downto 16);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(2) <= mem_data_s(15 downto 8);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(3) <= mem_data_s(7 downto 0);
-					
 						mem_addr_s <= mem_addr_r+1;
 					when READ_LOWER => 
 						--READ_MATLIST_HIWORD--

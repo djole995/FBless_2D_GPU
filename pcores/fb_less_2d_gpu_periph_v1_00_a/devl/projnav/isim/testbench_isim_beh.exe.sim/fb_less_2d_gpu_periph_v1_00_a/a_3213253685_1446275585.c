@@ -21,7 +21,7 @@
 #include <malloc.h>
 #define alloca _alloca
 #endif
-static const char *ng0 = "D:/Sabac_i_Radenkovic/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/ram.vhd";
+static const char *ng0 = "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/ram.vhd";
 extern char *IEEE_P_2592010699;
 extern char *IEEE_P_1242562249;
 
@@ -75,7 +75,7 @@ LAB6:    xsi_set_current_line(1416, ng0);
     t3 = *((char **)t1);
     t1 = (t0 + 1192U);
     t4 = *((char **)t1);
-    t1 = (t0 + 6644U);
+    t1 = (t0 + 6416U);
     t9 = ieee_p_1242562249_sub_1657552908_1035706684(IEEE_P_1242562249, t4, t1);
     t10 = (t9 - 0);
     t11 = (t10 * 1);
@@ -97,7 +97,7 @@ LAB5:    xsi_set_current_line(1413, ng0);
     t7 = *((char **)t3);
     t3 = (t0 + 1672U);
     t8 = *((char **)t3);
-    t3 = (t0 + 6676U);
+    t3 = (t0 + 6448U);
     t9 = ieee_p_1242562249_sub_1657552908_1035706684(IEEE_P_1242562249, t8, t3);
     t10 = (t9 - 0);
     t11 = (t10 * 1);

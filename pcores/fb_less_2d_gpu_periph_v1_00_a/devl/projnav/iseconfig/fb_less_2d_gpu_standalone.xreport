@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2017-06-01T16:23:50</DateModified>
+  <DateModified>2017-06-01T23:18:04</DateModified>
   <ModuleName>fb_less_2d_gpu_standalone</ModuleName>
   <SummaryTimeStamp>Unknown</SummaryTimeStamp>
-  <SavedFilePath>D:/Sabac_i_Radenkovic/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/iseconfig/fb_less_2d_gpu_standalone.xreport</SavedFilePath>
-  <ImplementationReportsDirectory>D:/Sabac_i_Radenkovic/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav\</ImplementationReportsDirectory>
+  <SavedFilePath>D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/iseconfig/fb_less_2d_gpu_standalone.xreport</SavedFilePath>
+  <ImplementationReportsDirectory>D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav\</ImplementationReportsDirectory>
   <DateInitialized>2017-05-17T16:11:02</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
