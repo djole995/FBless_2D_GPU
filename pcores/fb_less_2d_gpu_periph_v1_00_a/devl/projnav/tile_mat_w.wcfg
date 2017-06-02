@@ -13,7 +13,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="21" />
+   <WVObjectSize size="25" />
    <wvobject fp_name="/testbench/clk_i" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk_i</obj_property>
       <obj_property name="ObjectShortName">clk_i</obj_property>
@@ -90,10 +90,6 @@
       <obj_property name="ObjectShortName">mem_addr_r[12:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/testbench/uut/current_state_s" type="other" db_ref_id="1">
-      <obj_property name="ElementShortName">current_state_s</obj_property>
-      <obj_property name="ObjectShortName">current_state_s</obj_property>
-   </wvobject>
    <wvobject fp_name="/testbench/uut/read_tile_mat" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">read_tile_mat[15:0]</obj_property>
       <obj_property name="ObjectShortName">read_tile_mat[15:0]</obj_property>
@@ -101,5 +97,28 @@
    <wvobject fp_name="/testbench/uut/next_state_s" type="other" db_ref_id="1">
       <obj_property name="ElementShortName">next_state_s</obj_property>
       <obj_property name="ObjectShortName">next_state_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/current_state_s" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">current_state_s</obj_property>
+      <obj_property name="ObjectShortName">current_state_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/go_to_next_tile_line_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">go_to_next_tile_line_s[0:0]</obj_property>
+      <obj_property name="ObjectShortName">go_to_next_tile_line_s[0:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/i_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">i_s[15:0]</obj_property>
+      <obj_property name="ObjectShortName">i_s[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/i_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">i_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">i_r[15:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/tile_mat_addr_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tile_mat_addr_s[12:0]</obj_property>
+      <obj_property name="ObjectShortName">tile_mat_addr_s[12:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
 </wave_config>
