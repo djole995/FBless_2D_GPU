@@ -36,6 +36,7 @@ int main(int argc, char **argv)
     fb_less_2d_gpu_periph_v1_00_a_a_2598529468_2620846905_init();
     fb_less_2d_gpu_periph_v1_00_a_a_1682954871_2620846905_init();
     fb_less_2d_gpu_periph_v1_00_a_a_2469850802_2620846905_init();
+    fb_less_2d_gpu_periph_v1_00_a_a_4247194212_2620846905_init();
     fb_less_2d_gpu_periph_v1_00_a_a_0788513494_2620846905_init();
     fb_less_2d_gpu_periph_v1_00_a_a_0602906791_2620846905_init();
     fb_less_2d_gpu_periph_v1_00_a_a_1530147970_3212880686_init();

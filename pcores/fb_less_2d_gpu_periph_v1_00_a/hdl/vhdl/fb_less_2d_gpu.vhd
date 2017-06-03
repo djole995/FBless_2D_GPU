@@ -109,7 +109,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	type draw_list_indices is array (0 to 6) of std_logic_vector (8 downto 0);
 	type tile_mat_list_end is array (0 to 299) of std_logic_vector(2 downto 0);
 	type tile_mat is array (0 to 299) of draw_list_indices;
-	type tState is (IDLE, INC_Y, INC_TX, CALC_TY, READ_UPPER, WAIT_VALID_DATA, READ_LOWER, READ_INDEX, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER, CALC_W, CALC_IW_M, CALC_ACC, CALC_WEIGHT, CHECK_OPAQUE, WRITE_PIXEL, FINISH);
+	type tState is (IDLE, INC_Y, INC_TX, CALC_TY, READ_UPPER, WAIT_VALID_DATA, READ_LOWER, READ_INDEX, READ_INDEX2, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER, CALC_W, CALC_IW_M, CALC_ACC, CALC_WEIGHT, CHECK_OPAQUE, WRITE_PIXEL, FINISH);
 	type acc_color is array(0 to TILE_LINE-1) of std_logic_vector(7 downto 0);
 	type tile_line_arr_u16 is array(0 to TILE_LINE-1) of std_logic_vector(15 downto 0);
 	
@@ -216,6 +216,10 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	signal read_tile_mat : std_logic_vector(15 downto 0);
 	
+	---Signals used for debbuging ---
+	signal current_tile_mat_elem_s: std_logic_vector(63 downto 0) := (others => '0');
+	signal current_tile_mat_elem_r: std_logic_vector(63 downto 0) := (others => '0');
+	
 	
 	component reg is
 	generic(
@@ -290,7 +294,8 @@ begin
 		read_tile_mat <= y_r and std_logic_vector(to_unsigned(TILE_LINE-1, 16));
 		
 		--Global state--
-		process(current_state_s, current_render_state_s, y_r, tx_r, tx_s, read_tile_mat, go_to_next_tile_line_s) begin
+		process(clk_i) begin--current_state_s, current_render_state_s, y_r, tx_r, tx_s, read_tile_mat, go_to_next_tile_line_s) begin
+		if(rising_edge(clk_i)) then
 			case(current_state_s) is
 				when IDLE =>
 					next_state_s <= CALC_TY;
@@ -307,13 +312,19 @@ begin
 					next_state_s <= READ_LOWER;
 				when READ_LOWER =>
 					next_state_s <= READ_INDEX;
+					
+				--Two phase for reading draw list--
+				-- 1st phase => get draw list index from tile mat elem --
+				-- 2nd phase => count and set memory address based on index form 1st phase--
 				when READ_INDEX =>
 					--End of tile list --
 					if(go_to_next_tile_line_s = "1") then
 						next_state_s <= WRITE_PIXEL;
 					else
-						next_state_s <= READ_INDEX;
+						next_state_s <= READ_INDEX2;
 					end if;
+				when READ_INDEX2 =>
+					next_state_s <= READ_INDEX;
 				when READ_POSITION =>
 					next_state_s <= READ_DIMENSIONS;
 				when READ_DIMENSIONS =>
@@ -348,6 +359,7 @@ begin
 				when others =>
 					next_state_s <= current_state_s;
 			end case;
+		end if;
 		end process;
 		
 		--Render state--
@@ -371,7 +383,7 @@ begin
 --		
 --	
 --			
-		process(clk_i)
+		process(current_state_s)--y_r, tx_r, ti_r, mem_data_s, i_r)
 			begin
 				case (current_state_s) is
 					when INC_Y => 
@@ -397,6 +409,9 @@ begin
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(2) <= mem_data_s(23 downto 16);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(1) <= mem_data_s(15 downto 8);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0) <= mem_data_s(7 downto 0);
+						
+						current_tile_mat_elem_s(31 downto 0) <= mem_data_s;
+						
 						mem_addr_s <= mem_addr_r+1;
 
 					when READ_LOWER => 
@@ -405,6 +420,8 @@ begin
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(6) <= mem_data_s(23 downto 16);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(5) <= mem_data_s(15 downto 8);
 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(4) <= mem_data_s(7 downto 0);
+						
+						current_tile_mat_elem_s(63 downto 32) <= mem_data_s;
 						
 						--Initializing resulting color components, executed in one cycle-- 
 						--Parallel statements--
@@ -426,7 +443,7 @@ begin
 					when READ_INDEX =>
 							--READ_INDEX--
 							if(ti_r < TILE_LIST_LEN) then
-								if(ti_r = tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0)) then
+								if(ti_r-1 = tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0)) then
 									-----------------------Break loop-----------------------------------------------
 									go_to_next_tile_line_s <= "1";
 								else
@@ -444,6 +461,7 @@ begin
 							end if;
 							
 							
+						when READ_INDEX2 =>
 							--Calculating indexed rect memory location--
 								--Rect position location = 2*i + DRAW_LIST_MEMORY_OFFSET--
 							mem_addr_s <= shift_left(unsigned(i_r(12 downto 0)), 1) + to_unsigned(600, 13);
@@ -520,6 +538,7 @@ begin
 ----								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(7 downto 0) <= acc_b_r(ix);
 --							end loop;
 						when WRITE_PIXEL =>
+							--Return tile mat address--
 							mem_addr_s <= tile_mat_addr_s;
 						when others =>
 					end case;
@@ -679,6 +698,19 @@ begin
 		i_d => index_s,
 		o_q => index_r
 	);
+	
+	current_tile_mat_reg : reg 
+	GENERIC MAP (
+	   WIDTH => 64,
+		RST_INIT => 0
+	)		
+	PORT MAP (
+	   i_clk => clk_i,
+		in_rst => rst_n_i,
+		i_d => current_tile_mat_elem_s,
+		o_q => current_tile_mat_elem_r
+	);
+	
 	
 	
 	y_reg : reg 
