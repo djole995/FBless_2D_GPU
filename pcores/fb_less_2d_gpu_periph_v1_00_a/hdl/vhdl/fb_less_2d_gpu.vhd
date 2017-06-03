@@ -310,6 +310,7 @@ begin
 		valid_data_next_state_s <= READ_LOWER when current_state_s = READ_UPPER
 									else READ_POSITION when current_state_s = READ_INDEX
 									else READ_DIMENSIONS when current_state_s = READ_POSITION
+									else READ_COLOR when current_state_s = READ_DIMENSIONS
 									else valid_data_next_state_r;
 		
 		--Global state--
@@ -328,7 +329,7 @@ begin
 				when READ_UPPER =>
 					next_state_s <= WAIT_VALID_DATA;--READ_LOWER;
 				when WAIT_VALID_DATA =>
-					next_state_s <= valid_data_next_state_r;--READ_LOWER;
+					next_state_s <= valid_data_next_state_r;
 				when READ_LOWER =>
 					next_state_s <= READ_INDEX;
 					
@@ -347,9 +348,9 @@ begin
 				when READ_POSITION =>
 					next_state_s <= WAIT_VALID_DATA;
 				when READ_DIMENSIONS =>
-					next_state_s <= READ_INDEX;--READ_COLOR;
+					next_state_s <= WAIT_VALID_DATA;
 				when READ_COLOR =>
-					next_state_s <= RENDER;
+					next_state_s <= READ_INDEX;--RENDER;
 				when RENDER =>
 					--Rendering is not finished => stall state--
 					if(current_render_state_s = IDLE) then
@@ -496,11 +497,12 @@ begin
 							rect_width_s <= mem_data_s(15 downto 0);
 							rect_height_s <= mem_data_s(31 downto 16);
 								--Rect rgba location = 2*i+1 + RECT_NUMBER(256)*2-1 --
-							mem_addr_s <= mem_addr_r+511;
+							mem_addr_s <= shift_right(mem_addr_r-600, 1)+600+512;
 --							
---						when READ_COLOR =>
---							rgba_s <= mem_data_s;
---							start_rendering_s <= "1";
+						when READ_COLOR =>
+							rgba_s <= mem_data_s;
+							start_rendering_s <= "1";
+							
 --						when RENDER =>
 --							--Rendering tile line in parallel--
 --							for ix in 0 to TILE_LINE-1 loop
