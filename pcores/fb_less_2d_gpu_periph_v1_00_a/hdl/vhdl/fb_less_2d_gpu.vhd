@@ -309,6 +309,7 @@ begin
 		--Saving information about next state after data validation stall cycle--
 		valid_data_next_state_s <= READ_LOWER when current_state_s = READ_UPPER
 									else READ_POSITION when current_state_s = READ_INDEX
+									else READ_DIMENSIONS when current_state_s = READ_POSITION
 									else valid_data_next_state_r;
 		
 		--Global state--
@@ -344,9 +345,9 @@ begin
 				when READ_INDEX2 =>
 					next_state_s <= WAIT_VALID_DATA;
 				when READ_POSITION =>
-					next_state_s <= READ_INDEX;--READ_DIMENSIONS;
+					next_state_s <= WAIT_VALID_DATA;
 				when READ_DIMENSIONS =>
-					next_state_s <= READ_COLOR;
+					next_state_s <= READ_INDEX;--READ_COLOR;
 				when READ_COLOR =>
 					next_state_s <= RENDER;
 				when RENDER =>
@@ -491,11 +492,11 @@ begin
 								--Rect dimensions location = 2*i+1--
 							mem_addr_s <= mem_addr_r+1;
 --							
---						when READ_DIMENSIONS => 
---							rect_width_s <= mem_data_s(31 downto 16);
---							rect_height_s <= mem_data_s(15 downto 0);
---								--Rect rgba location = 2*i+1 + RECT_NUMBER(256)*2-1 --
---							mem_addr_s <= mem_addr_r+511;
+						when READ_DIMENSIONS => 
+							rect_width_s <= mem_data_s(15 downto 0);
+							rect_height_s <= mem_data_s(31 downto 16);
+								--Rect rgba location = 2*i+1 + RECT_NUMBER(256)*2-1 --
+							mem_addr_s <= mem_addr_r+511;
 --							
 --						when READ_COLOR =>
 --							rgba_s <= mem_data_s;

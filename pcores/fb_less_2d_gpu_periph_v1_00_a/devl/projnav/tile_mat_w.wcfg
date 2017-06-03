@@ -13,7 +13,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="29" />
+   <WVObjectSize size="31" />
    <wvobject fp_name="/testbench/clk_i" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk_i</obj_property>
       <obj_property name="ObjectShortName">clk_i</obj_property>
@@ -139,5 +139,15 @@
    <wvobject fp_name="/testbench/uut/mem_data_s" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">mem_data_s[31:0]</obj_property>
       <obj_property name="ObjectShortName">mem_data_s[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/rect_width_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rect_width_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">rect_width_r[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/rect_height_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rect_height_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">rect_height_r[15:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
 </wave_config>
