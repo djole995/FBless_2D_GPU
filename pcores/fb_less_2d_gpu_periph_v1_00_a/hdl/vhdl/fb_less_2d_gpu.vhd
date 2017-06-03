@@ -135,6 +135,10 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal current_state_s : tState := IDLE;
 	signal next_state_s : tState := IDLE;
 	
+	--Indicates next state after wait valid date state--
+	signal valid_data_next_state_s : tState;
+	signal valid_data_next_state_r : tState;
+	
 	--Rendering calculation phase, valid in RENDER state only--
 	signal current_render_state_s : tState := IDLE;
 	signal next_render_state_s : tState;
@@ -280,6 +284,15 @@ begin
 				current_state_s <= next_state_s;
 			end if;
 		end process;
+		
+		--State after data valid stall state-- 
+		process(clk_i, rst_n_i) begin
+			if(rst_n_i = '0') then
+				valid_data_next_state_r <= IDLE;
+			elsif(rising_edge(clk_i)) then
+				valid_data_next_state_r <= valid_data_next_state_s;
+			end if;
+		end process;
 	
 				--Render state register--
 		process(clk_i) begin
@@ -292,6 +305,11 @@ begin
 		
 		--New vertical tile (y mod TILE_LINE-1 = 0)--
 		read_tile_mat <= y_r and std_logic_vector(to_unsigned(TILE_LINE-1, 16));
+		
+		--Saving information about next state after data validation stall cycle--
+		valid_data_next_state_s <= READ_LOWER when current_state_s = READ_UPPER
+									else READ_POSITION when current_state_s = READ_INDEX
+									else valid_data_next_state_r;
 		
 		--Global state--
 		process(clk_i) begin--current_state_s, current_render_state_s, y_r, tx_r, tx_s, read_tile_mat, go_to_next_tile_line_s) begin
@@ -309,7 +327,7 @@ begin
 				when READ_UPPER =>
 					next_state_s <= WAIT_VALID_DATA;--READ_LOWER;
 				when WAIT_VALID_DATA =>
-					next_state_s <= READ_LOWER;
+					next_state_s <= valid_data_next_state_r;--READ_LOWER;
 				when READ_LOWER =>
 					next_state_s <= READ_INDEX;
 					
@@ -324,9 +342,9 @@ begin
 						next_state_s <= READ_INDEX2;
 					end if;
 				when READ_INDEX2 =>
-					next_state_s <= READ_INDEX;
+					next_state_s <= WAIT_VALID_DATA;
 				when READ_POSITION =>
-					next_state_s <= READ_DIMENSIONS;
+					next_state_s <= READ_INDEX;--READ_DIMENSIONS;
 				when READ_DIMENSIONS =>
 					next_state_s <= READ_COLOR;
 				when READ_COLOR =>
@@ -466,12 +484,12 @@ begin
 								--Rect position location = 2*i + DRAW_LIST_MEMORY_OFFSET--
 							mem_addr_s <= shift_left(unsigned(i_r(12 downto 0)), 1) + to_unsigned(600, 13);
 --			
---						when READ_POSITION => 
---							rect_row_s <= mem_data_s(31 downto 16);
---							rect_col_s <= mem_data_s(15 downto 0);
---							
---								--Rect dimensions location = 2*i+1--
---							mem_addr_s <= mem_addr_r+1;
+						when READ_POSITION => 
+							rect_row_s <= mem_data_s(31 downto 16);
+							rect_col_s <= mem_data_s(15 downto 0);
+							
+								--Rect dimensions location = 2*i+1--
+							mem_addr_s <= mem_addr_r+1;
 --							
 --						when READ_DIMENSIONS => 
 --							rect_width_s <= mem_data_s(31 downto 16);

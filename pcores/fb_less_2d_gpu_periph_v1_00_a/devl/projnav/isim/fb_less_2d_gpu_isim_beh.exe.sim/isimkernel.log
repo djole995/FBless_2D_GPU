@@ -9,7 +9,7 @@ Sat Jun 03 15:09:45 2017
 
  Elaboration Time: 1.04521 sec
 
- Current Memory Usage: 1697.79 Meg
+ Current Memory Usage: 1537.36 Meg
 
  Total Signals          : 164
  Total Nets             : 313356
@@ -19,11 +19,12 @@ Sat Jun 03 15:09:45 2017
  Total Processes        : 45
  Total Traceable Variables  : 61
  Total Scalar Nets and Variables : 313903
-Total Line Count : 157
 
- Total Simulation Time: 1.57561 sec
+ Total Simulation Time: 1.38841 sec
 
- Current Memory Usage: 1697.79 Meg
+ Current Memory Usage: 908.173 Meg
 
-Sat Jun 03 15:10:04 2017
+Sat Jun 03 16:27:34 2017
+
+Jun 03 15:10:04 2017
 
