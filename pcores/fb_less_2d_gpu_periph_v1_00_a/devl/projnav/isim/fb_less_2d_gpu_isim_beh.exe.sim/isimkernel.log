@@ -1,30 +1,29 @@
 Command line:
    fb_less_2d_gpu_isim_beh.exe
      -simmode  gui
-     -simrunnum  1
-     -socket  51546
+     -simrunnum  0
+     -socket  56970
 
-Sat Jun 03 15:09:45 2017
+Sun Jun 04 13:11:48 2017
 
 
- Elaboration Time: 1.04521 sec
+ Elaboration Time: 0.967206 sec
 
- Current Memory Usage: 1537.36 Meg
+ Current Memory Usage: 1695.69 Meg
 
- Total Signals          : 164
- Total Nets             : 313356
- Total Signal Drivers   : 60
+ Total Signals          : 166
+ Total Nets             : 313358
+ Total Signal Drivers   : 68
  Total Blocks           : 21
  Total Primitive Blocks : 20
- Total Processes        : 45
+ Total Processes        : 47
  Total Traceable Variables  : 61
- Total Scalar Nets and Variables : 313903
+ Total Scalar Nets and Variables : 313905
+Total Line Count : 169
 
- Total Simulation Time: 1.38841 sec
+ Total Simulation Time: 1.37281 sec
 
- Current Memory Usage: 908.173 Meg
+ Current Memory Usage: 1695.69 Meg
 
-Sat Jun 03 16:27:34 2017
-
-Jun 03 15:10:04 2017
+Sun Jun 04 13:12:05 2017
 

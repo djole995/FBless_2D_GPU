@@ -181,6 +181,9 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal i_r: std_logic_vector(15 downto 0);
 	signal i_s: std_logic_vector(15 downto 0) := (others => '0');
 	
+	signal ix_s : std_logic_vector(15 downto 0);
+	signal ix_r : std_logic_vector(15 downto 0);
+	
 	signal x_r: tile_line_arr_u16;
 	signal x_s: tile_line_arr_u16;
 	
@@ -200,6 +203,11 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal w_s: tile_line_arr_u16;
 	signal iw_s: tile_line_arr_u16;
 	signal m_s: tile_line_arr_u16;
+	signal tmp_weight : std_logic_vector(31 downto 0);
+	signal tmp_m : std_logic_vector(31 downto 0);
+	signal tmp_acc_r : std_logic_vector(31 downto 0);
+	signal tmp_acc_g : std_logic_vector(31 downto 0);
+	signal tmp_acc_b : std_logic_vector(31 downto 0);
 	
 	signal stop_tile_partition_s: std_logic;
 	
@@ -503,41 +511,73 @@ begin
 							rgba_s <= mem_data_s;
 							start_rendering_s <= "1";
 							
---						when RENDER =>
---							--Rendering tile line in parallel--
---							for ix in 0 to TILE_LINE-1 loop
---								x_s(ix) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS) or to_unsigned(ix, 16));
---								--Pixel belongs to rect? --
---								if(rect_col_r <= x_s(ix) and x_s(ix) < rect_col_r+rect_width_r
---									and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
---									
---									--Execute one of the calculations based on render state--
---									if(current_render_state_s = CALC_W) then
---										--w_s = (u16) color.alpha << (SHIFT(13) - 8), hardcoded (shift_left doesn't accept concatenated vectors)-- 
---										w_s(ix) <= "000" & rgba_r(7 downto 0) & "00000";
---									elsif(current_render_state_s = CALC_IW_M) then
---										--CALCULATE iw and m--
---										iw_s(ix) <= FIX_ONE - w_s(ix);
---										--TODO: add 16-bit temp variable for m--
---										--m_s(ix) <= std_logic_vector(shift_right(unsigned(w_s(ix)*weight_r(ix) + HALF), SHIFT));
---									elsif(current_render_state_s = CALC_ACC) then
---										--CALCULATE ACC--
---										--TODO: add 16-bit temp variables for acc--
---										--acc_r_s(ix) <= acc_r_r(ix) + m_s(ix)*rgba_r(15 downto 8);
---										--acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(23 downto 16);
---										--acc_g_s(ix) <= acc_g_r(ix) + m_s(ix)*rgba_r(31 downto 24);
---										
---									else	
---										--CALCULATE_WEIGHT--
---										--TODO: add 16-bit temp variable for weight--
---										--weight_s(ix) <= std_logic_vector(shift_right(unsigned(iw_s(ix)*weight_r(ix) + HALF), SHIFT));
---										
---										--Stall rendering till next RENDER state--
---										start_rendering_s <= "0";
---									end if;
---									
---								end if;
---							end loop;
+							--Init tile line index used in rendering--
+							ix_s <= (others => '0');
+
+						when RENDER =>
+							--Rendering tile line in parallel--
+							--TODO : Make registers for this state and define when it's finished. --
+								--phase 1--
+								if(ix_r < TILE_LINE) then
+									x_s(to_integer(unsigned(ix_r))) <= std_logic_vector(shift_left(unsigned(tx_r), TILE_BITS)) or ix_r;
+								end if;
+								
+								--phase 2--
+								if(ix_r > 0 and ix_r < TILE_LINE+1) then
+									if(rect_col_r <= x_r(to_integer(unsigned(ix_r-1))) and x_r(to_integer(unsigned(ix_r-1))) < rect_col_r+rect_width_r
+										and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
+
+											--w_s = (u16) color.alpha << (SHIFT(13) - 8), hardcoded (shift_left doesn't accept concatenated vectors)-- 
+											w_s(to_integer(unsigned(ix_r-1))) <= "000" & rgba_r(7 downto 0) & "00000";
+									end if;
+								end if;
+									
+								--phase 3--
+								if(ix_r > 1 and ix_r < TILE_LINE+2) then
+									if(rect_col_r <= x_r(to_integer(unsigned(ix_r-2))) and x_r(to_integer(unsigned(ix_r-2))) < rect_col_r+rect_width_r
+										and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
+											
+											--CALCULATE iw and temp m--
+											iw_s(to_integer(unsigned(ix_r-2))) <= FIX_ONE - w_s(to_integer(unsigned(ix_r-2)));
+											tmp_m <= w_s(to_integer(unsigned(ix_r-2)))*weight_r(to_integer(unsigned(ix_r-2)));
+									end if;
+								end if;
+										
+								--phase 4--
+								if(ix_r > 2 and ix_r < TILE_LINE+3) then
+									if(rect_col_r <= x_r(to_integer(unsigned(ix_r-3))) and x_r(to_integer(unsigned(ix_r-3))) < rect_col_r+rect_width_r
+										and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
+											
+											--CALCULATE m and temp weight--
+											m_s(to_integer(unsigned(ix_r-3))) <= tmp_m(15 downto 0);
+											tmp_weight <= std_logic_vector(shift_right(unsigned(iw_s(to_integer(unsigned(ix_r-3))))*unsigned(weight_r(to_integer(unsigned(ix_r-3)))) + HALF, SHIFT));
+									end if;
+								end if;
+								
+								--phase 5--
+								if(ix_r > 3 and ix_r < TILE_LINE+4) then
+									if(rect_col_r <= x_r(to_integer(unsigned(ix_r-4))) and x_r(to_integer(unsigned(ix_r-4))) < rect_col_r+rect_width_r
+										and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
+											tmp_acc_r <= std_logic_vector(shift_right(unsigned(m_s(to_integer(unsigned(ix_r-4)))*rgba_r(15 downto 8)), SHIFT));
+											tmp_acc_g <= std_logic_vector(shift_right(unsigned(m_s(to_integer(unsigned(ix_r-4)))*rgba_r(23 downto 16)), SHIFT));
+											tmp_acc_b <= std_logic_vector(shift_right(unsigned(m_s(to_integer(unsigned(ix_r-4)))*rgba_r(31 downto 24)), SHIFT));
+											weight_r(to_integer(unsigned(ix_r-4))) <= tmp_weight(15 downto 0);
+									end if;
+								end if;
+								
+								--phase 6--
+								if(ix_r > 4 and ix_r < TILE_LINE+5) then
+									if(rect_col_r <= x_r(to_integer(unsigned(ix_r-5))) and x_r(to_integer(unsigned(ix_r-5))) < rect_col_r+rect_width_r
+										and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
+											--CALCULATE ACC--
+											acc_r_s(to_integer(unsigned(ix_r-5))) <= tmp_acc_r(7 downto 0);
+											acc_g_s(to_integer(unsigned(ix_r-5))) <= tmp_acc_g(7 downto 0);
+											acc_g_s(to_integer(unsigned(ix_r-5))) <= tmp_acc_b(7 downto 0);
+									end if;
+								end if;
+								
+								--INC IX--
+								ix_s <= ix_r+1;
 --
 --						when CHECK_OPAQUE =>
 --							--CHECK_OPAQUE--
@@ -545,8 +585,8 @@ begin
 --							if(weight_r(0) = 0 and weight_r(1) = 0 and weight_r(2) = 0
 --								and weight_r(3) = 0 and weight_r(4) = 0 and weight_r(5) = 0
 --								and weight_r(6) = 0) then
---								-----------------------Dummy line, break loop-----------------------------------------------
---								ti_s <= x"00";
+--								-----------------------Break loop-----------------------------------------------
+--								go_to_next_tile_line_s <= x"1";
 --							end if;
 --						
 --						when others =>

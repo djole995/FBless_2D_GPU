@@ -36,9 +36,6 @@ Finished circuit initialization process.
 # run 1.00us
 Simulator is doing circuit initialization process.
 Finished circuit initialization process.
-# restart
 # run 1.00us
-Simulator is doing circuit initialization process.
-Finished circuit initialization process.
 # run all
-Stopped at time : 722710 ns : File "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/reg.vhd" Line 29
+Stopped at time : 5672455 ns : File "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/reg.vhd" Line 29
