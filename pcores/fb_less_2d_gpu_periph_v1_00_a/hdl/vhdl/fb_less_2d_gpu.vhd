@@ -105,27 +105,20 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal go_to_next_tile_line_r : std_logic_vector(0 downto 0);
 	signal go_to_next_tile_line_s : std_logic_vector(0 downto 0);
 	
-	type pixels is array (0 to HEIGHT-1, 0 to WIDTH-1) of std_logic_vector(23 downto 0);
-	type draw_list_indices is array (0 to 6) of std_logic_vector (8 downto 0);
-	type tile_mat_list_end is array (0 to 299) of std_logic_vector(2 downto 0);
-	type tile_mat is array (0 to 299) of draw_list_indices;
+	
 	type tState is (IDLE, INC_Y, INC_TX, CALC_TY, READ_UPPER, WAIT_VALID_DATA, READ_LOWER, READ_INDEX, READ_INDEX2, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER, CALC_W, CALC_IW_M, CALC_ACC, CALC_WEIGHT, CHECK_OPAQUE, WRITE_PIXEL, FINISH);
 	type acc_color is array(0 to TILE_LINE-1) of std_logic_vector(7 downto 0);
 	type tile_line_arr_u16 is array(0 to TILE_LINE-1) of std_logic_vector(15 downto 0);
 	
-	type tile_list_type is array(0 to 7) of std_logic_vector (7 downto 0);
+	-- Tile mat elem, contains TILE_LIST_LEN draw list indices and tile mat end index. --
+	type tile_mat_type is array(0 to TILE_LIST_LEN) of std_logic_vector (7 downto 0);
 	
-	type tile_mat_type is array (0 to TILE_MAT_HEIGHT, 0 to TILE_MAT_WIDTH) of tile_list_type;
 	
-	
-	signal tile_mat_s: tile_mat_type := (others => ( others => (others => (others => '0'))));
-	signal tile_mat_r: tile_mat_type;
+	signal tile_mat_s: tile_mat_type := (others => ( others => '0'));
+	signal tile_mat_r: tile_mat_type := (others => ( others => '0'));
 	
 	signal tile_mat_addr_s : unsigned(ADDR_WIDTH-1 downto 0) := to_unsigned(0, ADDR_WIDTH);
 	signal tile_mat_addr_r : unsigned(ADDR_WIDTH-1 downto 0) := to_unsigned(0, ADDR_WIDTH);
-	
-	--signal tile_mat_s : tile_mat;
-	signal tile_mat_list_end_s : tile_mat_list_end;
 	
 	type t_tile_line_pixels is array (0 to TILE_LINE-1) of std_logic_vector(23 downto 0);
 	signal pix_buf_render, pix_buf_draw: t_tile_line_pixels;
@@ -143,44 +136,29 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	--Indicates next state after wait valid date state--
 	signal valid_data_next_state_s : tState;
-	signal valid_data_next_state_r : tState;
-	
-	--Rendering calculation phase, valid in RENDER state only--
-	signal current_render_state_s : tState := IDLE;
-	signal next_render_state_s : tState;
-	
-	signal start_rendering_s: std_logic_vector(0 downto 0);
-	signal start_rendering_r: std_logic_vector(0 downto 0);
-	
---	signal pixels_s: pixels;
---	signal pixels_r: pixels;	
+	signal valid_data_next_state_r : tState;	
 --		
-	signal rect_s: std_logic_vector(87 downto 0);
-	signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
-	signal draw_s : std_logic := '0';
+	-- Registers which stores data read from memory --
 	signal rgba_s : std_logic_vector(31 downto 0);
 	signal rect_row_s : std_logic_vector(15 downto 0) := x"FFFF";
 	signal rect_col_s : std_logic_vector(15 downto 0) := x"FFFF";
 	signal rect_width_s : std_logic_vector(15 downto 0) := x"00F0";
 	signal rect_height_s : std_logic_vector(15 downto 0) := x"00F0";
-	signal y_s : std_logic_vector(15 downto 0) := (others => '0');
-	signal ty_s : std_logic_vector(15 downto 0);
-	signal tx_s: std_logic_vector(15 downto 0) := (others => '0'); 
-	
-	--signal rect_s: std_logic_vector(87 downto 0);
-	--signal rect_list_s : std_logic_vector(87 downto 0) := x"001F00FF001F00FF0000FF";
-	signal tile_mat_list_end_r : tile_mat_list_end;
-	signal y_r : std_logic_vector(15 downto 0) := (others => '0');
-	signal ty_r : std_logic_vector(15 downto 0);
-	signal tx_r : std_logic_vector(15 downto 0) := (others => '0');
-	signal draw_r : std_logic := '0';
 	signal rgba_r : std_logic_vector(31 downto 0);
 	signal rect_row_r : std_logic_vector(15 downto 0);
 	signal rect_col_r : std_logic_vector(15 downto 0);
 	signal rect_width_r : std_logic_vector(15 downto 0);
 	signal rect_height_r : std_logic_vector(15 downto 0);
 	
-	--Tile list index
+	signal y_s : std_logic_vector(15 downto 0) := (others => '0');
+	signal y_r : std_logic_vector(15 downto 0) := (others => '0');
+	signal ty_s : std_logic_vector(15 downto 0);
+	signal tx_s: std_logic_vector(15 downto 0) := (others => '0'); 
+	signal ty_r : std_logic_vector(15 downto 0);
+	signal tx_r : std_logic_vector(15 downto 0) := (others => '0');
+
+	
+	--Tile list index--
 	signal ti_r: std_logic_vector(7 downto 0);
 	signal ti_s: std_logic_vector(7 downto 0);
 	
@@ -218,9 +196,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal tmp_acc_g : std_logic_vector(23 downto 0);
 	signal tmp_acc_b : std_logic_vector(23 downto 0);
 	
-	signal stop_tile_partition_s: std_logic;
 	
-	signal start_tile_partition_s: std_logic;
 	signal change_state_en_s: std_logic;
 	
 	signal tx_beg: std_logic_vector(15 downto 0);
@@ -232,14 +208,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal phase_s : std_logic_vector(1 downto 0);
 	signal phase_r : std_logic_vector(1 downto 0);
 	
-	signal index_s : std_logic_vector(19 downto 0);
-	signal index_r : std_logic_vector(19 downto 0);
-	
 	signal read_tile_mat : std_logic_vector(15 downto 0);
-	
-	---Signals used for debbuging ---
-	signal current_tile_mat_elem_s: std_logic_vector(63 downto 0) := (others => '0');
-	signal current_tile_mat_elem_r: std_logic_vector(63 downto 0) := (others => '0');
 	
 	
 	component reg is
@@ -308,15 +277,6 @@ begin
 				valid_data_next_state_r <= IDLE;
 			elsif(rising_edge(clk_i)) then
 				valid_data_next_state_r <= valid_data_next_state_s;
-			end if;
-		end process;
-	
-				--Render state register--
-		process(clk_i) begin
-			if(rst_n_i = '0') then
-				current_render_state_s <= IDLE;
-			elsif(rising_edge(clk_i)) then
-				current_render_state_s <= next_render_state_s;
 			end if;
 		end process;
 		
@@ -401,25 +361,6 @@ begin
 			end case;
 		end if;
 		end process;
-		
-		--Render state--
-		process(current_render_state_s, start_rendering_r) begin
-			case(current_render_state_s) is
-				when IDLE =>
-					--Rendering is triggered => start rendering calculations--
-					if(start_rendering_r = "1") then
-						next_render_state_s <= CALC_W;
-					end if;
-				when CALC_W =>
-					next_render_state_s <= CALC_IW_M;
-				when CALC_IW_M =>
-					next_render_state_s <= CALC_ACC;
-				when CALC_ACC =>
-					next_render_state_s <= CALC_WEIGHT;
-				when others =>
-					next_render_state_s <= IDLE;
-			end case;
-		end process;
 --		
 --	
 --			
@@ -445,23 +386,20 @@ begin
 					when READ_UPPER =>
 					--Reading tile_mat element from memory. One tile_mat element takes two 32-bit location--
 						--READ_MATLIST_LOWORD state--
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(3) <= mem_data_s(31 downto 24);
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(2) <= mem_data_s(23 downto 16);
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(1) <= mem_data_s(15 downto 8);
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0) <= mem_data_s(7 downto 0);
-						
-						current_tile_mat_elem_s(31 downto 0) <= mem_data_s;
+						tile_mat_s(3) <= mem_data_s(31 downto 24);
+						tile_mat_s(2) <= mem_data_s(23 downto 16);
+						tile_mat_s(1) <= mem_data_s(15 downto 8);
+						tile_mat_s(0) <= mem_data_s(7 downto 0);
 						
 						mem_addr_s <= mem_addr_r+1;
 
 					when READ_LOWER => 
 						--READ_MATLIST_HIWORD--
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(7) <= mem_data_s(31 downto 24);
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(6) <= mem_data_s(23 downto 16);
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(5) <= mem_data_s(15 downto 8);
-						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(4) <= mem_data_s(7 downto 0);
+						tile_mat_s(7) <= mem_data_s(31 downto 24);
+						tile_mat_s(6) <= mem_data_s(23 downto 16);
+						tile_mat_s(5) <= mem_data_s(15 downto 8);
+						tile_mat_s(4) <= mem_data_s(7 downto 0);
 						
-						current_tile_mat_elem_s(63 downto 32) <= mem_data_s;
 						
 						--Initializing resulting color components, executed in one cycle-- 
 						--Parallel statements--
@@ -487,12 +425,12 @@ begin
 					when READ_INDEX =>
 							--READ_INDEX--
 							if(ti_r < TILE_LIST_LEN) then
-								if(ti_r-1 = tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0)) then
+								if(ti_r-1 = tile_mat_r(0)) then
 									-----------------------Break loop-----------------------------------------------
 									go_to_next_tile_line_s <= "1";
 								else
 									--Extend draw list index to 16 bits--
-									i_s <= "00000000" & tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(to_integer(unsigned(ti_r)));
+									i_s <= "00000000" & tile_mat_r(to_integer(unsigned(ti_r)));
 									ti_s <= ti_r+1;
 								end if;
 							else
@@ -525,7 +463,6 @@ begin
 --							
 						when READ_COLOR =>
 							rgba_s <= mem_data_s;
-							start_rendering_s <= "1";
 							
 							--Init tile line index used in rendering--
 							ix_s <= (others => '0');
@@ -781,32 +718,6 @@ begin
 		o_q => phase_r
 	);
 	
-	index_reg : reg 
-	GENERIC MAP (
-	   WIDTH => 20,
-		RST_INIT => 0
-	)		
-	PORT MAP (
-	   i_clk => clk_i,
-		in_rst => rst_n_i,
-		i_d => index_s,
-		o_q => index_r
-	);
-	
-	current_tile_mat_reg : reg 
-	GENERIC MAP (
-	   WIDTH => 64,
-		RST_INIT => 0
-	)		
-	PORT MAP (
-	   i_clk => clk_i,
-		in_rst => rst_n_i,
-		i_d => current_tile_mat_elem_s,
-		o_q => current_tile_mat_elem_r
-	);
-	
-	
-	
 	y_reg : reg 
 	GENERIC MAP (
 	   WIDTH => 16,
@@ -865,18 +776,6 @@ begin
 		in_rst => rst_n_i,
 		i_d => i_s,
 		o_q => i_r
-	);
-	
-	start_render_reg : reg 
-	GENERIC MAP (
-	   WIDTH => 1,
-		RST_INIT => 0
-	)		
-	PORT MAP (
-	   i_clk => clk_i,
-		in_rst => rst_n_i,
-		i_d => start_rendering_s,
-		o_q => start_rendering_r
 	);
 	
 	next_tile_line_reg : reg 

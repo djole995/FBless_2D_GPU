@@ -4,5 +4,5 @@ OUTFILE=D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\devl\projnav\fb_le
 FAMILY=Spartan6
 PART=xc6slx45-2fgg676
 WORKINGDIR=D:\FBless_2D_GPU\pcores\fb_less_2d_gpu_periph_v1_00_a\devl\projnav
-LICENSE=ISE
-USER_INFO=209858334_178080923_210593072_268
+LICENSE=WebPack
+USER_INFO=211320737_0_0_633
