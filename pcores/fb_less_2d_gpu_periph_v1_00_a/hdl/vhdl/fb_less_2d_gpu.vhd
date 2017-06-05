@@ -118,7 +118,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	type tile_mat_type is array (0 to TILE_MAT_HEIGHT, 0 to TILE_MAT_WIDTH) of tile_list_type;
 	
 	
-	signal tile_mat_s: tile_mat_type;
+	signal tile_mat_s: tile_mat_type := (others => ( others => (others => (others => '0'))));
 	signal tile_mat_r: tile_mat_type;
 	
 	signal tile_mat_addr_s : unsigned(ADDR_WIDTH-1 downto 0) := to_unsigned(0, ADDR_WIDTH);
@@ -132,6 +132,7 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal pix_buf_render_full_and_valid : std_logic; -- Assert when rendering done, de-assert it when ready is on 1.
 	signal pix_buf_draw_empty_and_ready: std_logic; -- Assert when drawing process could took data, de-assert it when valid is 1.
 	signal pix_buf_draw_error : std_logic;
+	signal pix_buf_draw_idx : unsigned(TILE_BITS-1 downto 0);
 	
 	
 --	signal tile_mat_r : tile_mat;
@@ -192,6 +193,9 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal x_r: tile_line_arr_u16;
 	signal x_s: tile_line_arr_u16;
 	
+	signal xx_r: unsigned(15 downto 0);
+	signal xx_s: unsigned(15 downto 0);
+	
 	signal acc_r_r: acc_color;
 	signal acc_r_s: acc_color;
 	
@@ -210,9 +214,9 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal m_s: tile_line_arr_u16;
 	signal tmp_weight : std_logic_vector(31 downto 0);
 	signal tmp_m : std_logic_vector(31 downto 0);
-	signal tmp_acc_r : std_logic_vector(31 downto 0);
-	signal tmp_acc_g : std_logic_vector(31 downto 0);
-	signal tmp_acc_b : std_logic_vector(31 downto 0);
+	signal tmp_acc_r : std_logic_vector(23 downto 0);
+	signal tmp_acc_g : std_logic_vector(23 downto 0);
+	signal tmp_acc_b : std_logic_vector(23 downto 0);
 	
 	signal stop_tile_partition_s: std_logic;
 	
@@ -363,24 +367,27 @@ begin
 				when READ_DIMENSIONS =>
 					next_state_s <= WAIT_VALID_DATA;
 				when READ_COLOR =>
-					next_state_s <= READ_INDEX;--RENDER;
+					next_state_s <= RENDER;
 				when RENDER =>
 					--Rendering is not finished => stall state--
-					if(current_render_state_s = IDLE) then
+					if(ix_r = TILE_LINE+5) then
 						next_state_s <= CHECK_OPAQUE;
 					end if;
+					--Skip for now--
 				when CHECK_OPAQUE =>
 					next_state_s <= WRITE_PIXEL;
 				when WRITE_PIXEL =>
-					--Outer loop finished => algorithm finished--
-					if(y_r = HEIGHT-1 and tx_r = TILE_MAT_WIDTH-1) then
-						next_state_s <= FINISH;
-					--Break inner loop, continue outer loop--
-					elsif(tx_r = TILE_MAT_WIDTH-1) then
-						next_state_s <= INC_Y;
-					--Continue inner loop--
-					else
-						next_state_s <= INC_TX;
+					if(xx_r = TILE_LINE-1) then
+						--Outer loop finished => algorithm finished--
+						if(y_r = HEIGHT-1 and tx_r = TILE_MAT_WIDTH-1) then
+							next_state_s <= FINISH;
+						--Break inner loop, continue outer loop--
+						elsif(tx_r = TILE_MAT_WIDTH-1) then
+							next_state_s <= INC_Y;
+						--Continue inner loop--
+						else
+							next_state_s <= INC_TX;
+						end if;
 					end if;
 				when INC_Y =>
 					next_state_s <= INC_TX;
@@ -458,12 +465,16 @@ begin
 						
 						--Initializing resulting color components, executed in one cycle-- 
 						--Parallel statements--
-						for I in 0 to TILE_LINE-1 loop
-							acc_r_s(I) <= (others => '0');
-							acc_g_s(I) <= (others => '0');
-							acc_b_s(I) <= (others => '0');
-							weight_s(I) <= (others => '0');
-						end loop;
+						acc_r_s <= (others => (others => '0'));
+						acc_g_s <= (others => (others => '0'));
+						acc_b_s <= (others => (others => '0'));
+						weight_s <= (others => (others => '0'));
+--						for I in 0 to TILE_LINE-1 loop
+--							acc_r_s(I) <= (others => '0');
+--							acc_g_s(I) <= (others => '0');
+--							acc_b_s(I) <= (others => '0');
+--							weight_s(I) <= (others => '0');
+--						end loop;
 					
 						--Loop--
 						--First byte of tile mat elem is list_end, draw list indices are 1st to list_end byte--  
@@ -566,7 +577,7 @@ begin
 											tmp_acc_r <= std_logic_vector(shift_right(unsigned(m_s(to_integer(unsigned(ix_r-4)))*rgba_r(15 downto 8)), SHIFT));
 											tmp_acc_g <= std_logic_vector(shift_right(unsigned(m_s(to_integer(unsigned(ix_r-4)))*rgba_r(23 downto 16)), SHIFT));
 											tmp_acc_b <= std_logic_vector(shift_right(unsigned(m_s(to_integer(unsigned(ix_r-4)))*rgba_r(31 downto 24)), SHIFT));
-											weight_r(to_integer(unsigned(ix_r-4))) <= tmp_weight(15 downto 0);
+											weight_s(to_integer(unsigned(ix_r-4))) <= tmp_weight(15 downto 0);
 									end if;
 								end if;
 								
@@ -583,16 +594,18 @@ begin
 								
 								--INC IX--
 								ix_s <= ix_r+1;
---
---						when CHECK_OPAQUE =>
---							--CHECK_OPAQUE--
---							--If all weights are zeros line is fully opaque and all remaining rects are covered (invisible)-- 
+
+						when CHECK_OPAQUE =>
+							--CHECK_OPAQUE--
+							--If all weights are zeros line is fully opaque and all remaining rects are covered (invisible)-- 
 --							if(weight_r(0) = 0 and weight_r(1) = 0 and weight_r(2) = 0
 --								and weight_r(3) = 0 and weight_r(4) = 0 and weight_r(5) = 0
 --								and weight_r(6) = 0) then
 --								-----------------------Break loop-----------------------------------------------
 --								go_to_next_tile_line_s <= x"1";
 --							end if;
+							
+							xx_s <= shift_left(unsigned(tx_r), TILE_BITS);
 --						
 --						when others =>
 --							--WRITE_TILE_LINE--
@@ -602,13 +615,19 @@ begin
 ----								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(23 downto 16) <= acc_r_r(ix);
 ----								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(15 downto 8) <= acc_g_r(ix);
 ----								pixels_s(to_integer(unsigned(y_r)), to_integer(unsigned(x_s(ix))))(7 downto 0) <= acc_b_r(ix);
---							end loop;
+							--end loop;
 						when WRITE_PIXEL =>
 							--Return tile mat address--
 							mem_addr_s <= tile_mat_addr_s;
+							pix_buf_render(to_integer(unsigned(xx_r)))(23 downto 16) <= acc_r_r(to_integer(unsigned(xx_r)));
+							pix_buf_render(to_integer(unsigned(xx_r)))(15 downto 8) <= acc_g_r(to_integer(unsigned(xx_r)));
+							pix_buf_render(to_integer(unsigned(xx_r)))(7 downto 0) <= acc_b_r(to_integer(unsigned(xx_r)));
+							xx_s <= xx_r+1;
 						when others =>
 					end case;
 		end process;
+		
+				
 --		
 --		
 		--Custom type registers--
@@ -654,6 +673,15 @@ begin
 				mem_addr_r <= (others => '0');
         elsif(rising_edge(clk_i)) then
             mem_addr_r <= mem_addr_s;
+        end if;
+    end process;
+	 
+	 process (clk_i)
+		begin
+		  if(rst_n_i = '0') then
+				xx_r <= (others => '0');
+        elsif(rising_edge(clk_i)) then
+            xx_r <= xx_s;
         end if;
     end process;
 --	 
@@ -863,9 +891,24 @@ begin
 		o_q => go_to_next_tile_line_r
 	);
 	
-
+	ix_reg : reg 
+	GENERIC MAP (
+	   WIDTH => 16,
+		RST_INIT => 0
+	)		
+	PORT MAP (
+	   i_clk => clk_i,
+		in_rst => rst_n_i,
+		i_d =>  ix_s,
+		o_q => ix_r
+	);
+	
 
 	pix_buf_draw_idx <= pixel_col_i(TILE_BITS-1 downto 0);
+	
+	pix_buf_render_full_and_valid <= '1' when xx_r = TILE_LINE-1 and current_state_s = WRITE_PIXEL
+		else '0';
+	
 	process(clk_i, rst_n_i)
 	begin
 		if rst_n_i = '0' then
