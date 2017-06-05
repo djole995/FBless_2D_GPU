@@ -127,6 +127,11 @@ architecture Behavioral of fb_less_2d_gpu is
 	--signal tile_mat_s : tile_mat;
 	signal tile_mat_list_end_s : tile_mat_list_end;
 	
+	type t_tile_line_pixels is array (0 to TILE_LINE-1) of std_logic_vector(23 downto 0);
+	signal pix_buf_render, pix_buf_draw: t_tile_line_pixels;
+	signal pix_buf_render_full_and_valid : std_logic; -- Assert when rendering done, de-assert it when ready is on 1.
+	signal pix_buf_draw_empty_and_ready: std_logic; -- Assert when drawing process could took data, de-assert it when valid is 1.
+	signal pix_buf_draw_error : std_logic;
 	
 	
 --	signal tile_mat_r : tile_mat;
@@ -515,7 +520,7 @@ begin
 							ix_s <= (others => '0');
 
 						when RENDER =>
-							--Rendering tile line in parallel--
+							-- Rendering tile line in parallel --
 							--TODO : Make registers for this state and define when it's finished. --
 								--phase 1--
 								if(ix_r < TILE_LINE) then
@@ -857,6 +862,38 @@ begin
 		i_d => go_to_next_tile_line_s,
 		o_q => go_to_next_tile_line_r
 	);
+	
+
+
+	pix_buf_draw_idx <= pixel_col_i(TILE_BITS-1 downto 0);
+	process(clk_i, rst_n_i)
+	begin
+		if rst_n_i = '0' then
+			pix_buf_draw <= (others => (others => '0'));
+			pix_buf_draw_empty_and_ready <= '1';
+			
+			pix_buf_draw_error <= '0';
+			
+			rgb_o <= (others => '0');
+		elsif rising_edge(clk_i) then
+			if pix_buf_render_full_and_valid = '1' and pix_buf_draw_empty_and_ready = '1' then
+				pix_buf_draw <= pix_buf_render;
+				pix_buf_draw_empty_and_ready <= '0';
+			end if;
+			
+			if phase_i = 0  then
+				if pix_buf_draw_empty_and_ready = '1' then
+					pix_buf_draw_error <= '1';
+				end if;
+			
+				rgb_o <= pix_buf_draw(to_integer(pix_buf_draw_idx));
+				
+				if pix_buf_draw_idx = TILE_LINE-1 then
+					pix_buf_draw_empty_and_ready <= '1';
+				end if;
+			end if;
+		end if;
+	end process;
 	
 	
 	
