@@ -1,0 +1,6 @@
+vhdl fb_less_2d_gpu_periph_v1_00_a "../../hdl/vhdl/vga_ctrl_e.vhd"
+vhdl fb_less_2d_gpu_periph_v1_00_a "../../hdl/vhdl/ram.vhd"
+vhdl fb_less_2d_gpu_periph_v1_00_a "reg.vhd"
+vhdl fb_less_2d_gpu_periph_v1_00_a "../../hdl/vhdl/vga_ctrl_a.vhd"
+vhdl fb_less_2d_gpu_periph_v1_00_a "../../hdl/vhdl/fb_less_2d_gpu.vhd"
+vhdl fb_less_2d_gpu_periph_v1_00_a "../../hdl/vhdl/fb_less_2d_gpu_periph.vhd"

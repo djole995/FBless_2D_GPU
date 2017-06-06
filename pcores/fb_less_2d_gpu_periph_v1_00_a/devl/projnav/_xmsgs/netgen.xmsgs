@@ -8,7 +8,7 @@
 <msg type="warning" file="NetListWriters" num="0" delta="new" >Padding or triming the value for hex property <arg fmt="%s" index="1">FACTORY_JF</arg>:
 </msg>
 
-<msg type="info" file="NetListWriters" num="633" delta="old" >The generated Verilog netlist contains Xilinx <arg fmt="%s" index="1">UNISIM</arg> simulation primitives and has to be used with <arg fmt="%s" index="2">UNISIM</arg> simulation library for correct compilation and simulation. 
+<msg type="info" file="NetListWriters" num="633" delta="new" >The generated Verilog netlist contains Xilinx <arg fmt="%s" index="1">UNISIM</arg> simulation primitives and has to be used with <arg fmt="%s" index="2">UNISIM</arg> simulation library for correct compilation and simulation. 
 </msg>
 
 </messages>

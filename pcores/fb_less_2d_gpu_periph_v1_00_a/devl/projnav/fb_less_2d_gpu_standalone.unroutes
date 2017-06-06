@@ -1,9 +1,18 @@
 Release 14.6 - par P.68d (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Tue Jun 06 12:38:36 2017
+Tue Jun 06 18:22:40 2017
 
 All signals are completely routed.
 
+WARNING:ParHelpers:361 - There are 6 loadless signals in this design. This design will cause Bitgen to issue DRC
+   warnings.
+
+   fb_less_2d_gpu_i/Mram_iw_s1_RAMD_D1_O
+   fb_less_2d_gpu_i/Mram_iw_s2_RAMD_D1_O
+   fb_less_2d_gpu_i/Mram_m_s1_RAMD_D1_O
+   fb_less_2d_gpu_i/Mram_m_s2_RAMD_D1_O
+   fb_less_2d_gpu_i/Mram_w_s1_RAMD_D1_O
+   fb_less_2d_gpu_i/Mram_w_s2_RAMD_D1_O
 
 

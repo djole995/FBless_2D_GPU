@@ -42,10 +42,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   1
 
-Total memory usage is 182720 kilobytes
+Total memory usage is 185376 kilobytes
 
 Writing NGD file "fb_less_2d_gpu_standalone.ngd" ...
-Total REAL time to NGDBUILD completion:  15 sec
-Total CPU time to NGDBUILD completion:   12 sec
+Total REAL time to NGDBUILD completion:  3 sec
+Total CPU time to NGDBUILD completion:   3 sec
 
 Writing NGDBUILD log file "fb_less_2d_gpu_standalone.bld"...

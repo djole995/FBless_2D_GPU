@@ -13,7 +13,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="32" />
+   <WVObjectSize size="44" />
    <wvobject fp_name="/testbench/clk_i" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk_i</obj_property>
       <obj_property name="ObjectShortName">clk_i</obj_property>
@@ -67,8 +67,8 @@
       <obj_property name="ObjectShortName">clk_period</obj_property>
    </wvobject>
    <wvobject fp_name="/testbench/uut/tile_mat_r" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">tile_mat_r[0:15]</obj_property>
-      <obj_property name="ObjectShortName">tile_mat_r[0:15]</obj_property>
+      <obj_property name="ElementShortName">tile_mat_r[0:7]</obj_property>
+      <obj_property name="ObjectShortName">tile_mat_r[0:7]</obj_property>
    </wvobject>
    <wvobject fp_name="/testbench/uut/y_r" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">y_r[15:0]</obj_property>
@@ -121,11 +121,6 @@
       <obj_property name="ObjectShortName">tile_mat_addr_s[12:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/testbench/uut/current_tile_mat_elem_s" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">current_tile_mat_elem_s[63:0]</obj_property>
-      <obj_property name="ObjectShortName">current_tile_mat_elem_s[63:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
    <wvobject fp_name="/testbench/uut/rect_row_s" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">rect_row_s[15:0]</obj_property>
       <obj_property name="ObjectShortName">rect_row_s[15:0]</obj_property>
@@ -154,5 +149,59 @@
       <obj_property name="ElementShortName">rgba_s[31:0]</obj_property>
       <obj_property name="ObjectShortName">rgba_s[31:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/acc_r_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">acc_r_s[0:31]</obj_property>
+      <obj_property name="ObjectShortName">acc_r_s[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/acc_g_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">acc_g_r[0:31]</obj_property>
+      <obj_property name="ObjectShortName">acc_g_r[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/acc_b_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">acc_b_r[0:31]</obj_property>
+      <obj_property name="ObjectShortName">acc_b_r[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/ix_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ix_r[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ix_r[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/ix_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ix_s[15:0]</obj_property>
+      <obj_property name="ObjectShortName">ix_s[15:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/m_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">m_s[0:31]</obj_property>
+      <obj_property name="ObjectShortName">m_s[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/x_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">x_s[0:31]</obj_property>
+      <obj_property name="ObjectShortName">x_s[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/x_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">x_r[0:31]</obj_property>
+      <obj_property name="ObjectShortName">x_r[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/w_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">w_s[0:31]</obj_property>
+      <obj_property name="ObjectShortName">w_s[0:31]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/iw_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">iw_s[0:31]</obj_property>
+      <obj_property name="ObjectShortName">iw_s[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/tmp_m" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp_m[31:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp_m[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/weight_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">weight_r[0:31]</obj_property>
+      <obj_property name="ObjectShortName">weight_r[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/tmp_acc_b" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tmp_acc_b[23:0]</obj_property>
+      <obj_property name="ObjectShortName">tmp_acc_b[23:0]</obj_property>
    </wvobject>
 </wave_config>

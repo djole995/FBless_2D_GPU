@@ -165,8 +165,8 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal i_r: std_logic_vector(15 downto 0);
 	signal i_s: std_logic_vector(15 downto 0) := (others => '0');
 	
-	signal ix_s : std_logic_vector(15 downto 0);
-	signal ix_r : std_logic_vector(15 downto 0);
+	signal ix_s : std_logic_vector(15 downto 0) := (others => '0');
+	signal ix_r : std_logic_vector(15 downto 0)  := (others => '0');
 	
 	signal x_r: tile_line_arr_u16;
 	signal x_s: tile_line_arr_u16;
@@ -174,27 +174,27 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal xx_r: unsigned(15 downto 0);
 	signal xx_s: unsigned(15 downto 0);
 	
-	signal acc_r_r: acc_color;
+	signal acc_r_r: acc_color ;
 	signal acc_r_s: acc_color;
 	
-	signal acc_g_r: acc_color;
-	signal acc_g_s: acc_color;
+	signal acc_g_r: acc_color  := (others => (others => '1'));
+	signal acc_g_s: acc_color  := (others => (others => '1'));
 	
-	signal acc_b_r: acc_color;
-	signal acc_b_s: acc_color;
+	signal acc_b_r: acc_color := (others => (others => '1'));
+	signal acc_b_s: acc_color := (others => (others => '1')); 
 	
-	signal weight_r : tile_line_arr_u16;
-	signal weight_s : tile_line_arr_u16;
+	signal weight_r : tile_line_arr_u16 := (others => (others => '0'));
+	signal weight_s : tile_line_arr_u16 := (others => (others => '0'));
 	
 	--Temp signals used for counting resulting color and transparency for every pixel--
-	signal w_s: tile_line_arr_u16;
-	signal iw_s: tile_line_arr_u16;
-	signal m_s: tile_line_arr_u16;
-	signal tmp_weight : std_logic_vector(31 downto 0);
-	signal tmp_m : std_logic_vector(31 downto 0);
-	signal tmp_acc_r : std_logic_vector(23 downto 0);
-	signal tmp_acc_g : std_logic_vector(23 downto 0);
-	signal tmp_acc_b : std_logic_vector(23 downto 0);
+	signal w_s: tile_line_arr_u16 := (others => (others => '0'));
+	signal iw_s: tile_line_arr_u16 := (others => (others => '0'));
+	signal m_s: tile_line_arr_u16 := (others => (others => '0'));
+	signal tmp_weight : std_logic_vector(31 downto 0) := (others => '0');
+	signal tmp_m : std_logic_vector(31 downto 0) := (others => '0');
+	signal tmp_acc_r : std_logic_vector(23 downto 0) := (others => '0');
+	signal tmp_acc_g : std_logic_vector(23 downto 0) := (others => '0');
+	signal tmp_acc_b : std_logic_vector(23 downto 0) := (others => '0');
 	
 	
 	signal change_state_en_s: std_logic;
@@ -209,6 +209,9 @@ architecture Behavioral of fb_less_2d_gpu is
 	signal phase_r : std_logic_vector(1 downto 0);
 	
 	signal read_tile_mat : std_logic_vector(15 downto 0);
+	
+	signal valid_render_col : unsigned(9 downto 0) := (others => '0');
+	signal valid_render_row : unsigned(8 downto 0)  := (others => '0');
 	
 	
 	component reg is
@@ -364,8 +367,9 @@ begin
 --		
 --	
 --			
-		process(current_state_s)--y_r, tx_r, ti_r, mem_data_s, i_r)
+		process(clk_i)--current_state_s, ix_r)--y_r, tx_r, ti_r, mem_data_s, i_r)
 			begin
+				if(rising_edge(clk_i)) then
 				case (current_state_s) is
 					when INC_Y => 
 						--Iterating throught rows, outer loop--
@@ -406,7 +410,7 @@ begin
 						acc_r_s <= (others => (others => '0'));
 						acc_g_s <= (others => (others => '0'));
 						acc_b_s <= (others => (others => '0'));
-						weight_s <= (others => (others => '0'));
+						weight_s <= (others => std_logic_vector(to_unsigned(FIX_ONE, 16)));
 --						for I in 0 to TILE_LINE-1 loop
 --							acc_r_s(I) <= (others => '0');
 --							acc_g_s(I) <= (others => '0');
@@ -492,7 +496,7 @@ begin
 											
 											--CALCULATE iw and temp m--
 											iw_s(to_integer(unsigned(ix_r-2))) <= FIX_ONE - w_s(to_integer(unsigned(ix_r-2)));
-											tmp_m <= w_s(to_integer(unsigned(ix_r-2)))*weight_r(to_integer(unsigned(ix_r-2)));
+											tmp_m <= std_logic_vector(shift_right( unsigned(w_s(to_integer(unsigned(ix_r-2)))*weight_r(to_integer(unsigned(ix_r-2)))) + HALF, SHIFT));
 									end if;
 								end if;
 										
@@ -523,9 +527,9 @@ begin
 									if(rect_col_r <= x_r(to_integer(unsigned(ix_r-5))) and x_r(to_integer(unsigned(ix_r-5))) < rect_col_r+rect_width_r
 										and rect_row_r <= y_r and y_r < rect_row_r+rect_height_r) then
 											--CALCULATE ACC--
-											acc_r_s(to_integer(unsigned(ix_r-5))) <= tmp_acc_r(7 downto 0);
-											acc_g_s(to_integer(unsigned(ix_r-5))) <= tmp_acc_g(7 downto 0);
-											acc_g_s(to_integer(unsigned(ix_r-5))) <= tmp_acc_b(7 downto 0);
+											acc_r_s(to_integer(unsigned(ix_r-5))) <= acc_r_r(to_integer(unsigned(ix_r-5))) + tmp_acc_r(7 downto 0);
+											acc_g_s(to_integer(unsigned(ix_r-5))) <= acc_g_r(to_integer(unsigned(ix_r-5))) + tmp_acc_g(7 downto 0);
+											acc_b_s(to_integer(unsigned(ix_r-5))) <= acc_b_r(to_integer(unsigned(ix_r-5))) + tmp_acc_b(7 downto 0);
 									end if;
 								end if;
 								
@@ -562,17 +566,56 @@ begin
 --							xx_s <= xx_r+1;
 						when others =>
 					end case;
+				end if;
 		end process;
 		
 		FILL_RENDER_BUFFER: 
 			for i in 0 to TILE_LINE-1 generate
-				pix_buf_render(i)(23 downto 16) <= acc_r_r(i);
+				pix_buf_render(i)(23 downto 16) <= acc_b_r(i);
 				pix_buf_render(i)(15 downto 8) <= acc_g_r(i);
-				pix_buf_render(i)(7 downto 0) <= acc_b_r(i);
+				pix_buf_render(i)(7 downto 0) <= acc_r_r(i);
 			end generate FILL_RENDER_BUFFER;
-		
-				
+			
+			valid_render_col <= unsigned(tx_r(4 downto 0)) & "00000" when current_state_s = CHECK_OPAQUE or current_state_s = WRITE_PIXEL
+									else "1001111111";
+			valid_render_row <= unsigned(y_r(8 downto 0)) when current_state_s = CHECK_OPAQUE OR current_state_s = WRITE_PIXEL
+							else "111011111";
+			
+--			pix_buf_render(1)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(2)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(3)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(4)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(5)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(6)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(7)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(8)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(9)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(10)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(11)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(12)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(13)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(14)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(15)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(16)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(17)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(18)(23 downto 16) <= not(acc_b_s(0));
+--			pix_buf_render(19)(23 downto 16) <= acc_b_r(18);
+--			pix_buf_render(20)(23 downto 16) <= acc_b_r(19);
+--			pix_buf_render(21)(23 downto 16) <= acc_b_r(20);
+--			pix_buf_render(22)(23 downto 16) <= acc_b_r(21);
+--			pix_buf_render(23)(23 downto 16) <= acc_b_r(22);
+--			pix_buf_render(24)(23 downto 16) <= acc_b_r(23);
+--			pix_buf_render(25)(23 downto 16) <= acc_b_r(24);
+--			pix_buf_render(26)(23 downto 16) <= acc_b_r(25);
+--			pix_buf_render(27)(23 downto 16) <= acc_b_r(26);
+--			pix_buf_render(28)(23 downto 16) <= acc_b_r(27);
+--			pix_buf_render(29)(23 downto 16) <= acc_b_r(28);
+--			pix_buf_render(30)(23 downto 16) <= acc_b_r(29);
+--			pix_buf_render(31)(23 downto 16) <= acc_b_r(30);
+--			pix_buf_render(0)(23 downto 16) <= acc_b_r(31);
 --		
+--				
+----		
 --		
 		--Custom type registers--
 		process(clk_i) begin
@@ -623,9 +666,9 @@ begin
 	 process (clk_i)
 		begin
 		  if(rst_n_i = '0') then
-				xx_r <= (others => '0');
+				x_r <= (others => (others => '0'));
         elsif(rising_edge(clk_i)) then
-            xx_r <= xx_s;
+            x_r <= x_s;
         end if;
     end process;
 --	 
@@ -808,12 +851,14 @@ begin
 		i_d =>  ix_s,
 		o_q => ix_r
 	);
+
 	
 
 	pix_buf_draw_idx <= pixel_col_i(TILE_BITS-1 downto 0);
 	
-	pix_buf_render_full_and_valid <= '1' when xx_r = TILE_LINE-1 and current_state_s = WRITE_PIXEL
-		else '0';
+	pix_buf_render_full_and_valid <= '1' when pixel_col_i = valid_render_col
+							and (pixel_row_i >= valid_render_row and pixel_row_i < valid_render_row+100)
+				else '0';
 	
 	process(clk_i, rst_n_i)
 	begin
@@ -839,6 +884,7 @@ begin
 				
 				if pix_buf_draw_idx = TILE_LINE-1 then
 					pix_buf_draw_empty_and_ready <= '1';
+					pix_buf_draw <= (others => (others => '0'));
 				end if;
 			end if;
 		end if;
