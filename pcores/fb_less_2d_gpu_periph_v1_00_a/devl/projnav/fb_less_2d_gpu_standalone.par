@@ -1,7 +1,7 @@
 Release 14.6 par P.68d (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-MILAN-PC::  Mon Jun 05 22:06:44 2017
+MILAN-PC::  Tue Jun 06 12:36:49 2017
 
 par -w -intstyle ise -ol high -mt off fb_less_2d_gpu_standalone_map.ncd
 fb_less_2d_gpu_standalone.ncd fb_less_2d_gpu_standalone.pcf 
@@ -22,16 +22,16 @@ Device speed data version:  "PRODUCTION 1.23 2013-06-08".
 Device Utilization Summary:
 
 Slice Logic Utilization:
-  Number of Slice Registers:                 4,810 out of  54,576    8%
-    Number used as Flip Flops:               1,897
-    Number used as Latches:                  2,913
+  Number of Slice Registers:                 4,295 out of  54,576    7%
+    Number used as Flip Flops:               1,894
+    Number used as Latches:                  2,401
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                      2,763 out of  27,288   10%
-    Number used as logic:                    2,299 out of  27,288    8%
-      Number using O6 output only:           1,818
+  Number of Slice LUTs:                      2,351 out of  27,288    8%
+    Number used as logic:                    2,123 out of  27,288    7%
+      Number using O6 output only:           1,661
       Number using O5 output only:              83
-      Number using O5 and O6:                  398
+      Number using O5 and O6:                  379
       Number used as ROM:                        0
     Number used as Memory:                       4 out of   6,408    1%
       Number used as Dual Port RAM:              4
@@ -40,18 +40,18 @@ Slice Logic Utilization:
         Number using O5 and O6:                  0
       Number used as Single Port RAM:            0
       Number used as Shift Register:             0
-    Number used exclusively as route-thrus:    460
-      Number with same-slice register load:    453
+    Number used exclusively as route-thrus:    224
+      Number with same-slice register load:    217
       Number with same-slice carry load:         7
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                 1,360 out of   6,822   19%
+  Number of occupied Slices:                 1,357 out of   6,822   19%
   Number of MUXCYs used:                       232 out of  13,644    1%
-  Number of LUT Flip Flop pairs used:        5,104
-    Number with an unused Flip Flop:           752 out of   5,104   14%
-    Number with an unused LUT:               2,341 out of   5,104   45%
-    Number of fully used LUT-FF pairs:       2,011 out of   5,104   39%
+  Number of LUT Flip Flop pairs used:        4,896
+    Number with an unused Flip Flop:           823 out of   4,896   16%
+    Number with an unused LUT:               2,545 out of   4,896   51%
+    Number of fully used LUT-FF pairs:       1,528 out of   4,896   31%
     Number of slice register sites lost
       to control set restrictions:               0 out of  54,576    0%
 
@@ -100,35 +100,35 @@ Specific Feature Utilization:
 Overall effort level (-ol):   High 
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 21 secs 
-Finished initial Timing Analysis.  REAL time: 21 secs 
+Starting initial Timing Analysis.  REAL time: 16 secs 
+Finished initial Timing Analysis.  REAL time: 16 secs 
 
 Starting Router
 
 
-Phase  1  : 18536 unrouted;      REAL time: 23 secs 
+Phase  1  : 16849 unrouted;      REAL time: 19 secs 
 
-Phase  2  : 16570 unrouted;      REAL time: 29 secs 
+Phase  2  : 14858 unrouted;      REAL time: 24 secs 
 
-Phase  3  : 6461 unrouted;      REAL time: 1 mins 9 secs 
+Phase  3  : 5199 unrouted;      REAL time: 1 mins 7 secs 
 
-Phase  4  : 6461 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 14 secs 
+Phase  4  : 5199 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 12 secs 
 
 Updating file: fb_less_2d_gpu_standalone.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 58 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 39 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 58 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 39 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 58 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 39 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 58 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 39 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 58 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 39 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 59 secs 
-Total REAL time to Router completion: 1 mins 59 secs 
-Total CPU time to Router completion: 1 mins 48 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 1 mins 40 secs 
+Total REAL time to Router completion: 1 mins 40 secs 
+Total CPU time to Router completion: 1 mins 36 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -146,830 +146,702 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|          clk_100MHz | BUFGMUX_X3Y14| No   |  453 |  0.062     |  1.770      |
+|fb_less_2d_gpu_i/Mra |              |      |      |            |             |
+|    m__n8261111_BUFG | BUFGMUX_X2Y12| No   |    8 |  0.056     |  1.769      |
 +---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|3182_o_Mux_7500_o_BU |              |      |      |            |             |
-|                  FG | BUFGMUX_X2Y10| No   |    6 |  0.031     |  1.743      |
+|          clk_100MHz | BUFGMUX_X3Y14| No   |  504 |  0.062     |  1.771      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|      m__n92063_BUFG |  BUFGMUX_X2Y1| No   |    8 |  0.043     |  1.760      |
+|      m__n82613_BUFG |  BUFGMUX_X2Y1| No   |    8 |  0.050     |  1.762      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|      m__n92064_BUFG |  BUFGMUX_X2Y4| No   |    8 |  0.038     |  1.760      |
+|      m__n82614_BUFG |  BUFGMUX_X2Y4| No   |    8 |  0.053     |  1.765      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|    m__n9206111_BUFG | BUFGMUX_X2Y12| No   |    8 |  0.039     |  1.748      |
+|      m__n82617_BUFG | BUFGMUX_X3Y13| No   |    8 |  0.036     |  1.770      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|      m__n92066_BUFG |  BUFGMUX_X2Y2| No   |   12 |  0.034     |  1.770      |
+|      m__n82616_BUFG |  BUFGMUX_X2Y2| No   |   12 |  0.036     |  1.770      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|3182_o_Mux_7462_o_BU |              |      |      |            |             |
+|                  FG | BUFGMUX_X2Y10| No   |    6 |  0.028     |  1.767      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1345_o_Mux_3788_o |         Local|      |    4 |  1.575     |  2.297      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1217_o_Mux_3532_o |         Local|      |    4 |  0.799     |  1.814      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1361_o_Mux_3820_o |         Local|      |    4 |  1.342     |  2.117      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1377_o_Mux_3852_o |         Local|      |    4 |  0.708     |  1.513      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2606_o_Mux_6310_o |         Local|      |    4 |  0.942     |  1.920      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1726_o_Mux_4550_o |         Local|      |    2 |  0.371     |  0.890      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1742_o_Mux_4582_o |         Local|      |    2 |  0.173     |  1.259      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1758_o_Mux_4614_o |         Local|      |    2 |  0.683     |  1.524      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1886_o_Mux_4870_o |         Local|      |    2 |  0.035     |  0.923      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1774_o_Mux_4646_o |         Local|      |    2 |  0.230     |  1.027      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1902_o_Mux_4902_o |         Local|      |    2 |  0.064     |  0.865      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1790_o_Mux_4678_o |         Local|      |    2 |  0.091     |  0.870      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1918_o_Mux_4934_o |         Local|      |    2 |  0.052     |  0.678      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2046_o_Mux_5190_o |         Local|      |    2 |  0.109     |  0.938      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1806_o_Mux_4710_o |         Local|      |    2 |  0.512     |  1.323      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1934_o_Mux_4966_o |         Local|      |    2 |  0.164     |  0.910      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2062_o_Mux_5222_o |         Local|      |    2 |  0.256     |  1.076      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1822_o_Mux_4742_o |         Local|      |    2 |  0.279     |  1.075      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1950_o_Mux_4998_o |         Local|      |    2 |  0.408     |  1.282      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1838_o_Mux_4774_o |         Local|      |    2 |  0.270     |  1.047      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1966_o_Mux_5030_o |         Local|      |    2 |  0.489     |  1.593      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1854_o_Mux_4806_o |         Local|      |    2 |  0.019     |  0.813      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1982_o_Mux_5062_o |         Local|      |    2 |  0.470     |  1.139      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1870_o_Mux_4838_o |         Local|      |    2 |  0.464     |  1.256      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1998_o_Mux_5094_o |         Local|      |    2 |  0.005     |  1.059      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2238_o_Mux_5574_o |         Local|      |    3 |  0.434     |  1.065      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2014_o_Mux_5126_o |         Local|      |    2 |  0.249     |  0.791      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2254_o_Mux_5606_o |         Local|      |    3 |  0.945     |  1.493      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2398_o_Mux_5894_o |         Local|      |    3 |  0.528     |  1.432      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2270_o_Mux_5638_o |         Local|      |    3 |  0.310     |  1.120      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2030_o_Mux_5158_o |         Local|      |    2 |  0.617     |  1.322      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2286_o_Mux_5670_o |         Local|      |    3 |  0.368     |  0.991      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2414_o_Mux_5926_o |         Local|      |    3 |  0.527     |  1.141      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2302_o_Mux_5702_o |         Local|      |    3 |  0.462     |  1.044      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2430_o_Mux_5958_o |         Local|      |    3 |  0.191     |  0.989      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2558_o_Mux_6214_o |         Local|      |    3 |  0.014     |  1.036      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2318_o_Mux_5734_o |         Local|      |    3 |  0.770     |  1.576      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2574_o_Mux_6246_o |         Local|      |    3 |  0.781     |  1.119      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2446_o_Mux_5990_o |         Local|      |    3 |  0.291     |  0.872      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2334_o_Mux_5766_o |         Local|      |    3 |  0.154     |  0.924      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2462_o_Mux_6022_o |         Local|      |    3 |  0.841     |  1.615      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2478_o_Mux_6054_o |         Local|      |    3 |  0.410     |  1.011      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2350_o_Mux_5798_o |         Local|      |    3 |  0.491     |  1.220      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2494_o_Mux_6086_o |         Local|      |    3 |  0.267     |  1.065      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2366_o_Mux_5830_o |         Local|      |    3 |  0.291     |  1.123      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2510_o_Mux_6118_o |         Local|      |    3 |  0.525     |  1.359      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2382_o_Mux_5862_o |         Local|      |    3 |  0.310     |  1.092      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2526_o_Mux_6150_o |         Local|      |    3 |  0.457     |  1.081      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2542_o_Mux_6182_o |         Local|      |    3 |  0.779     |  1.120      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2078_o_Mux_5254_o |         Local|      |    3 |  0.112     |  0.861      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2094_o_Mux_5286_o |         Local|      |    3 |  0.469     |  0.860      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2110_o_Mux_5318_o |         Local|      |    3 |  0.447     |  0.977      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2126_o_Mux_5350_o |         Local|      |    3 |  0.439     |  1.342      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2142_o_Mux_5382_o |         Local|      |    3 |  0.650     |  1.529      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2158_o_Mux_5414_o |         Local|      |    3 |  0.734     |  1.328      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2174_o_Mux_5446_o |         Local|      |    3 |  0.113     |  0.773      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2190_o_Mux_5478_o |         Local|      |    3 |  0.626     |  1.196      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2206_o_Mux_5510_o |         Local|      |    3 |  0.717     |  1.062      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2222_o_Mux_5542_o |         Local|      |    3 |  0.191     |  0.965      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1073_o_Mux_3244_o |         Local|      |    4 |  0.938     |  2.061      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1089_o_Mux_3276_o |         Local|      |    4 |  1.236     |  2.003      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1105_o_Mux_3308_o |         Local|      |    4 |  1.230     |  2.099      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1233_o_Mux_3564_o |         Local|      |    4 |  2.002     |  3.063      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2622_o_Mux_6342_o |         Local|      |    4 |  0.454     |  1.289      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1121_o_Mux_3340_o |         Local|      |    4 |  1.070     |  1.851      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1249_o_Mux_3596_o |         Local|      |    4 |  0.851     |  1.703      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2638_o_Mux_6374_o |         Local|      |    4 |  0.607     |  1.201      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1137_o_Mux_3372_o |         Local|      |    4 |  0.898     |  1.733      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1265_o_Mux_3628_o |         Local|      |    4 |  1.177     |  2.067      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1393_o_Mux_3884_o |         Local|      |    4 |  0.539     |  1.492      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2654_o_Mux_6406_o |         Local|      |    4 |  0.585     |  1.347      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1153_o_Mux_3404_o |         Local|      |    4 |  1.645     |  2.278      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1281_o_Mux_3660_o |         Local|      |    4 |  1.190     |  2.054      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1409_o_Mux_3916_o |         Local|      |    4 |  0.662     |  1.759      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2670_o_Mux_6438_o |         Local|      |    4 |  0.549     |  1.114      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1169_o_Mux_3436_o |         Local|      |    4 |  0.900     |  1.742      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1297_o_Mux_3692_o |         Local|      |    4 |  1.084     |  1.900      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2686_o_Mux_6470_o |         Local|      |    4 |  0.793     |  1.672      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1185_o_Mux_3468_o |         Local|      |    4 |  1.260     |  2.141      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1313_o_Mux_3724_o |         Local|      |    4 |  1.782     |  2.674      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2702_o_Mux_6502_o |         Local|      |    4 |  1.024     |  2.025      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1201_o_Mux_3500_o |         Local|      |    4 |  0.432     |  1.491      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1329_o_Mux_3756_o |         Local|      |    4 |  1.128     |  1.923      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2718_o_Mux_6534_o |         Local|      |    4 |  0.472     |  1.163      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2734_o_Mux_6566_o |         Local|      |    4 |  0.611     |  1.487      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2750_o_Mux_6598_o |         Local|      |    4 |  0.911     |  1.685      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2766_o_Mux_6630_o |         Local|      |    4 |  0.830     |  1.708      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    913_o_Mux_2924_o |         Local|      |    4 |  0.825     |  1.780      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    929_o_Mux_2956_o |         Local|      |    4 |  0.916     |  1.712      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    945_o_Mux_2988_o |         Local|      |    4 |  0.642     |  1.491      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    961_o_Mux_3020_o |         Local|      |    4 |  1.025     |  1.944      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    977_o_Mux_3052_o |         Local|      |    4 |  0.612     |  1.512      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    993_o_Mux_3084_o |         Local|      |    4 |  0.933     |  1.944      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1009_o_Mux_3116_o |         Local|      |    4 |  0.648     |  1.518      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1025_o_Mux_3148_o |         Local|      |    4 |  1.868     |  2.704      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1041_o_Mux_3180_o |         Local|      |    4 |  0.910     |  1.746      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   1057_o_Mux_3212_o |         Local|      |    4 |  1.039     |  1.926      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|      m__n92067_BUFG | BUFGMUX_X3Y13| No   |    8 |  0.032     |  1.770      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2958_o_Mux_7052_o |         Local|      |    4 |  1.547     |  2.364      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2830_o_Mux_6796_o |         Local|      |    4 |  0.220     |  1.083      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3102_o_Mux_7340_o |         Local|      |    4 |  0.576     |  1.318      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2974_o_Mux_7084_o |         Local|      |    4 |  0.847     |  1.746      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2846_o_Mux_6828_o |         Local|      |    4 |  0.295     |  0.897      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2862_o_Mux_6860_o |         Local|      |    4 |  0.926     |  1.846      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2990_o_Mux_7116_o |         Local|      |    4 |  0.552     |  1.186      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3118_o_Mux_7372_o |         Local|      |    4 |  0.960     |  1.800      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2878_o_Mux_6892_o |         Local|      |    4 |  0.735     |  1.298      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3006_o_Mux_7148_o |         Local|      |    4 |  0.784     |  1.388      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2894_o_Mux_6924_o |         Local|      |    4 |  0.893     |  1.269      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3022_o_Mux_7180_o |         Local|      |    4 |  0.655     |  2.017      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3038_o_Mux_7212_o |         Local|      |    4 |  1.207     |  1.735      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2910_o_Mux_6956_o |         Local|      |    4 |  0.482     |  1.193      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2926_o_Mux_6988_o |         Local|      |    4 |  0.712     |  1.462      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3054_o_Mux_7244_o |         Local|      |    4 |  0.787     |  1.437      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3070_o_Mux_7276_o |         Local|      |    4 |  0.750     |  1.563      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3086_o_Mux_7308_o |         Local|      |    4 |  1.091     |  1.730      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2622_o_Mux_6380_o |         Local|      |    4 |  0.768     |  1.574      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2638_o_Mux_6412_o |         Local|      |    4 |  0.612     |  1.332      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2654_o_Mux_6444_o |         Local|      |    4 |  0.644     |  1.465      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2670_o_Mux_6476_o |         Local|      |    4 |  1.152     |  2.469      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    929_o_Mux_2994_o |         Local|      |    4 |  0.635     |  1.486      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1089_o_Mux_3314_o |         Local|      |    4 |  0.282     |  1.303      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2686_o_Mux_6508_o |         Local|      |    4 |  0.914     |  1.859      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2702_o_Mux_6540_o |         Local|      |    4 |  0.652     |  1.566      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2718_o_Mux_6572_o |         Local|      |    4 |  0.603     |  1.745      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2014_o_Mux_5164_o |         Local|      |    2 |  0.260     |  1.338      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1950_o_Mux_5036_o |         Local|      |    2 |  0.817     |  1.679      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2734_o_Mux_6604_o |         Local|      |    4 |  0.858     |  1.607      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2750_o_Mux_6636_o |         Local|      |    4 |  0.361     |  1.223      |
+|           m__n82619 |         Local|      |    4 |  0.380     |  1.202      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|           m__n92065 |         Local|      |    7 |  0.506     |  1.604      |
+|           m__n82615 |         Local|      |    7 |  0.188     |  0.784      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2766_o_Mux_6668_o |         Local|      |    4 |  1.132     |  1.786      |
+|    201_o_Mux_1500_o |         Local|      |    5 |  1.786     |  2.348      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3950_o_Mux_9036_o |         Local|      |    4 |  0.804     |  1.906      |
+|   1566_o_Mux_4230_o |         Local|      |    2 |  1.096     |  1.662      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    153_o_Mux_1442_o |         Local|      |    4 |  1.612     |  2.451      |
+|   1582_o_Mux_4262_o |         Local|      |    2 |  0.149     |  0.878      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    161_o_Mux_1458_o |         Local|      |    4 |  1.273     |  2.263      |
+|   1598_o_Mux_4294_o |         Local|      |    2 |  0.312     |  1.133      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    169_o_Mux_1474_o |         Local|      |    4 |  1.367     |  1.999      |
+|   1614_o_Mux_4326_o |         Local|      |    2 |  0.015     |  0.910      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    177_o_Mux_1490_o |         Local|      |    4 |  0.805     |  1.357      |
+|   1630_o_Mux_4358_o |         Local|      |    2 |  0.209     |  1.043      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    193_o_Mux_1522_o |         Local|      |    4 |  1.325     |  1.701      |
+|   1646_o_Mux_4390_o |         Local|      |    2 |  0.104     |  0.952      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    209_o_Mux_1554_o |         Local|      |    4 |  1.061     |  1.632      |
+|   1662_o_Mux_4422_o |         Local|      |    2 |  0.432     |  0.791      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    217_o_Mux_1570_o |         Local|      |    4 |  1.615     |  2.490      |
+|   1678_o_Mux_4454_o |         Local|      |    2 |  0.184     |  0.777      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3782_o_Mux_8700_o |         Local|      |    4 |  0.751     |  1.862      |
+|   1694_o_Mux_4486_o |         Local|      |    2 |  0.235     |  1.032      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3686_o_Mux_8508_o |         Local|      |    4 |  1.043     |  1.424      |
+|   1710_o_Mux_4518_o |         Local|      |    2 |  0.187     |  1.036      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3758_o_Mux_8652_o |         Local|      |    4 |  0.776     |  1.517      |
+|   2990_o_Mux_7078_o |         Local|      |    4 |  1.347     |  1.912      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3854_o_Mux_8844_o |         Local|      |    4 |  0.885     |  1.477      |
+|   2926_o_Mux_6950_o |         Local|      |    4 |  1.295     |  2.019      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3926_o_Mux_8988_o |         Local|      |    4 |  0.757     |  1.504      |
+|    305_o_Mux_1708_o |         Local|      |    5 |  1.802     |  2.338      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1438_o_Mux_4012_o |         Local|      |    4 |  0.454     |  1.503      |
+|    345_o_Mux_1788_o |         Local|      |    5 |  1.314     |  2.249      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    145_o_Mux_1426_o |         Local|      |    5 |  0.802     |  1.407      |
+|   2798_o_Mux_6694_o |         Local|      |    4 |  0.689     |  1.496      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    185_o_Mux_1506_o |         Local|      |    5 |  1.083     |  1.911      |
+|    313_o_Mux_1724_o |         Local|      |    5 |  1.408     |  1.933      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    201_o_Mux_1538_o |         Local|      |    5 |  0.844     |  1.656      |
+|    361_o_Mux_1820_o |         Local|      |    5 |  1.392     |  1.920      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    225_o_Mux_1586_o |         Local|      |    5 |  0.977     |  1.744      |
+|    193_o_Mux_1484_o |         Local|      |    4 |  0.986     |  1.512      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    233_o_Mux_1602_o |         Local|      |    5 |  1.047     |  2.007      |
+|   1438_o_Mux_3974_o |         Local|      |    5 |  0.441     |  0.818      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    241_o_Mux_1618_o |         Local|      |    4 |  0.471     |  1.315      |
+|    145_o_Mux_1388_o |         Local|      |    5 |  1.609     |  2.199      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    305_o_Mux_1746_o |         Local|      |    4 |  1.856     |  2.449      |
+|    329_o_Mux_1756_o |         Local|      |    5 |  1.352     |  1.944      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    249_o_Mux_1634_o |         Local|      |    5 |  0.508     |  1.202      |
+|    385_o_Mux_1868_o |         Local|      |    5 |  2.221     |  2.696      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    313_o_Mux_1762_o |         Local|      |    5 |  2.099     |  2.669      |
+|    249_o_Mux_1596_o |         Local|      |    5 |  1.553     |  2.532      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    257_o_Mux_1650_o |         Local|      |    4 |  1.594     |  2.422      |
+|   2782_o_Mux_6662_o |         Local|      |    4 |  0.697     |  1.306      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    321_o_Mux_1778_o |         Local|      |    4 |  0.909     |  1.737      |
+|   2862_o_Mux_6822_o |         Local|      |    4 |  0.465     |  1.304      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    385_o_Mux_1906_o |         Local|      |    5 |  1.986     |  2.772      |
+|    393_o_Mux_1884_o |         Local|      |    5 |  1.082     |  1.661      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    265_o_Mux_1666_o |         Local|      |    5 |  1.661     |  2.470      |
+|   2942_o_Mux_6982_o |         Local|      |    4 |  0.773     |  1.539      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    329_o_Mux_1794_o |         Local|      |    5 |  1.565     |  2.135      |
+|   2878_o_Mux_6854_o |         Local|      |    4 |  0.690     |  1.525      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    393_o_Mux_1922_o |         Local|      |    5 |  1.957     |  3.227      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    273_o_Mux_1682_o |         Local|      |    4 |  0.590     |  1.181      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    337_o_Mux_1810_o |         Local|      |    4 |  0.893     |  1.502      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    281_o_Mux_1698_o |         Local|      |    5 |  1.449     |  2.015      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    345_o_Mux_1826_o |         Local|      |    5 |  0.836     |  1.853      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    289_o_Mux_1714_o |         Local|      |    4 |  0.991     |  1.620      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    353_o_Mux_1842_o |         Local|      |    4 |  1.556     |  2.941      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3150_o_Mux_7436_o |         Local|      |    4 |  0.379     |  2.412      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    297_o_Mux_1730_o |         Local|      |    5 |  0.784     |  1.388      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    361_o_Mux_1858_o |         Local|      |    5 |  0.886     |  1.230      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    369_o_Mux_1874_o |         Local|      |    4 |  0.699     |  1.410      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|    377_o_Mux_1890_o |         Local|      |    4 |  1.161     |  2.000      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3494_o_Mux_8124_o |         Local|      |    4 |  0.675     |  1.400      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3518_o_Mux_8172_o |         Local|      |    4 |  0.826     |  1.386      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3542_o_Mux_8220_o |         Local|      |    4 |  1.217     |  1.961      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3734_o_Mux_8604_o |         Local|      |    4 |  0.982     |  1.952      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3566_o_Mux_8268_o |         Local|      |    4 |  0.079     |  1.105      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3590_o_Mux_8316_o |         Local|      |    4 |  0.433     |  1.534      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3974_o_Mux_9084_o |         Local|      |    4 |  0.896     |  1.556      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3614_o_Mux_8364_o |         Local|      |    4 |  0.682     |  1.466      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3806_o_Mux_8748_o |         Local|      |    4 |  0.712     |  1.587      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3998_o_Mux_9132_o |         Local|      |    4 |  1.139     |  1.904      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3638_o_Mux_8412_o |         Local|      |    4 |  0.732     |  1.475      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3830_o_Mux_8796_o |         Local|      |    4 |  0.669     |  1.307      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3662_o_Mux_8460_o |         Local|      |    4 |  0.744     |  1.663      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3878_o_Mux_8892_o |         Local|      |    4 |  0.755     |  1.337      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3710_o_Mux_8556_o |         Local|      |    4 |  1.223     |  2.301      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3902_o_Mux_8940_o |         Local|      |    4 |  0.635     |  1.229      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3254_o_Mux_7644_o |         Local|      |    4 |  0.926     |  1.583      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3278_o_Mux_7692_o |         Local|      |    4 |  1.193     |  1.779      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3302_o_Mux_7740_o |         Local|      |    4 |  1.407     |  1.775      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3326_o_Mux_7788_o |         Local|      |    4 |  0.418     |  0.974      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3350_o_Mux_7836_o |         Local|      |    4 |  0.327     |  1.196      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3374_o_Mux_7884_o |         Local|      |    4 |  0.697     |  1.520      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3398_o_Mux_7932_o |         Local|      |    4 |  0.786     |  1.371      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3422_o_Mux_7980_o |         Local|      |    4 |  1.149     |  1.733      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3446_o_Mux_8028_o |         Local|      |    4 |  0.435     |  1.234      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1726_o_Mux_4588_o |         Local|      |    2 |  0.280     |  0.621      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1742_o_Mux_4620_o |         Local|      |    2 |  0.660     |  1.221      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   3470_o_Mux_8076_o |         Local|      |    4 |  0.597     |  1.425      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1758_o_Mux_4652_o |         Local|      |    2 |  0.491     |  1.056      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1886_o_Mux_4908_o |         Local|      |    2 |  0.112     |  0.982      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1774_o_Mux_4684_o |         Local|      |    2 |  1.252     |  2.084      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1902_o_Mux_4940_o |         Local|      |    2 |  0.098     |  1.058      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1790_o_Mux_4716_o |         Local|      |    2 |  0.370     |  1.045      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1918_o_Mux_4972_o |         Local|      |    2 |  0.045     |  0.857      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2046_o_Mux_5228_o |         Local|      |    2 |  0.177     |  0.775      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1806_o_Mux_4748_o |         Local|      |    2 |  0.295     |  1.287      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1934_o_Mux_5004_o |         Local|      |    2 |  0.081     |  0.904      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2062_o_Mux_5260_o |         Local|      |    2 |  0.300     |  1.099      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1822_o_Mux_4780_o |         Local|      |    2 |  0.661     |  1.046      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1838_o_Mux_4812_o |         Local|      |    2 |  0.555     |  1.129      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1966_o_Mux_5068_o |         Local|      |    2 |  0.220     |  1.102      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1854_o_Mux_4844_o |         Local|      |    2 |  0.291     |  1.345      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1982_o_Mux_5100_o |         Local|      |    2 |  0.072     |  0.849      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1870_o_Mux_4876_o |         Local|      |    2 |  0.212     |  1.219      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1998_o_Mux_5132_o |         Local|      |    2 |  0.082     |  0.894      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2030_o_Mux_5196_o |         Local|      |    2 |  0.220     |  0.875      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1566_o_Mux_4268_o |         Local|      |    2 |  0.715     |  1.235      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2078_o_Mux_5292_o |         Local|      |    3 |  0.243     |  1.394      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1582_o_Mux_4300_o |         Local|      |    2 |  0.283     |  0.851      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|     43_o_Mux_1222_o |         Local|      |    3 |  0.184     |  1.070      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2094_o_Mux_5324_o |         Local|      |    3 |  1.026     |  1.750      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2110_o_Mux_5356_o |         Local|      |    3 |  0.183     |  0.774      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1598_o_Mux_4332_o |         Local|      |    2 |  0.616     |  1.695      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2126_o_Mux_5388_o |         Local|      |    3 |  0.442     |  0.972      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2142_o_Mux_5420_o |         Local|      |    3 |  0.229     |  1.147      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1614_o_Mux_4364_o |         Local|      |    2 |  0.682     |  1.272      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2158_o_Mux_5452_o |         Local|      |    3 |  0.538     |  1.571      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2174_o_Mux_5484_o |         Local|      |    3 |  0.626     |  1.505      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1630_o_Mux_4396_o |         Local|      |    2 |  0.526     |  1.136      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2190_o_Mux_5516_o |         Local|      |    3 |  0.469     |  1.318      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2206_o_Mux_5548_o |         Local|      |    3 |  0.674     |  1.463      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1646_o_Mux_4428_o |         Local|      |    2 |  0.132     |  0.924      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2222_o_Mux_5580_o |         Local|      |    3 |  0.467     |  1.101      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1662_o_Mux_4460_o |         Local|      |    2 |  0.471     |  1.356      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1678_o_Mux_4492_o |         Local|      |    2 |  0.634     |  1.015      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1694_o_Mux_4524_o |         Local|      |    2 |  0.458     |  1.011      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1710_o_Mux_4556_o |         Local|      |    2 |  0.059     |  0.865      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1073_o_Mux_3282_o |         Local|      |    4 |  0.522     |  1.055      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1105_o_Mux_3346_o |         Local|      |    4 |  0.962     |  1.779      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1233_o_Mux_3602_o |         Local|      |    4 |  0.430     |  1.260      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1121_o_Mux_3378_o |         Local|      |    4 |  0.488     |  1.251      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1249_o_Mux_3634_o |         Local|      |    4 |  0.324     |  1.389      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1137_o_Mux_3410_o |         Local|      |    4 |  0.868     |  1.487      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1265_o_Mux_3666_o |         Local|      |    4 |  0.507     |  1.788      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1393_o_Mux_3922_o |         Local|      |    4 |  0.396     |  1.121      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1153_o_Mux_3442_o |         Local|      |    4 |  0.437     |  1.337      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1281_o_Mux_3698_o |         Local|      |    4 |  0.376     |  1.502      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1409_o_Mux_3954_o |         Local|      |    4 |  0.430     |  1.482      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1169_o_Mux_3474_o |         Local|      |    4 |  0.912     |  1.782      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1297_o_Mux_3730_o |         Local|      |    4 |  0.826     |  1.796      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1185_o_Mux_3506_o |         Local|      |    4 |  1.121     |  1.502      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1313_o_Mux_3762_o |         Local|      |    4 |  0.855     |  1.672      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1201_o_Mux_3538_o |         Local|      |    4 |  1.033     |  1.900      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1329_o_Mux_3794_o |         Local|      |    4 |  0.828     |  1.672      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1217_o_Mux_3570_o |         Local|      |    4 |  0.314     |  1.070      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1345_o_Mux_3826_o |         Local|      |    4 |  0.627     |  1.379      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1361_o_Mux_3858_o |         Local|      |    4 |  0.737     |  1.541      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1377_o_Mux_3890_o |         Local|      |    4 |  0.232     |  1.405      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2606_o_Mux_6348_o |         Local|      |    4 |  0.035     |  1.483      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2238_o_Mux_5612_o |         Local|      |    3 |  0.448     |  0.976      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2254_o_Mux_5644_o |         Local|      |    3 |  0.471     |  1.087      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2270_o_Mux_5676_o |         Local|      |    3 |  0.740     |  1.309      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2398_o_Mux_5932_o |         Local|      |    3 |  0.185     |  1.057      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2286_o_Mux_5708_o |         Local|      |    3 |  0.518     |  1.130      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2414_o_Mux_5964_o |         Local|      |    3 |  0.250     |  0.874      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2430_o_Mux_5996_o |         Local|      |    3 |  0.226     |  1.101      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2558_o_Mux_6252_o |         Local|      |    3 |  0.634     |  1.250      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2302_o_Mux_5740_o |         Local|      |    3 |  0.568     |  1.428      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2318_o_Mux_5772_o |         Local|      |    3 |  0.549     |  0.890      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2446_o_Mux_6028_o |         Local|      |    3 |  0.173     |  0.713      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2574_o_Mux_6284_o |         Local|      |    3 |  0.338     |  1.070      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2334_o_Mux_5804_o |         Local|      |    3 |  0.692     |  1.409      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2462_o_Mux_6060_o |         Local|      |    3 |  0.233     |  0.752      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2350_o_Mux_5836_o |         Local|      |    3 |  0.757     |  1.099      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2478_o_Mux_6092_o |         Local|      |    3 |  0.587     |  1.206      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2366_o_Mux_5868_o |         Local|      |    3 |  0.525     |  1.301      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2494_o_Mux_6124_o |         Local|      |    3 |  0.571     |  0.934      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2510_o_Mux_6156_o |         Local|      |    3 |  0.737     |  1.368      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2382_o_Mux_5900_o |         Local|      |    3 |  0.398     |  0.981      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2526_o_Mux_6188_o |         Local|      |    3 |  0.403     |  1.182      |
-+---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/cur |              |      |      |            |             |
-|rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2542_o_Mux_6220_o |         Local|      |    3 |  0.919     |  1.688      |
+|    185_o_Mux_1468_o |         Local|      |    5 |  1.242     |  1.824      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|           m__n92061 |         Local|      |    4 |  0.288     |  1.346      |
+|            m__n8261 |         Local|      |    4 |  0.318     |  1.910      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|     43_o_Mux_1184_o |         Local|      |    3 |  0.434     |  1.087      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   3086_o_Mux_7270_o |         Local|      |    4 |  0.906     |  1.692      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   3022_o_Mux_7142_o |         Local|      |    4 |  1.147     |  1.797      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|           m__n92069 |         Local|      |    4 |  0.728     |  1.562      |
+|           m__n82611 |         Local|      |    4 |  0.459     |  1.968      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|     51_o_Mux_1238_o |         Local|      |    1 |  0.000     |  1.207      |
+|    225_o_Mux_1548_o |         Local|      |    4 |  1.253     |  1.608      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    913_o_Mux_2962_o |         Local|      |    4 |  0.727     |  1.526      |
+|    265_o_Mux_1628_o |         Local|      |    5 |  2.235     |  2.908      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    233_o_Mux_1564_o |         Local|      |    5 |  1.135     |  1.706      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    297_o_Mux_1692_o |         Local|      |    5 |  1.396     |  1.988      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    281_o_Mux_1660_o |         Local|      |    5 |  0.883     |  1.898      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   3118_o_Mux_7334_o |         Local|      |    4 |  0.656     |  1.450      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   3054_o_Mux_7206_o |         Local|      |    4 |  1.165     |  1.767      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   3070_o_Mux_7238_o |         Local|      |    4 |  0.488     |  1.211      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   3006_o_Mux_7110_o |         Local|      |    4 |  0.894     |  1.850      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2974_o_Mux_7046_o |         Local|      |    4 |  0.717     |  1.470      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2910_o_Mux_6918_o |         Local|      |    4 |  0.877     |  1.540      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   3102_o_Mux_7302_o |         Local|      |    4 |  0.588     |  1.221      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   3038_o_Mux_7174_o |         Local|      |    4 |  0.542     |  1.360      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2830_o_Mux_6758_o |         Local|      |    4 |  0.692     |  1.307      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|   2846_o_Mux_6790_o |         Local|      |    4 |  0.465     |  1.382      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|            m__n9206 |         Local|      |    4 |  0.498     |  1.100      |
+|          m__n826110 |         Local|      |    4 |  0.522     |  1.560      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    945_o_Mux_3026_o |         Local|      |    4 |  0.394     |  1.010      |
+|   2814_o_Mux_6726_o |         Local|      |    4 |  0.487     |  1.327      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    961_o_Mux_3058_o |         Local|      |    4 |  0.713     |  1.259      |
+|    177_o_Mux_1452_o |         Local|      |    5 |  1.847     |  2.414      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    977_o_Mux_3090_o |         Local|      |    4 |  0.503     |  1.303      |
+|   2958_o_Mux_7014_o |         Local|      |    4 |  1.096     |  1.438      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|    993_o_Mux_3122_o |         Local|      |    4 |  0.691     |  1.286      |
+|   2894_o_Mux_6886_o |         Local|      |    4 |  0.238     |  1.155      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1009_o_Mux_3154_o |         Local|      |    4 |  0.609     |  1.351      |
+|   3150_o_Mux_7398_o |         Local|      |    4 |  0.412     |  2.434      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2798_o_Mux_6732_o |         Local|      |    4 |  0.991     |  1.614      |
+|    153_o_Mux_1404_o |         Local|      |    4 |  0.422     |  1.520      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1025_o_Mux_3186_o |         Local|      |    4 |  0.238     |  1.268      |
+|    161_o_Mux_1420_o |         Local|      |    4 |  0.365     |  1.331      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2814_o_Mux_6764_o |         Local|      |    4 |  0.115     |  0.883      |
+|    217_o_Mux_1532_o |         Local|      |    4 |  0.969     |  1.614      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1041_o_Mux_3218_o |         Local|      |    4 |  0.826     |  1.215      |
+|    209_o_Mux_1516_o |         Local|      |    4 |  0.741     |  1.586      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   1057_o_Mux_3250_o |         Local|      |    4 |  0.608     |  1.621      |
+|    241_o_Mux_1580_o |         Local|      |    4 |  1.164     |  2.218      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2942_o_Mux_7020_o |         Local|      |    4 |  0.430     |  0.989      |
+|    321_o_Mux_1740_o |         Local|      |    4 |  1.428     |  2.050      |
 +---------------------+--------------+------+------+------------+-------------+
 |fb_less_2d_gpu_i/cur |              |      |      |            |             |
 |rent_state_s[4]_GND_ |              |      |      |            |             |
-|   2782_o_Mux_6700_o |         Local|      |    4 |  0.653     |  1.299      |
+|    377_o_Mux_1852_o |         Local|      |    4 |  1.564     |  2.435      |
 +---------------------+--------------+------+------+------------+-------------+
-|fb_less_2d_gpu_i/Mra |              |      |      |            |             |
-|          m__n920610 |         Local|      |    4 |  0.389     |  0.964      |
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    257_o_Mux_1612_o |         Local|      |    4 |  0.731     |  1.777      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    273_o_Mux_1644_o |         Local|      |    4 |  0.873     |  1.466      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    337_o_Mux_1772_o |         Local|      |    4 |  1.108     |  1.679      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    353_o_Mux_1804_o |         Local|      |    4 |  1.163     |  1.725      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    289_o_Mux_1676_o |         Local|      |    4 |  0.827     |  1.536      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    369_o_Mux_1836_o |         Local|      |    4 |  1.122     |  1.487      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|    169_o_Mux_1436_o |         Local|      |    4 |  1.235     |  1.579      |
++---------------------+--------------+------+------+------------+-------------+
+|fb_less_2d_gpu_i/cur |              |      |      |            |             |
+|rent_state_s[4]_GND_ |              |      |      |            |             |
+|     51_o_Mux_1200_o |         Local|      |    1 |  0.000     |  0.373      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -991,8 +863,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_clk_gen_clk_fx = PERIOD TIMEGRP "clk_g | SETUP       |     1.149ns|     7.739ns|       0|           0
-  en_clk_fx" TS_CLK / 4.16666667 HIGH       | HOLD        |     0.409ns|            |       0|           0
+  TS_clk_gen_clk_fx = PERIOD TIMEGRP "clk_g | SETUP       |     1.075ns|     7.813ns|       0|           0
+  en_clk_fx" TS_CLK / 4.16666667 HIGH       | HOLD        |     0.401ns|            |       0|           0
      50%                                    |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
   TS_CLK = PERIOD TIMEGRP "clk_24MHz_i" 37. | MINLOWPULSE |    21.036ns|    16.000ns|       0|           0
@@ -1010,8 +882,8 @@ Derived Constraints for TS_CLK
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_CLK                         |     37.037ns|     16.000ns|     32.246ns|            0|            0|            0|        13846|
-| TS_clk_gen_clk_fx             |      8.889ns|      7.739ns|          N/A|            0|            0|        13846|            0|
+|TS_CLK                         |     37.037ns|     16.000ns|     32.554ns|            0|            0|            0|        14359|
+| TS_clk_gen_clk_fx             |      8.889ns|      7.813ns|          N/A|            0|            0|        14359|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -1021,10 +893,10 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 2 mins 5 secs 
-Total CPU time to PAR completion: 1 mins 53 secs 
+Total REAL time to PAR completion: 1 mins 46 secs 
+Total CPU time to PAR completion: 1 mins 41 secs 
 
-Peak Memory Usage:  466 MB
+Peak Memory Usage:  502 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.

@@ -122,6 +122,10 @@
     <transform xil_pn:end_ts="1496691206" xil_pn:in_ck="6966398892181677459" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1496691206">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="../../hdl/vhdl/clk_gen_100MHz_a.vhd"/>
       <outfile xil_pn:name="../../hdl/vhdl/clk_gen_100MHz_e.vhd"/>
       <outfile xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu.vhd"/>
@@ -223,12 +227,12 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1496691389" xil_pn:in_ck="2659035355449800691" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1496691226">
+    <transform xil_pn:end_ts="1496745827" xil_pn:in_ck="2659035355449800691" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1496745698">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.lso"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.ngc"/>
@@ -246,19 +250,23 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1496693080" xil_pn:in_ck="-3545349828046752684" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="2005170809893112716" xil_pn:start_ts="1496693064">
+    <transform xil_pn:end_ts="1496745298" xil_pn:in_ck="-3545349828046752684" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="2005170809893112716" xil_pn:start_ts="1496745276">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.bld"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.ngd"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1496693201" xil_pn:in_ck="-3545349828046752683" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="-2489532510156203999" xil_pn:start_ts="1496693080">
+    <transform xil_pn:end_ts="1496745407" xil_pn:in_ck="-3545349828046752683" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="-2489532510156203999" xil_pn:start_ts="1496745298">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
@@ -271,9 +279,10 @@
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_summary.xml"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_usage.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1496693356" xil_pn:in_ck="6223063450776036846" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="-3829590541433901613" xil_pn:start_ts="1496693201">
+    <transform xil_pn:end_ts="1496745550" xil_pn:in_ck="6223063450776036846" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="-3829590541433901613" xil_pn:start_ts="1496745407">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.ncd"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.pad"/>
@@ -285,10 +294,13 @@
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_pad.txt"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_par.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1496693433" xil_pn:in_ck="4572335426713284809" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="5341574683187206424" xil_pn:start_ts="1496693372">
+    <transform xil_pn:end_ts="1496745607" xil_pn:in_ck="4572335426713284809" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="5341574683187206424" xil_pn:start_ts="1496745550">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.bgn"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.bit"/>
@@ -298,9 +310,10 @@
       <outfile xil_pn:name="webtalk.log"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1496693356" xil_pn:in_ck="-3545349828046752815" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416184" xil_pn:start_ts="1496693333">
+    <transform xil_pn:end_ts="1496745550" xil_pn:in_ck="-3545349828046752815" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416184" xil_pn:start_ts="1496745530">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.twr"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.twx"/>
@@ -310,6 +323,7 @@
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="InputRemoved"/>

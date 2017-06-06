@@ -542,7 +542,7 @@ begin
 --								go_to_next_tile_line_s <= x"1";
 --							end if;
 							
-							xx_s <= shift_left(unsigned(tx_r), TILE_BITS);
+--							xx_s <= shift_left(unsigned(tx_r), TILE_BITS);
 --						
 --						when others =>
 --							--WRITE_TILE_LINE--
@@ -556,13 +556,20 @@ begin
 						when WRITE_PIXEL =>
 							--Return tile mat address--
 							mem_addr_s <= tile_mat_addr_s;
-							pix_buf_render(to_integer(unsigned(xx_r)))(23 downto 16) <= acc_r_r(to_integer(unsigned(xx_r)));
-							pix_buf_render(to_integer(unsigned(xx_r)))(15 downto 8) <= acc_g_r(to_integer(unsigned(xx_r)));
-							pix_buf_render(to_integer(unsigned(xx_r)))(7 downto 0) <= acc_b_r(to_integer(unsigned(xx_r)));
-							xx_s <= xx_r+1;
+--							pix_buf_render(to_integer(unsigned(xx_r)))(23 downto 16) <= acc_r_r(to_integer(unsigned(xx_r)));
+--							pix_buf_render(to_integer(unsigned(xx_r)))(15 downto 8) <= acc_g_r(to_integer(unsigned(xx_r)));
+--							pix_buf_render(to_integer(unsigned(xx_r)))(7 downto 0) <= acc_b_r(to_integer(unsigned(xx_r)));
+--							xx_s <= xx_r+1;
 						when others =>
 					end case;
 		end process;
+		
+		FILL_RENDER_BUFFER: 
+			for i in 0 to TILE_LINE-1 generate
+				pix_buf_render(i)(23 downto 16) <= acc_r_r(i);
+				pix_buf_render(i)(15 downto 8) <= acc_g_r(i);
+				pix_buf_render(i)(7 downto 0) <= acc_b_r(i);
+			end generate FILL_RENDER_BUFFER;
 		
 				
 --		
