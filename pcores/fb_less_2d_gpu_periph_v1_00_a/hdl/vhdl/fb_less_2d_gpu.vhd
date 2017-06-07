@@ -330,7 +330,7 @@ begin
 				when READ_DIMENSIONS =>
 					next_state_s <= WAIT_VALID_DATA;
 				when READ_COLOR =>
-					next_state_s <= READ_INDEX;--RENDER;
+					next_state_s <= RENDER;
 				when RENDER =>
 					--Rendering is not finished => stall state--
 					if(ix_r = TILE_LINE+5) then
@@ -367,7 +367,7 @@ begin
 --		
 --	
 --			
-		process(current_state_s)--, ix_r)--y_r, tx_r, ti_r, mem_data_s, i_r)
+		process(current_state_s, ix_r)--, ix_r)--y_r, tx_r, ti_r, mem_data_s, i_r)
 			begin
 				--if(rising_edge(clk_i)) then
 				case (current_state_s) is

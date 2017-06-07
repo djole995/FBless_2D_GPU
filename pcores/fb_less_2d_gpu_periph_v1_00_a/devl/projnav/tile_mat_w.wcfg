@@ -13,7 +13,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="45" />
+   <WVObjectSize size="47" />
    <wvobject fp_name="/testbench/clk_i" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk_i</obj_property>
       <obj_property name="ObjectShortName">clk_i</obj_property>
@@ -208,5 +208,13 @@
       <obj_property name="ElementShortName">tile_mat_r[0:7]</obj_property>
       <obj_property name="ObjectShortName">tile_mat_r[0:7]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/pix_buf_render" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pix_buf_render[0:31]</obj_property>
+      <obj_property name="ObjectShortName">pix_buf_render[0:31]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/pix_buf_draw" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pix_buf_draw[0:31]</obj_property>
+      <obj_property name="ObjectShortName">pix_buf_draw[0:31]</obj_property>
    </wvobject>
 </wave_config>

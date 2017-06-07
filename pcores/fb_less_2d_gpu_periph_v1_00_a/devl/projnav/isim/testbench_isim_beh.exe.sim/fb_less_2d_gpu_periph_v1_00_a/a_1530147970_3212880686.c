@@ -577,7 +577,7 @@ LAB15:    xsi_set_current_line(333, ng0);
     t4 = *((char **)t3);
     t6 = (t4 + 56U);
     t7 = *((char **)t6);
-    *((unsigned char *)t7) = (unsigned char)7;
+    *((unsigned char *)t7) = (unsigned char)12;
     xsi_driver_first_trans_fast(t1);
     goto LAB5;
 
