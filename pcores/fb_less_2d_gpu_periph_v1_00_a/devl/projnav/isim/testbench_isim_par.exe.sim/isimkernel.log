@@ -2,27 +2,30 @@ Command line:
    testbench_isim_par.exe
      -simmode  gui
      -simrunnum  0
-     -socket  9835
+     -socket  52338
 
-Wed Jun 07 09:59:35 2017
+Wed Jun 07 20:56:59 2017
 
 
- Elaboration Time: 0.296401 sec
+ Elaboration Time: 0.811205 sec
 
- Current Memory Usage: 1033.99 Meg
+ Current Memory Usage: 1505.27 Meg
 
  Total Signals          : 166
  Total Nets             : 270020
- Total Signal Drivers   : 174
+ Total Signal Drivers   : 176
  Total Blocks           : 52
  Total Primitive Blocks : 50
- Total Processes        : 143
+ Total Processes        : 145
  Total Traceable Variables  : 93
  Total Scalar Nets and Variables : 270599
+Total Line Count : 298
+Total Line Count : 298
+Total Line Count : 298
 
- Total Simulation Time: 0.795605 sec
+ Total Simulation Time: 27.3314 sec
 
- Current Memory Usage: 1033.99 Meg
+ Current Memory Usage: 1033.37 Meg
 
-Wed Jun 07 10:02:16 2017
+Wed Jun 07 22:41:17 2017
 

@@ -304,7 +304,7 @@ begin
 					if(read_tile_mat = 0) then
 						next_state_s <= READ_UPPER;--INC_TX;READ_UPPER;
 					else
-						next_state_s <= WRITE_PIXEL;
+						next_state_s <= READ_INDEX;--WRITE_PIXEL;
 					end if;
 				when READ_UPPER =>
 					next_state_s <= WAIT_VALID_DATA;--READ_LOWER;
@@ -539,14 +539,20 @@ begin
 						when CHECK_OPAQUE =>
 							--CHECK_OPAQUE--
 							--If all weights are zeros line is fully opaque and all remaining rects are covered (invisible)-- 
---							if(weight_r(0) = 0 and weight_r(1) = 0 and weight_r(2) = 0
---								and weight_r(3) = 0 and weight_r(4) = 0 and weight_r(5) = 0
---								and weight_r(6) = 0) then
---								-----------------------Break loop-----------------------------------------------
---								go_to_next_tile_line_s <= x"1";
---							end if;
-							
---							xx_s <= shift_left(unsigned(tx_r), TILE_BITS);
+							if(weight_r(0) = 0 and weight_r(1) = 0 and weight_r(2) = 0
+								and weight_r(3) = 0 and weight_r(4) = 0 and weight_r(5) = 0
+								and weight_r(6) = 0 and weight_r(7) = 0 and weight_r(8) = 0
+								and weight_r(9) = 0 and weight_r(10) = 0 and weight_r(11) = 0
+								and weight_r(12) = 0 and weight_r(13) = 0 and weight_r(14) = 0
+								and weight_r(15) = 0 and weight_r(16) = 0 and weight_r(17) = 0
+								and weight_r(18) = 0 and weight_r(19) = 0 and weight_r(20) = 0
+								and weight_r(21) = 0 and weight_r(22) = 0 and weight_r(23) = 0
+								and weight_r(24) = 0 and weight_r(25) = 0 and weight_r(26) = 0
+								and weight_r(27) = 0 and weight_r(28) = 0 and weight_r(29) = 0
+								and weight_r(30) = 0 and weight_r(31) = 0) then
+								-----------------------Break loop-----------------------------------------------
+								go_to_next_tile_line_s <= "1";
+							end if;
 --						
 --						when others =>
 --							--WRITE_TILE_LINE--

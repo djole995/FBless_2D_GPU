@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_isim_beh.exe" -prj "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_beh.prj" "fb_less_2d_gpu_periph_v1_00_a.testbench" 
+-intstyle "ise" -incremental -lib "secureip" -o "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_isim_par.exe" -prj "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_par.prj" "fb_less_2d_gpu_periph_v1_00_a.testbench" 

@@ -15,13 +15,13 @@
          <ClosedNode>/fb_less_2d_gpu_standalone - IMP D:|FBless_2D_GPU|pcores|fb_less_2d_gpu_periph_v1_00_a|devl|projnav|fb_less_2d_gpu_standalone.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>fb_less_2d_gpu_standalone - IMP (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/fb_less_2d_gpu_standalone.vhd)</SelectedItem>
+         <SelectedItem>fb_less_2d_gpu_i - fb_less_2d_gpu - Behavioral (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/fb_less_2d_gpu.vhd)</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001bc000000020000000000000000000000000200000064ffffffff000000810000000300000002000001bc0000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >true</UserChangedColumnWidths>
-      <CurrentItem>fb_less_2d_gpu_standalone - IMP (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/fb_less_2d_gpu_standalone.vhd)</CurrentItem>
+      <CurrentItem>fb_less_2d_gpu_i - fb_less_2d_gpu - Behavioral (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/fb_less_2d_gpu.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="SynthesisOnly" sourcetype="DESUT_VHDL_ARCHITECTURE" guiview="Process" >
       <ClosedNodes>
@@ -33,13 +33,13 @@
          <ClosedNode>User Constraints</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Place &amp; Route</SelectedItem>
+         <SelectedItem></SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >8</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
-      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000e7000000010000000100000000000000000000000064ffffffff000000810000000000000001000000e70000000100000000</ViewHeaderState>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Place &amp; Route</CurrentItem>
+      <CurrentItem></CurrentItem>
    </ItemView>
    <ItemView guiview="File" >
       <ClosedNodes>
@@ -81,7 +81,7 @@
       <CurrentItem/>
    </ItemView>
    <SourceProcessView>000000ff00000000000000020000011b0000011b01000000050100000002</SourceProcessView>
-   <CurrentView>Implementation</CurrentView>
+   <CurrentView>Behavioral Simulation</CurrentView>
    <ItemView engineview="SynthesisOnly" sourcetype="DESUT_BMM" guiview="Process" >
       <ClosedNodes>
          <ClosedNodesVersion>1</ClosedNodesVersion>
@@ -98,18 +98,17 @@
          <ClosedNodesVersion>2</ClosedNodesVersion>
          <ClosedNode>/Unassigned User Library Modules/fb_less_2d_gpu_periph - IMP/AXI_LITE_IPIF_I - axi_lite_ipif - imp</ClosedNode>
          <ClosedNode>/Unassigned User Library Modules/or_gate128 - imp</ClosedNode>
-         <ClosedNode>/Unassigned User Library Modules/testbench - behavior</ClosedNode>
          <ClosedNode>/fb_less_2d_gpu_standalone - IMP D:|Sabac_i_Radenkovic|FBless_2D_GPU|pcores|fb_less_2d_gpu_periph_v1_00_a|hdl|vhdl|fb_less_2d_gpu_standalone.vhd</ClosedNode>
          <ClosedNode>/testbench - behavior D:|Sabac_i_Radenkovic|FBless_2D_GPU|pcores|fb_less_2d_gpu_periph_v1_00_a|sim|fb_less_2d_gpu_tb.vhd</ClosedNode>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>fb_less_2d_gpu_periph - IMP (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/fb_less_2d_gpu_periph.vhd)</SelectedItem>
+         <SelectedItem>fb_less_2d_gpu_i - fb_less_2d_gpu - Behavioral (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/fb_less_2d_gpu.vhd)</SelectedItem>
       </SelectedItems>
-      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="vertical" >17</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001d0000000020000000000000000000000000200000064ffffffff000000810000000300000002000001d00000000100000003000000000000000100000003</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>fb_less_2d_gpu_periph - IMP (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/fb_less_2d_gpu_periph.vhd)</CurrentItem>
+      <CurrentItem>fb_less_2d_gpu_i - fb_less_2d_gpu - Behavioral (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/hdl/vhdl/fb_less_2d_gpu.vhd)</CurrentItem>
    </ItemView>
    <ItemView engineview="BehavioralSim" sourcetype="" guiview="Process" >
       <ClosedNodes>
@@ -130,12 +129,54 @@
          <ClosedNodesVersion>1</ClosedNodesVersion>
       </ClosedNodes>
       <SelectedItems>
-         <SelectedItem>Behavioral Check Syntax</SelectedItem>
+         <SelectedItem>Simulate Behavioral Model</SelectedItem>
       </SelectedItems>
       <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
       <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
       <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
       <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
-      <CurrentItem>Behavioral Check Syntax</CurrentItem>
+      <CurrentItem>Simulate Behavioral Model</CurrentItem>
+   </ItemView>
+   <ItemView engineview="PostRouteSim" guiview="Source" compilemode="AutoCompile" >
+      <ClosedNodes>
+         <ClosedNodesVersion>2</ClosedNodesVersion>
+         <ClosedNode>/Unassigned User Library Modules/fb_less_2d_gpu_periph - IMP</ClosedNode>
+         <ClosedNode>/Unassigned User Library Modules/testbench - behavior</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>testbench - behavior (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/sim/fb_less_2d_gpu_tb.vhd)</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000202000000010000000100000064000001a4000000020000000000000000000000000200000064ffffffff000000810000000300000002000001a40000000100000003000000000000000100000003</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>testbench - behavior (D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/sim/fb_less_2d_gpu_tb.vhd)</CurrentItem>
+   </ItemView>
+   <ItemView engineview="PostRouteSim" sourcetype="" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+         <ClosedNode>Design Utilities</ClosedNode>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem></SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem></CurrentItem>
+   </ItemView>
+   <ItemView engineview="PostRouteSim" sourcetype="DESUT_VHDL_ARCHITECTURE" guiview="Process" >
+      <ClosedNodes>
+         <ClosedNodesVersion>1</ClosedNodesVersion>
+      </ClosedNodes>
+      <SelectedItems>
+         <SelectedItem>Simulate Post-Place &amp; Route Model</SelectedItem>
+      </SelectedItems>
+      <ScrollbarPosition orientation="vertical" >0</ScrollbarPosition>
+      <ScrollbarPosition orientation="horizontal" >0</ScrollbarPosition>
+      <ViewHeaderState orientation="horizontal" >000000ff000000000000000100000001000000000000000000000000000000000000000000000000f8000000010000000100000000000000000000000064ffffffff000000810000000000000001000000f80000000100000000</ViewHeaderState>
+      <UserChangedColumnWidths orientation="horizontal" >false</UserChangedColumnWidths>
+      <CurrentItem>Simulate Post-Place &amp; Route Model</CurrentItem>
    </ItemView>
 </Project>
