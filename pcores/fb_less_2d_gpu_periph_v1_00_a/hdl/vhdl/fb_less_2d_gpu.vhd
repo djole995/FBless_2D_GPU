@@ -330,7 +330,7 @@ begin
 				when READ_DIMENSIONS =>
 					next_state_s <= WAIT_VALID_DATA;
 				when READ_COLOR =>
-					next_state_s <= RENDER;
+					next_state_s <= READ_INDEX;--RENDER;
 				when RENDER =>
 					--Rendering is not finished => stall state--
 					if(ix_r = TILE_LINE+5) then
@@ -338,9 +338,9 @@ begin
 					end if;
 					--Skip for now--
 				when CHECK_OPAQUE =>
-					next_state_s <= WRITE_PIXEL;
+					next_state_s <= READ_INDEX;
 				when WRITE_PIXEL =>
-					if(xx_r = TILE_LINE-1) then
+					--if(xx_r = TILE_LINE-1) then
 						--Outer loop finished => algorithm finished--
 						if(y_r = HEIGHT-1 and tx_r = TILE_MAT_WIDTH-1) then
 							next_state_s <= FINISH;
@@ -351,7 +351,7 @@ begin
 						else
 							next_state_s <= INC_TX;
 						end if;
-					end if;
+				--	end if;
 				when INC_Y =>
 					next_state_s <= INC_TX;
 				when INC_TX =>
@@ -367,9 +367,9 @@ begin
 --		
 --	
 --			
-		process(clk_i)--current_state_s, ix_r)--y_r, tx_r, ti_r, mem_data_s, i_r)
+		process(current_state_s)--, ix_r)--y_r, tx_r, ti_r, mem_data_s, i_r)
 			begin
-				if(rising_edge(clk_i)) then
+				--if(rising_edge(clk_i)) then
 				case (current_state_s) is
 					when INC_Y => 
 						--Iterating throught rows, outer loop--
@@ -566,7 +566,7 @@ begin
 --							xx_s <= xx_r+1;
 						when others =>
 					end case;
-				end if;
+				--end if;
 		end process;
 		
 		FILL_RENDER_BUFFER: 
@@ -577,9 +577,9 @@ begin
 			end generate FILL_RENDER_BUFFER;
 			
 			valid_render_col <= unsigned(tx_r(4 downto 0)) & "00000" when current_state_s = CHECK_OPAQUE or current_state_s = WRITE_PIXEL
-									else "1001111111";
+									else "1111111111"; --640 +
 			valid_render_row <= unsigned(y_r(8 downto 0)) when current_state_s = CHECK_OPAQUE OR current_state_s = WRITE_PIXEL
-							else "111011111";
+							else "111111111"; --480 +
 			
 --			pix_buf_render(1)(23 downto 16) <= not(acc_b_s(0));
 --			pix_buf_render(2)(23 downto 16) <= not(acc_b_s(0));
@@ -857,7 +857,7 @@ begin
 	pix_buf_draw_idx <= pixel_col_i(TILE_BITS-1 downto 0);
 	
 	pix_buf_render_full_and_valid <= '1' when pixel_col_i = valid_render_col
-							and (pixel_row_i >= valid_render_row and pixel_row_i < valid_render_row+100)
+							and pixel_row_i = valid_render_row
 				else '0';
 	
 	process(clk_i, rst_n_i)

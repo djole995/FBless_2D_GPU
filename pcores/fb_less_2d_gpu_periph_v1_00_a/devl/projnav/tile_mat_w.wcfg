@@ -13,7 +13,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="44" />
+   <WVObjectSize size="45" />
    <wvobject fp_name="/testbench/clk_i" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">clk_i</obj_property>
       <obj_property name="ObjectShortName">clk_i</obj_property>
@@ -203,5 +203,10 @@
    <wvobject fp_name="/testbench/uut/tmp_acc_b" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">tmp_acc_b[23:0]</obj_property>
       <obj_property name="ObjectShortName">tmp_acc_b[23:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/testbench/uut/tile_mat_r" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">tile_mat_r[0:7]</obj_property>
+      <obj_property name="ObjectShortName">tile_mat_r[0:7]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
 </wave_config>

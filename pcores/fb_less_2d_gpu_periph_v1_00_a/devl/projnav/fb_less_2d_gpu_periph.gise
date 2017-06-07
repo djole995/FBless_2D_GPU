@@ -96,16 +96,13 @@
       <branch xil_pn:name="BehavioralSim"/>
       <branch xil_pn:name="PostRouteSimulation"/>
     </file>
-    <file xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log">
-      <branch xil_pn:name="BehavioralSim"/>
-      <branch xil_pn:name="PostRouteSimulation"/>
-    </file>
+    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="netgen"/>
     <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/par/fb_less_2d_gpu_standalone_timesim.nlf"/>
     <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_SDF" xil_pn:name="netgen/par/fb_less_2d_gpu_standalone_timesim.sdf"/>
     <file xil_pn:branch="PostRouteSimulation" xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/par/fb_less_2d_gpu_standalone_timesim.v"/>
-    <file xil_pn:branch="PostSynthSim" xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.nlf"/>
-    <file xil_pn:branch="PostSynthSim" xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.v"/>
+    <file xil_pn:fileType="FILE_NETGEN_REPORT" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.nlf"/>
+    <file xil_pn:fileType="FILE_VERILOG" xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.v"/>
     <file xil_pn:fileType="FILE_XST_PROJECT" xil_pn:name="ram.prj"/>
     <file xil_pn:fileType="FILE_XST_STX" xil_pn:name="ram.stx"/>
     <file xil_pn:fileType="FILE_XST" xil_pn:name="ram.xst"/>
@@ -132,11 +129,38 @@
   </files>
 
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
-    <transform xil_pn:end_ts="1496758832" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1496758832">
+    <transform xil_pn:end_ts="1496824192" xil_pn:name="TRAN_copyInitialToAbstractSimulation" xil_pn:start_ts="1496824192">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1496761337" xil_pn:in_ck="6966398892181677459" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1496761337">
+    <transform xil_pn:end_ts="1496824841" xil_pn:in_ck="6966398892181677459" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1496824841">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+      <outfile xil_pn:name="../../hdl/vhdl/clk_gen_100MHz_a.vhd"/>
+      <outfile xil_pn:name="../../hdl/vhdl/clk_gen_100MHz_e.vhd"/>
+      <outfile xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu.vhd"/>
+      <outfile xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu_periph.vhd"/>
+      <outfile xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu_standalone.vhd"/>
+      <outfile xil_pn:name="../../hdl/vhdl/ram.vhd"/>
+      <outfile xil_pn:name="../../hdl/vhdl/vga_ctrl_a.vhd"/>
+      <outfile xil_pn:name="../../hdl/vhdl/vga_ctrl_e.vhd"/>
+      <outfile xil_pn:name="../../sim/fb_less_2d_gpu_tb.vhd"/>
+      <outfile xil_pn:name="flip_flop.vhd"/>
+      <outfile xil_pn:name="reg.vhd"/>
+    </transform>
+    <transform xil_pn:end_ts="1496824192" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-3941440714213554848" xil_pn:start_ts="1496824192">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1496824192" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="7691821813678136606" xil_pn:start_ts="1496824192">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1496824192" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="9074640315221555659" xil_pn:start_ts="1496824192">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
+    </transform>
+    <transform xil_pn:end_ts="1496824755" xil_pn:in_ck="6966398892181677459" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1496824755">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
@@ -155,43 +179,10 @@
       <outfile xil_pn:name="flip_flop.vhd"/>
       <outfile xil_pn:name="reg.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1496758832" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="-3941440714213554848" xil_pn:start_ts="1496758832">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1496758832" xil_pn:name="TRAN_schematicsToHdlSim" xil_pn:prop_ck="7691821813678136606" xil_pn:start_ts="1496758832">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1496758832" xil_pn:name="TRAN_regenerateCoresSim" xil_pn:prop_ck="9074640315221555659" xil_pn:start_ts="1496758832">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-    </transform>
-    <transform xil_pn:end_ts="1496761349" xil_pn:in_ck="6966398892181677459" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1496761349">
+    <transform xil_pn:end_ts="1496824759" xil_pn:in_ck="6966398892181677459" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-4734195468757745411" xil_pn:start_ts="1496824755">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="../../hdl/vhdl/clk_gen_100MHz_a.vhd"/>
-      <outfile xil_pn:name="../../hdl/vhdl/clk_gen_100MHz_e.vhd"/>
-      <outfile xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu.vhd"/>
-      <outfile xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu_periph.vhd"/>
-      <outfile xil_pn:name="../../hdl/vhdl/fb_less_2d_gpu_standalone.vhd"/>
-      <outfile xil_pn:name="../../hdl/vhdl/ram.vhd"/>
-      <outfile xil_pn:name="../../hdl/vhdl/vga_ctrl_a.vhd"/>
-      <outfile xil_pn:name="../../hdl/vhdl/vga_ctrl_e.vhd"/>
-      <outfile xil_pn:name="../../sim/fb_less_2d_gpu_tb.vhd"/>
-      <outfile xil_pn:name="flip_flop.vhd"/>
-      <outfile xil_pn:name="reg.vhd"/>
-    </transform>
-    <transform xil_pn:end_ts="1496761352" xil_pn:in_ck="6966398892181677459" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-4734195468757745411" xil_pn:start_ts="1496761349">
-      <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
@@ -203,10 +194,9 @@
       <outfile xil_pn:name="testbench_isim_beh.exe"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1496761353" xil_pn:in_ck="-4722320006248726575" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="7221388100905823386" xil_pn:start_ts="1496761352">
+    <transform xil_pn:end_ts="1496824759" xil_pn:in_ck="-4722320006248726575" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="7221388100905823386" xil_pn:start_ts="1496824759">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForProperties"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
@@ -242,11 +232,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1496765906" xil_pn:in_ck="2659035355449800691" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1496765874">
+    <transform xil_pn:end_ts="1496821982" xil_pn:in_ck="2659035355449800691" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="-7379841851413560262" xil_pn:start_ts="1496821945">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
       <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.lso"/>
@@ -265,20 +257,24 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1496765919" xil_pn:in_ck="-3545349828046752684" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="2005170809893112716" xil_pn:start_ts="1496765913">
+    <transform xil_pn:end_ts="1496821987" xil_pn:in_ck="-3545349828046752684" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="2005170809893112716" xil_pn:start_ts="1496821982">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.bld"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.ngd"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_ngdbuild.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1496765984" xil_pn:in_ck="-3545349828046752683" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="-2489532510156203999" xil_pn:start_ts="1496765919">
+    <transform xil_pn:end_ts="1496822074" xil_pn:in_ck="-3545349828046752683" xil_pn:name="TRANEXT_map_spartan6" xil_pn:prop_ck="-2489532510156203999" xil_pn:start_ts="1496821987">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.pcf"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_map.map"/>
@@ -289,10 +285,11 @@
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_summary.xml"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_usage.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1496766174" xil_pn:in_ck="6223063450776036846" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="-3829590541433901613" xil_pn:start_ts="1496765984">
+    <transform xil_pn:end_ts="1496822246" xil_pn:in_ck="6223063450776036846" xil_pn:name="TRANEXT_par_spartan6" xil_pn:prop_ck="-3829590541433901613" xil_pn:start_ts="1496822074">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/par.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.ncd"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.pad"/>
@@ -304,10 +301,11 @@
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_pad.txt"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone_par.xrpt"/>
     </transform>
-    <transform xil_pn:end_ts="1496766195" xil_pn:in_ck="4572335426713284809" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="5341574683187206424" xil_pn:start_ts="1496766174">
+    <transform xil_pn:end_ts="1496822266" xil_pn:in_ck="4572335426713284809" xil_pn:name="TRANEXT_bitFile_spartan6" xil_pn:prop_ck="5341574683187206424" xil_pn:start_ts="1496822246">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/bitgen.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.bgn"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.bit"/>
@@ -317,17 +315,16 @@
       <outfile xil_pn:name="webtalk.log"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
     </transform>
-    <transform xil_pn:end_ts="1496762075" xil_pn:in_ck="4572335426713284809" xil_pn:name="TRAN_postParSimModel" xil_pn:prop_ck="1832352229632615554" xil_pn:start_ts="1496762047">
+    <transform xil_pn:end_ts="1496822345" xil_pn:in_ck="4572335426713284809" xil_pn:name="TRAN_postParSimModel" xil_pn:prop_ck="1832352229632615554" xil_pn:start_ts="1496822316">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="netgen"/>
       <outfile xil_pn:name="netgen/par/fb_less_2d_gpu_standalone_timesim.nlf"/>
       <outfile xil_pn:name="netgen/par/fb_less_2d_gpu_standalone_timesim.sdf"/>
       <outfile xil_pn:name="netgen/par/fb_less_2d_gpu_standalone_timesim.v"/>
     </transform>
-    <transform xil_pn:end_ts="1496762075" xil_pn:in_ck="-805722512662342419" xil_pn:name="TRAN_copyPost-ParAbstractToPreSimulation" xil_pn:start_ts="1496762075">
+    <transform xil_pn:end_ts="1496822345" xil_pn:in_ck="-805722512662342419" xil_pn:name="TRAN_copyPost-ParAbstractToPreSimulation" xil_pn:start_ts="1496822345">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
@@ -336,32 +333,31 @@
       <outfile xil_pn:name="netgen/par/fb_less_2d_gpu_standalone_timesim.sdf"/>
       <outfile xil_pn:name="netgen/par/fb_less_2d_gpu_standalone_timesim.v"/>
     </transform>
-    <transform xil_pn:end_ts="1496762078" xil_pn:in_ck="-7573854869363741885" xil_pn:name="TRAN_ISimulatePostPlace&amp;RouteModelRunFuse" xil_pn:prop_ck="-1416336502126929443" xil_pn:start_ts="1496762075">
+    <transform xil_pn:end_ts="1496822349" xil_pn:in_ck="-7573854869363741885" xil_pn:name="TRAN_ISimulatePostPlace&amp;RouteModelRunFuse" xil_pn:prop_ck="-1416336502126929443" xil_pn:start_ts="1496822345">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="fuse.log"/>
-      <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="isim.log"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="testbench_isim_par.exe"/>
       <outfile xil_pn:name="testbench_par.prj"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1496762078" xil_pn:in_ck="7130759509275896515" xil_pn:name="TRAN_ISimulatePostPlace&amp;RouteModel" xil_pn:prop_ck="8489425103383461116" xil_pn:start_ts="1496762078">
+    <transform xil_pn:end_ts="1496822373" xil_pn:in_ck="7130759509275896515" xil_pn:name="TRAN_ISimulatePostPlace&amp;RouteModel" xil_pn:prop_ck="8489425103383461116" xil_pn:start_ts="1496822373">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="OutputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="testbench_isim_par.wdb"/>
     </transform>
-    <transform xil_pn:end_ts="1496766174" xil_pn:in_ck="-3545349828046752815" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416184" xil_pn:start_ts="1496766162">
+    <transform xil_pn:end_ts="1496822246" xil_pn:in_ck="-3545349828046752815" xil_pn:name="TRAN_postRouteTrce" xil_pn:prop_ck="445577401284416184" xil_pn:start_ts="1496822234">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_xmsgs/trce.xmsgs"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.twr"/>
       <outfile xil_pn:name="fb_less_2d_gpu_standalone.twx"/>
@@ -371,6 +367,7 @@
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="netgen"/>
       <outfile xil_pn:name="netgen/synthesis/fb_less_2d_gpu_standalone_synthesis.nlf"/>

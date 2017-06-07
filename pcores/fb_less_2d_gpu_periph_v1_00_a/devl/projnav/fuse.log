@@ -1,8 +1,11 @@
-Running: C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_isim_par.exe -prj D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_par.prj fb_less_2d_gpu_periph_v1_00_a.testbench 
+Running: C:\Xilinx\14.6\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -lib secureip -o D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_isim_beh.exe -prj D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_beh.prj fb_less_2d_gpu_periph_v1_00_a.testbench 
 ISim P.68d (signature 0x7708f090)
 Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
+Parsing VHDL file "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/../../hdl/vhdl/ram.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing VHDL file "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/reg.vhd" into library fb_less_2d_gpu_periph_v1_00_a
+Parsing VHDL file "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/../../hdl/vhdl/fb_less_2d_gpu.vhd" into library fb_less_2d_gpu_periph_v1_00_a
 Parsing VHDL file "D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/../../sim/fb_less_2d_gpu_tb.vhd" into library fb_less_2d_gpu_periph_v1_00_a
 Starting static elaboration
 Completed static elaboration
@@ -20,8 +23,7 @@ Compiling architecture arch_reg of entity reg [\reg(1,0)\]
 Compiling architecture behavioral of entity fb_less_2d_gpu [fb_less_2d_gpu_default]
 Compiling architecture behavior of entity testbench
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
 Compiled 20 VHDL Units
-Built simulation executable D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_isim_par.exe
-Fuse Memory Usage: 40892 KB
-Fuse CPU Usage: 499 ms
+Built simulation executable D:/FBless_2D_GPU/pcores/fb_less_2d_gpu_periph_v1_00_a/devl/projnav/testbench_isim_beh.exe
+Fuse Memory Usage: 40900 KB
+Fuse CPU Usage: 498 ms

@@ -2,12 +2,12 @@ Command line:
    testbench_isim_par.exe
      -simmode  gui
      -simrunnum  0
-     -socket  2291
+     -socket  9835
 
-Tue Jun 06 17:14:40 2017
+Wed Jun 07 09:59:35 2017
 
 
- Elaboration Time: 0.327601 sec
+ Elaboration Time: 0.296401 sec
 
  Current Memory Usage: 1033.99 Meg
 
@@ -20,9 +20,9 @@ Tue Jun 06 17:14:40 2017
  Total Traceable Variables  : 93
  Total Scalar Nets and Variables : 270599
 
- Total Simulation Time: 4.29003 sec
+ Total Simulation Time: 0.795605 sec
 
  Current Memory Usage: 1033.99 Meg
 
-Tue Jun 06 17:18:28 2017
+Wed Jun 07 10:02:16 2017
 
