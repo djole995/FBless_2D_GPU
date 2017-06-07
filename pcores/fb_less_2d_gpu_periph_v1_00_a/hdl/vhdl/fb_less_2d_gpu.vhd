@@ -107,15 +107,15 @@ architecture Behavioral of fb_less_2d_gpu is
 	
 	
 	type tState is (IDLE, INC_Y, INC_TX, CALC_TY, READ_UPPER, WAIT_VALID_DATA, READ_LOWER, READ_INDEX, READ_INDEX2, READ_POSITION, READ_DIMENSIONS, READ_COLOR, RENDER, CALC_W, CALC_IW_M, CALC_ACC, CALC_WEIGHT, CHECK_OPAQUE, WRITE_PIXEL, FINISH);
-	type acc_color is array(0 to TILE_LINE-1) of std_logic_vector(7 downto 0);
+	type acc_color is array(0 to TILE_LINE-1) of std_logic_vector(TILE_LIST_LEN downto 0);
 	type tile_line_arr_u16 is array(0 to TILE_LINE-1) of std_logic_vector(15 downto 0);
-	
+	type tile_list_type is array(0 to 7) of std_logic_vector (7 downto 0);
 	-- Tile mat elem, contains TILE_LIST_LEN draw list indices and tile mat end index. --
-	type tile_mat_type is array(0 to TILE_LIST_LEN) of std_logic_vector (7 downto 0);
+	type tile_mat_type is array (0 to TILE_MAT_HEIGHT-1, 0 to TILE_MAT_WIDTH-1) of tile_list_type;
 	
 	
-	signal tile_mat_s: tile_mat_type := (others => ( others => '0'));
-	signal tile_mat_r: tile_mat_type := (others => ( others => '0'));
+	signal tile_mat_s: tile_mat_type := (others => ( others => (others => (others => '0'))));
+	signal tile_mat_r: tile_mat_type := (others => ( others => (others => (others => '0'))));
 	
 	signal tile_mat_addr_s : unsigned(ADDR_WIDTH-1 downto 0) := to_unsigned(0, ADDR_WIDTH);
 	signal tile_mat_addr_r : unsigned(ADDR_WIDTH-1 downto 0) := to_unsigned(0, ADDR_WIDTH);
@@ -300,12 +300,13 @@ begin
 				when IDLE =>
 					next_state_s <= CALC_TY;
 				when CALC_TY =>
-					--New tile -> read tile mat element from memory--
 					if(read_tile_mat = 0) then
-						next_state_s <= READ_UPPER;--INC_TX;READ_UPPER;
+						--New tile -> read tile mat element from memory--
+						next_state_s <= READ_UPPER;
 					else
-						next_state_s <= READ_INDEX;--WRITE_PIXEL;
+						next_state_s <= READ_INDEX;
 					end if;
+					
 				when READ_UPPER =>
 					next_state_s <= WAIT_VALID_DATA;--READ_LOWER;
 				when WAIT_VALID_DATA =>
@@ -382,46 +383,37 @@ begin
 							tx_s <= (others => '0');
 						end if;
 						
+						-- New tile line --
+						--Initializing resulting color components, executed in one cycle-- 
+						acc_r_s <= (others => (others => '0'));
+						acc_g_s <= (others => (others => '0'));
+						acc_b_s <= (others => (others => '0'));
+						weight_s <= (others => std_logic_vector(to_unsigned(FIX_ONE, 16)));
+						
+						--Intit loop variables--
+						--First byte of tile mat elem is list_end, draw list indices are 1st to list_end byte--  
 						ti_s <= x"01";
 						go_to_next_tile_line_s <= "0";
+						
 					when CALC_TY =>
 						--Calculating horizontal tile index--
 						ty_s <= std_logic_vector(shift_right(unsigned(y_r), TILE_BITS));
 					when READ_UPPER =>
 					--Reading tile_mat element from memory. One tile_mat element takes two 32-bit location--
 						--READ_MATLIST_LOWORD state--
-						tile_mat_s(3) <= mem_data_s(31 downto 24);
-						tile_mat_s(2) <= mem_data_s(23 downto 16);
-						tile_mat_s(1) <= mem_data_s(15 downto 8);
-						tile_mat_s(0) <= mem_data_s(7 downto 0);
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(3) <= mem_data_s(31 downto 24);
+ 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(2) <= mem_data_s(23 downto 16);
+ 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(1) <= mem_data_s(15 downto 8);
+ 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0) <= mem_data_s(7 downto 0);
 						
 						mem_addr_s <= mem_addr_r+1;
 
 					when READ_LOWER => 
 						--READ_MATLIST_HIWORD--
-						tile_mat_s(7) <= mem_data_s(31 downto 24);
-						tile_mat_s(6) <= mem_data_s(23 downto 16);
-						tile_mat_s(5) <= mem_data_s(15 downto 8);
-						tile_mat_s(4) <= mem_data_s(7 downto 0);
-						
-						
-						--Initializing resulting color components, executed in one cycle-- 
-						--Parallel statements--
-						acc_r_s <= (others => (others => '0'));
-						acc_g_s <= (others => (others => '0'));
-						acc_b_s <= (others => (others => '0'));
-						weight_s <= (others => std_logic_vector(to_unsigned(FIX_ONE, 16)));
---						for I in 0 to TILE_LINE-1 loop
---							acc_r_s(I) <= (others => '0');
---							acc_g_s(I) <= (others => '0');
---							acc_b_s(I) <= (others => '0');
---							weight_s(I) <= (others => '0');
---						end loop;
-					
-						--Loop--
-						--First byte of tile mat elem is list_end, draw list indices are 1st to list_end byte--  
-						ti_s <= x"01";
-						go_to_next_tile_line_s <= "0";
+						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(7) <= mem_data_s(31 downto 24);
+ 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(6) <= mem_data_s(23 downto 16);
+ 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(5) <= mem_data_s(15 downto 8);
+ 						tile_mat_s(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(4) <= mem_data_s(7 downto 0);
 						
 						--Save tile mat address--
 						tile_mat_addr_s <= mem_addr_r+1;
@@ -429,12 +421,12 @@ begin
 					when READ_INDEX =>
 							--READ_INDEX--
 							if(ti_r < TILE_LIST_LEN) then
-								if(ti_r-1 = tile_mat_r(0)) then
+								if(ti_r-1 = tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(0)) then
 									-----------------------Break loop-----------------------------------------------
 									go_to_next_tile_line_s <= "1";
 								else
 									--Extend draw list index to 16 bits--
-									i_s <= "00000000" & tile_mat_r(to_integer(unsigned(ti_r)));
+									i_s <= "00000000" & tile_mat_r(to_integer(unsigned(ty_r)), to_integer(unsigned(tx_r)))(to_integer(unsigned(ti_r)));
 									ti_s <= ti_r+1;
 								end if;
 							else
